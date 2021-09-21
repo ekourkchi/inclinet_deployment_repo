@@ -39,14 +39,24 @@ WEBROOT = os.getenv('WEBROOT')
 if WEBROOT is None:
     WEBROOT = './'
 
+##########################################################################
 
 def createDir(folderPath):
+    """generating a directory if it doesn't exist
+
+    :param folderPath: path to the desired folder
+    :type folderPath: ``str``
+    :return: True is created, False if the folder already exists
+    :rtype: ``str``
+    """
+
     if not os.path.exists(folderPath):
         os.makedirs(folderPath)
         return True
     else:
         False
 
+##########################################################################
 
 createDir('./static')
 createDir('./static/tempImages')
@@ -267,7 +277,7 @@ def home():
 
 @app.route('/getObj', methods=['POST'])
 def getObj():
-    """API getObj rule  
+    """``API`` getObj rule  
     Object name is provided in json format and it returns the information about 
     the galaxy in jason
 
@@ -285,7 +295,7 @@ def getObj():
 
     ::  
 
-        $ curl -X POST </inclinet/url/>/getObj -d '{"objname":"M31"}' -H 'Content-Type: application/json'
+        $ curl -X POST /inclinet/url/getObj -d '{"objname":"M31"}' -H 'Content-Type: application/json'
         {
         "dec": "41.2689", 
         "fov": "266.74", 
@@ -313,7 +323,7 @@ def getObj():
 ##########################################################################
 @app.route('/getPGC', methods=['POST'])
 def getPGC():
-    """API getPGC rule  
+    """``API`` getPGC rule  
     PGC id of the galaxy is provided in json format and it returns the information about 
     the galaxy in jason
 
@@ -331,7 +341,7 @@ def getPGC():
 
     ::  
 
-        $ curl -X POST http://0.0.0.0:3030/getPGC -d '{"pgc":"2557"}' -H 'Content-Type: application/json'
+        $ curl -X POST /inclinet/url/getPGC -d '{"pgc":"2557"}' -H 'Content-Type: application/json'
         {
         "dec": "41.2689", 
         "fov": "266.74", 
@@ -358,7 +368,7 @@ def getPGC():
 
 @app.route('/evaluate', methods=['POST'])
 def evaluate():
-    """an API rule that accepts galaxy images
+    """An ``API`` rule that accepts galaxy images
     and returns a summary of all results
 
     :return: evaluated inclination(s) and other results 
@@ -490,6 +500,61 @@ def pgc_api(pgcID):
     :type pgcID:  ``int``
     :return: the summary of all evaluated inclinations
     :rtype: ``json``
+
+    As seen in the following example, the output ``JSON`` contains the detailed evaluation of the available models.
+    The ``summary`` fields hold the statistical summary of the outputs of all models.
+
+    ::  
+
+        $ curl /inclinet/url/pgc/2557'   
+        {
+        "status": "success",
+        "galaxy": {
+            "pgc": "2557",
+            "ra": "10.6848 deg",
+            "dec": "41.2689 deg",
+            "fov": "266.74 arcmin",
+            "pa": "35.0 deg",
+            "objname": "NGC0224"
+        },
+        "inclinations": {
+            "Group_0": {
+            "model4": 69.0,
+            "model41": 72.0,
+            "model42": 76.0,
+            "model43": 71.0
+            },
+            "Group_1": {
+            "model5": 73.0,
+            "model51": 73.0,
+            "model52": 74.0,
+            "model53": 74.0
+            },
+            "Group_2": {
+            "model6": 73.0,
+            "model61": 76.0,
+            "model62": 76.0,
+            "model63": 67.0
+            },
+            "summary": {
+            "mean": 72.83333333333333,
+            "median": 73.0,
+            "stdev": 2.6718699236468995
+            }
+        },
+        "rejection_likelihood": {
+            "model4-binary": 50.396937131881714,
+            "model5-binary": 20.49814760684967,
+            "model6-binary": 65.37048816680908,
+            "summary": {
+            "mean": 45.42185763518015,
+            "median": 50.396937131881714,
+            "stdev": 18.65378065042258
+            }
+        }
+        }
+
+
     """
 
     response = {}
@@ -516,6 +581,67 @@ def pgc_api(pgcID):
 
 @app.route('/objname/<objname>')
 def obj_api(objname):
+    """the URL ``API`` that evaluates inclinations by providing the ``PGC ID`` in the URL
+
+    :param objname: galaxy name
+    :type objname:  ``string``
+    :return: the summary of all evaluated inclinations
+    :rtype: ``json``
+
+    The following example shows the output ``JSON`` that contains the detailed evaluation of the available models.
+    The ``summary`` fields hold the statistical summary of the outputs of all models.
+
+    ::  
+
+        $ curl  /inclinet/url/objname/M33
+        {
+        "status": "success",
+        "galaxy": {
+            "pgc": 5818,
+            "ra": "23.4621 deg",
+            "dec": "30.6599 deg",
+            "fov": "92.49 arcmin",
+            "pa": "22.5 deg",
+            "objname": "M33"
+        },
+        "inclinations": {
+            "Group_0": {
+            "model4": 54.0,
+            "model41": 58.0,
+            "model42": 54.0,
+            "model43": 52.0
+            },
+            "Group_1": {
+            "model5": 54.0,
+            "model51": 55.0,
+            "model52": 52.0,
+            "model53": 55.0
+            },
+            "Group_2": {
+            "model6": 56.0,
+            "model61": 57.0,
+            "model62": 55.0,
+            "model63": 53.0
+            },
+            "summary": {
+            "mean": 54.583333333333336,
+            "median": 54.5,
+            "stdev": 1.753963764987432
+            }
+        },
+        "rejection_likelihood": {
+            "model4-binary": 41.287994384765625,
+            "model5-binary": 4.068142548203468,
+            "model6-binary": 55.70455193519592,
+            "summary": {
+            "mean": 33.686896289388336,
+            "median": 41.287994384765625,
+            "stdev": 21.754880108256657
+            }
+        }
+        }
+
+    """
 
     response = {}
     response["status"] = "failed"
@@ -543,6 +669,56 @@ def obj_api(objname):
 ### Example: curl -F 'file=@/home/ehsan/NGC_4579.jpg' https://cropnet.eng.hawaii.edu/inclinet/file
 @app.route('/file', methods=["POST"])
 def file_api():
+    """``API`` function, evaluating the inclination providing the galaxy image
+
+    :return: summary of the results, inclinations, statistics
+    :rtype: ``json``
+
+    ::
+
+        $ curl -F 'file=@/path/to/image/NGC_4579.jpg' /inclinet/url/file
+        {
+        "status": "success",
+        "filename": "NGC_4579.jpg",
+        "inclinations": {
+            "Group_0": {
+            "model4": 47.0,
+            "model41": 51.0,
+            "model42": 50.0,
+            "model43": 47.0
+            },
+            "Group_1": {
+            "model5": 49.0,
+            "model51": 49.0,
+            "model52": 51.0,
+            "model53": 52.0
+            },
+            "Group_2": {
+            "model6": 50.0,
+            "model61": 49.0,
+            "model62": 49.0,
+            "model63": 48.0
+            },
+            "summary": {
+            "mean": 49.333333333333336,
+            "median": 49.0,
+            "stdev": 1.49071198499986
+            }
+        },
+        "rejection_likelihood": {
+            "model4-binary": 84.28281545639038,
+            "model5-binary": 94.24970746040344,
+            "model6-binary": 88.11054229736328,
+            "summary": {
+            "mean": 88.88102173805237,
+            "median": 88.11054229736328,
+            "stdev": 4.105278145778375
+            }
+        }
+        }
+
+
+    """
 
     response = {}
     response["status"] = "failed"
@@ -569,6 +745,7 @@ def file_api():
 
     return json.dumps(response, cls=NpEncoder, indent=2)+"\n"
 
+##########################################################################
 
 class NpEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -581,7 +758,18 @@ class NpEncoder(json.JSONEncoder):
         else:
             return super(NpEncoder, self).default(obj)
 
+##########################################################################
 def imSquarify(imPath, outPath=None):
+    """padding an image to square shape
+
+    :param imPath: image path
+    :type imPath: ``str``
+    :param outPath: output path, defaults to None
+    :type outPath: ``str``, optional
+    :return: output path, if the``outPath`` is not given the output is stored in the same locations
+    as that of the input image
+    :rtype: ``str``
+    """
 
     if outPath is None:
         outPath = imPath
@@ -596,8 +784,15 @@ def imSquarify(imPath, outPath=None):
 
 ##########################################################################
 
-@app.route('/upload', methods=[ "GET",'POST'])
+@app.route('/upload', methods=['POST'])
 def IM_upload():
+    """An image uploader ``API`` for the use in the online GUI
+    This API is called from the online application, through ``AJAX`` calls.
+    The uploaded image is stored on the server for further analysis.
+
+    :return: the status of the process, and the public address of the images path for the online GUI
+    :rtype: ``json``
+    """
 
     response = {}
       

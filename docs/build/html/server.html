@@ -108,7 +108,18 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="server.IM_upload">
 <span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">IM_upload</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.IM_upload" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>An image uploader <code class="docutils literal notranslate"><span class="pre">API</span></code> for the use in the online GUI
+This API is called from the online application, through <code class="docutils literal notranslate"><span class="pre">AJAX</span></code> calls.
+The uploaded image is stored on the server for further analysis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the status of the process, and the public address of the images path for the online GUI</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">json</span></code></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="server.NpEncoder">
@@ -200,12 +211,24 @@ given the corresponsing PGC ID</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="server.createDir">
 <span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">createDir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folderPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.createDir" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>generating a directory if it doesn’t exist</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>folderPath</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – path to the desired folder</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True is created, False if the folder already exists</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="server.evaluate">
 <span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.evaluate" title="Permalink to this definition"></a></dt>
-<dd><p>an API rule that accepts galaxy images
+<dd><p>An <code class="docutils literal notranslate"><span class="pre">API</span></code> rule that accepts galaxy images
 and returns a summary of all results</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -242,12 +265,63 @@ If a rectangular image is provided, the output image is square in size.
 <dl class="py function">
 <dt class="sig sig-object py" id="server.file_api">
 <span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">file_api</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.file_api" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p><code class="docutils literal notranslate"><span class="pre">API</span></code> function, evaluating the inclination providing the galaxy image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>summary of the results, inclinations, statistics</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">json</span></code></p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -F &#39;file=@/path/to/image/NGC_4579.jpg&#39; /inclinet/url/file
+{
+&quot;status&quot;: &quot;success&quot;,
+&quot;filename&quot;: &quot;NGC_4579.jpg&quot;,
+&quot;inclinations&quot;: {
+    &quot;Group_0&quot;: {
+    &quot;model4&quot;: 47.0,
+    &quot;model41&quot;: 51.0,
+    &quot;model42&quot;: 50.0,
+    &quot;model43&quot;: 47.0
+    },
+    &quot;Group_1&quot;: {
+    &quot;model5&quot;: 49.0,
+    &quot;model51&quot;: 49.0,
+    &quot;model52&quot;: 51.0,
+    &quot;model53&quot;: 52.0
+    },
+    &quot;Group_2&quot;: {
+    &quot;model6&quot;: 50.0,
+    &quot;model61&quot;: 49.0,
+    &quot;model62&quot;: 49.0,
+    &quot;model63&quot;: 48.0
+    },
+    &quot;summary&quot;: {
+    &quot;mean&quot;: 49.333333333333336,
+    &quot;median&quot;: 49.0,
+    &quot;stdev&quot;: 1.49071198499986
+    }
+},
+&quot;rejection_likelihood&quot;: {
+    &quot;model4-binary&quot;: 84.28281545639038,
+    &quot;model5-binary&quot;: 94.24970746040344,
+    &quot;model6-binary&quot;: 88.11054229736328,
+    &quot;summary&quot;: {
+    &quot;mean&quot;: 88.88102173805237,
+    &quot;median&quot;: 88.11054229736328,
+    &quot;stdev&quot;: 4.105278145778375
+    }
+}
+}
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="server.getObj">
 <span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">getObj</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.getObj" title="Permalink to this definition"></a></dt>
-<dd><p>API getObj rule
+<dd><p><code class="docutils literal notranslate"><span class="pre">API</span></code> getObj rule
 Object name is provided in json format and it returns the information about
 the galaxy in jason</p>
 <dl class="field-list simple">
@@ -268,7 +342,7 @@ the galaxy in jason</p>
 </dd>
 </dl>
 <p><strong>Example:</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X POST &lt;/inclinet/url/&gt;/getObj -d &#39;{&quot;objname&quot;:&quot;M31&quot;}&#39; -H &#39;Content-Type: application/json&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X POST /inclinet/url/getObj -d &#39;{&quot;objname&quot;:&quot;M31&quot;}&#39; -H &#39;Content-Type: application/json&#39;
 {
 &quot;dec&quot;: &quot;41.2689&quot;,
 &quot;fov&quot;: &quot;266.74&quot;,
@@ -285,7 +359,7 @@ the galaxy in jason</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="server.getPGC">
 <span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">getPGC</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.getPGC" title="Permalink to this definition"></a></dt>
-<dd><p>API getPGC rule
+<dd><p><code class="docutils literal notranslate"><span class="pre">API</span></code> getPGC rule
 PGC id of the galaxy is provided in json format and it returns the information about
 the galaxy in jason</p>
 <dl class="field-list simple">
@@ -306,7 +380,7 @@ the galaxy in jason</p>
 </dd>
 </dl>
 <p><strong>Example:</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X POST http://0.0.0.0:3030/getPGC -d &#39;{&quot;pgc&quot;:&quot;2557&quot;}&#39; -H &#39;Content-Type: application/json&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X POST /inclinet/url/getPGC -d &#39;{&quot;pgc&quot;:&quot;2557&quot;}&#39; -H &#39;Content-Type: application/json&#39;
 {
 &quot;dec&quot;: &quot;41.2689&quot;,
 &quot;fov&quot;: &quot;266.74&quot;,
@@ -351,7 +425,21 @@ the galaxy in jason</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="server.imSquarify">
 <span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">imSquarify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.imSquarify" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>padding an image to square shape</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>imPath</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – image path</p></li>
+<li><p><strong>outPath</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>, optional) – output path, defaults to None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>output path, if the``outPath`` is not given the output is stored in the same locations</p>
+</dd>
+</dl>
+<p>as that of the input image
+:rtype: <code class="docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="server.modelParams">
@@ -396,7 +484,70 @@ client, in order to parse the html contents</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="server.obj_api">
 <span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">obj_api</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.obj_api" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>the URL <code class="docutils literal notranslate"><span class="pre">API</span></code> that evaluates inclinations by providing the <code class="docutils literal notranslate"><span class="pre">PGC</span> <span class="pre">ID</span></code> in the URL</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>objname</strong> (<code class="docutils literal notranslate"><span class="pre">string</span></code>) – galaxy name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the summary of all evaluated inclinations</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">json</span></code></p>
+</dd>
+</dl>
+<p>The following example shows the output <code class="docutils literal notranslate"><span class="pre">JSON</span></code> that contains the detailed evaluation of the available models.
+The <code class="docutils literal notranslate"><span class="pre">summary</span></code> fields hold the statistical summary of the outputs of all models.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl  /inclinet/url/objname/M33
+{
+&quot;status&quot;: &quot;success&quot;,
+&quot;galaxy&quot;: {
+    &quot;pgc&quot;: 5818,
+    &quot;ra&quot;: &quot;23.4621 deg&quot;,
+    &quot;dec&quot;: &quot;30.6599 deg&quot;,
+    &quot;fov&quot;: &quot;92.49 arcmin&quot;,
+    &quot;pa&quot;: &quot;22.5 deg&quot;,
+    &quot;objname&quot;: &quot;M33&quot;
+},
+&quot;inclinations&quot;: {
+    &quot;Group_0&quot;: {
+    &quot;model4&quot;: 54.0,
+    &quot;model41&quot;: 58.0,
+    &quot;model42&quot;: 54.0,
+    &quot;model43&quot;: 52.0
+    },
+    &quot;Group_1&quot;: {
+    &quot;model5&quot;: 54.0,
+    &quot;model51&quot;: 55.0,
+    &quot;model52&quot;: 52.0,
+    &quot;model53&quot;: 55.0
+    },
+    &quot;Group_2&quot;: {
+    &quot;model6&quot;: 56.0,
+    &quot;model61&quot;: 57.0,
+    &quot;model62&quot;: 55.0,
+    &quot;model63&quot;: 53.0
+    },
+    &quot;summary&quot;: {
+    &quot;mean&quot;: 54.583333333333336,
+    &quot;median&quot;: 54.5,
+    &quot;stdev&quot;: 1.753963764987432
+    }
+},
+&quot;rejection_likelihood&quot;: {
+    &quot;model4-binary&quot;: 41.287994384765625,
+    &quot;model5-binary&quot;: 4.068142548203468,
+    &quot;model6-binary&quot;: 55.70455193519592,
+    &quot;summary&quot;: {
+    &quot;mean&quot;: 33.686896289388336,
+    &quot;median&quot;: 41.287994384765625,
+    &quot;stdev&quot;: 21.754880108256657
+    }
+}
+}
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="server.pgc_api">
@@ -413,6 +564,57 @@ client, in order to parse the html contents</p>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">json</span></code></p>
 </dd>
 </dl>
+<p>As seen in the following example, the output <code class="docutils literal notranslate"><span class="pre">JSON</span></code> contains the detailed evaluation of the available models.
+The <code class="docutils literal notranslate"><span class="pre">summary</span></code> fields hold the statistical summary of the outputs of all models.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl /inclinet/url/pgc/2557&#39;
+{
+&quot;status&quot;: &quot;success&quot;,
+&quot;galaxy&quot;: {
+    &quot;pgc&quot;: &quot;2557&quot;,
+    &quot;ra&quot;: &quot;10.6848 deg&quot;,
+    &quot;dec&quot;: &quot;41.2689 deg&quot;,
+    &quot;fov&quot;: &quot;266.74 arcmin&quot;,
+    &quot;pa&quot;: &quot;35.0 deg&quot;,
+    &quot;objname&quot;: &quot;NGC0224&quot;
+},
+&quot;inclinations&quot;: {
+    &quot;Group_0&quot;: {
+    &quot;model4&quot;: 69.0,
+    &quot;model41&quot;: 72.0,
+    &quot;model42&quot;: 76.0,
+    &quot;model43&quot;: 71.0
+    },
+    &quot;Group_1&quot;: {
+    &quot;model5&quot;: 73.0,
+    &quot;model51&quot;: 73.0,
+    &quot;model52&quot;: 74.0,
+    &quot;model53&quot;: 74.0
+    },
+    &quot;Group_2&quot;: {
+    &quot;model6&quot;: 73.0,
+    &quot;model61&quot;: 76.0,
+    &quot;model62&quot;: 76.0,
+    &quot;model63&quot;: 67.0
+    },
+    &quot;summary&quot;: {
+    &quot;mean&quot;: 72.83333333333333,
+    &quot;median&quot;: 73.0,
+    &quot;stdev&quot;: 2.6718699236468995
+    }
+},
+&quot;rejection_likelihood&quot;: {
+    &quot;model4-binary&quot;: 50.396937131881714,
+    &quot;model5-binary&quot;: 20.49814760684967,
+    &quot;model6-binary&quot;: 65.37048816680908,
+    &quot;summary&quot;: {
+    &quot;mean&quot;: 45.42185763518015,
+    &quot;median&quot;: 50.396937131881714,
+    &quot;stdev&quot;: 18.65378065042258
+    }
+}
+}
+</pre></div>
+</div>
 </dd></dl>
 
 </div>

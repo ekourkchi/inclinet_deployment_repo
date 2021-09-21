@@ -101,37 +101,159 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="incNET.converIMAGE">
 <span class="sig-prename descclassname"><span class="pre">incNET.</span></span><span class="sig-name descname"><span class="pre">converIMAGE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img_arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#incNET.converIMAGE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Converting an image array
+<code class="docutils literal notranslate"><span class="pre">anlgle</span></code>: how much to rotate the image
+<code class="docutils literal notranslate"><span class="pre">scale</span></code>: scale of the output image</p>
+<blockquote>
+<div><p>zoomin out if <code class="docutils literal notranslate"><span class="pre">sale&lt;1</span></code> and zooming in if <code class="docutils literal notranslate"><span class="pre">scale&gt;1</span></code></p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">size</span></code>: the number of pixels on each side of the output image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img_arr</strong> (numpy <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>) – input image</p></li>
+<li><p><strong>angle</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>, optional) – image rotation in <code class="docutils literal notranslate"><span class="pre">degrees</span></code>, defaults to 0.</p></li>
+<li><p><strong>scale</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>, optional) – the scale of the output image relative to the input image, defaults to 1.</p></li>
+<li><p><strong>size</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>, optional) – resolution of the output image in pixel, defaults to 64</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>output image</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">PIL</span></code> image opject</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="incNET.model">
 <span class="sig-prename descclassname"><span class="pre">incNET.</span></span><span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myModels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveRescaled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaledImage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#incNET.model" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>providing the input parameters and a set of TensorFlow models, this function
+iterates through all models and parses the predictions in separate python dictionaries</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> (python <code class="docutils literal notranslate"><span class="pre">dictionary</span></code>) – input parameters</p></li>
+<li><p><strong>myModels</strong> (<code class="docutils literal notranslate"><span class="pre">TensorFlow</span></code> models organized in a python <code class="docutils literal notranslate"><span class="pre">dictionary</span></code>) – ML predictors, a dictionary of models</p></li>
+<li><p><strong>saveRescaled</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional) – save the rescaled image?, defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><strong>scaledImage</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>, optional) – name of the rescaled image, defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">evalINCs</span></code>: python dictionary containing all evaluated inclinations
+<code class="docutils literal notranslate"><span class="pre">evalRej</span></code>: python dictionary containing all rejection likelihoods</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple <code class="docutils literal notranslate"><span class="pre">(evalINCs,</span> <span class="pre">evalRej)</span></code></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="incNET.model2html">
 <span class="sig-prename descclassname"><span class="pre">incNET.</span></span><span class="sig-name descname"><span class="pre">model2html</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myModels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#incNET.model2html" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>parsing the output results in html format
+Given a set of parameters, all evalautions are carried out and returned in <code class="docutils literal notranslate"><span class="pre">html</span></code> format
+for the use in the online <code class="docutils literal notranslate"><span class="pre">GUI</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> (python <code class="docutils literal notranslate"><span class="pre">dictionary</span></code>) – input parameter set</p></li>
+<li><p><strong>myModels</strong> (python <code class="docutils literal notranslate"><span class="pre">dictionary</span></code>) – <code class="docutils literal notranslate"><span class="pre">TensorFlow</span></code> models organized in a python <code class="docutils literal notranslate"><span class="pre">dictionary</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a <code class="docutils literal notranslate"><span class="pre">sumamry</span></code> of all evaluations</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">html</span></code> text</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="incNET.openImage">
 <span class="sig-prename descclassname"><span class="pre">incNET.</span></span><span class="sig-name descname"><span class="pre">openImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#incNET.openImage" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>importing the image and preparing it for the analysis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (python <code class="docutils literal notranslate"><span class="pre">dictionary</span></code>) – a set of parameters including the name of the file that contains the image</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">(image_array,</span> <span class="pre">scale,</span> <span class="pre">angle)</span></code></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+<p><code class="docutils literal notranslate"><span class="pre">image_array</span></code>: numpy ndarray holding the image
+<code class="docutils literal notranslate"><span class="pre">anlgle</span></code>: how much to rotate the image
+<code class="docutils literal notranslate"><span class="pre">scale</span></code>: scale of the output image</p>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="incNET.predictor">
 <span class="sig-prename descclassname"><span class="pre">incNET.</span></span><span class="sig-name descname"><span class="pre">predictor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">All_images</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#incNET.predictor" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The prediction of the regression model
+This model returns the galaxy inclinations of the input galaxy images.</p>
+<p><code class="docutils literal notranslate"><span class="pre">All_images</span></code> usually hold the images of the same galaxy projected at 4 different position angles, 90 degrees apart.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (A convolutional neural network in <code class="docutils literal notranslate"><span class="pre">TensorFlow</span></code>) – regression model</p></li>
+<li><p><strong>All_images</strong> (numpy <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> with the shape <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">size,</span> <span class="pre">size,</span> <span class="pre">n_channels=3)</span></code>) – <code class="docutils literal notranslate"><span class="pre">N</span></code> images to be evaluated</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the median of all evaluated inclinations</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="incNET.predictor_binary">
 <span class="sig-prename descclassname"><span class="pre">incNET.</span></span><span class="sig-name descname"><span class="pre">predictor_binary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">All_images</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#incNET.predictor_binary" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The prediction of the classification model
+This model returns a number between 0 and 1, which corresponds to the
+likelihood of the users rejecting this image, because of poor quality, bright star in the field, etc.</p>
+<p><code class="docutils literal notranslate"><span class="pre">All_images</span></code> hold the images of the same galaxy projected at 4 different position angles, 90 degrees apart.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (A convolutional neural network in <code class="docutils literal notranslate"><span class="pre">TensorFlow</span></code>) – classification model</p></li>
+<li><p><strong>All_images</strong> (numpy <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> with the shape <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">size,</span> <span class="pre">size,</span> <span class="pre">n_channels=3)</span></code>) – <code class="docutils literal notranslate"><span class="pre">N</span></code> images to be evaluated</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the median of all evaluated rejection likelihoods</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="incNET.scaleFileName">
 <span class="sig-prename descclassname"><span class="pre">incNET.</span></span><span class="sig-name descname"><span class="pre">scaleFileName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#incNET.scaleFileName" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>generating the name of the scaled image
+based on the name of the input image and the time stamp of the analysis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (python <code class="docutils literal notranslate"><span class="pre">dictionary</span></code>) – a set of parameters including the name of the desired image to be rescaled</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the name of the scaled image</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 

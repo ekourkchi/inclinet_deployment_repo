@@ -20,6 +20,23 @@ from tensorflow.keras.models import load_model
 
 ###############################################################
 def converIMAGE(img_arr, angle=0., scale=1., size=64):
+    """Converting an image array
+    ``anlgle``: how much to rotate the image
+    ``scale``: scale of the output image
+        zoomin out if ``sale<1`` and zooming in if ``scale>1``
+    ``size``: the number of pixels on each side of the output image
+
+    :param img_arr: input image
+    :type img_arr: numpy ``ndarray``
+    :param angle: image rotation in ``degrees``, defaults to 0.
+    :type angle: ``int``, optional
+    :param scale: the scale of the output image relative to the input image, defaults to 1.
+    :type scale: ``int``, optional
+    :param size: resolution of the output image in pixel, defaults to 64
+    :type size: ``int``, optional
+    :return: output image 
+    :rtype: ``PIL`` image opject
+    """
 
     img_arr = scipy.ndimage.rotate(img_arr, -angle)
 
@@ -49,6 +66,18 @@ def converIMAGE(img_arr, angle=0., scale=1., size=64):
 
 ###############################################################
 def openImage(params):
+    """importing the image and preparing it for the analysis
+
+    :param params: a set of parameters including the name of the file that contains the image
+    :type params: python ``dictionary``
+    :return: ``(image_array, scale, angle)``
+    :rtype: tuple 
+
+    ``image_array``: numpy ndarray holding the image
+    ``anlgle``: how much to rotate the image
+    ``scale``: scale of the output image   
+
+    """
 
     if not 'scale' in params:
         scale = 1
@@ -78,6 +107,19 @@ def openImage(params):
 
 ###############################################################
 def predictor_binary(model, All_images):
+    """The prediction of the classification model
+    This model returns a number between 0 and 1, which corresponds to the
+    likelihood of the users rejecting this image, because of poor quality, bright star in the field, etc.
+    
+    ``All_images`` hold the images of the same galaxy projected at 4 different position angles, 90 degrees apart.
+
+    :param model: classification model
+    :type model: A convolutional neural network in ``TensorFlow``
+    :param All_images: ``N`` images to be evaluated 
+    :type All_images: numpy ``ndarray`` with the shape ``(N, size, size, n_channels=3)``
+    :return: the median of all evaluated rejection likelihoods
+    :rtype: ``float``
+    """
     
     prediction = model.predict(All_images)
 
@@ -86,7 +128,18 @@ def predictor_binary(model, All_images):
 
 ###############################################################
 def predictor(model, All_images):
+    """The prediction of the regression model
+    This model returns the galaxy inclinations of the input galaxy images.
+    
+    ``All_images`` usually hold the images of the same galaxy projected at 4 different position angles, 90 degrees apart.
 
+    :param model: regression model
+    :type model: A convolutional neural network in ``TensorFlow``
+    :param All_images: ``N`` images to be evaluated 
+    :type All_images: numpy ``ndarray`` with the shape ``(N, size, size, n_channels=3)``
+    :return: the median of all evaluated inclinations
+    :rtype: ``float``
+    """
     prediction = model.predict(All_images)
     prediction = np.median(prediction)
     prediction = 0.5*(prediction+1.)*45.+45.
@@ -97,8 +150,15 @@ def predictor(model, All_images):
     return prediction
 
 ###############################################################
-
 def scaleFileName(params):
+    """generating the name of the scaled image
+    based on the name of the input image and the time stamp of the analysis
+
+    :param params: a set of parameters including the name of the desired image to be rescaled
+    :type params: python ``dictionary``
+    :return: the name of the scaled image
+    :rtype: ``string``
+    """
 
     if 'fileName' in params:
         scaledImage = '128x128_' + params['fileName'].split('.')[-1] + 'jpg'
@@ -110,6 +170,22 @@ def scaleFileName(params):
 ###############################################################
 
 def model(params, myModels, saveRescaled=True, scaledImage=None):
+    """providing the input parameters and a set of TensorFlow models, this function
+    iterates through all models and parses the predictions in separate python dictionaries 
+
+    :param params: input parameters
+    :type params: python ``dictionary``
+    :param myModels: ML predictors, a dictionary of models
+    :type myModels: ``TensorFlow`` models organized in a python ``dictionary``
+    :param saveRescaled: save the rescaled image?, defaults to ``True``
+    :type saveRescaled: ``bool``, optional
+    :param scaledImage: name of the rescaled image, defaults to ``None``
+    :type scaledImage: ``str``, optional
+    :return: 
+        ``evalINCs``: python dictionary containing all evaluated inclinations
+        ``evalRej``: python dictionary containing all rejection likelihoods
+    :rtype: tuple ``(evalINCs, evalRej)``
+    """
 
     evalINCs = {}
 
@@ -132,12 +208,10 @@ def model(params, myModels, saveRescaled=True, scaledImage=None):
     except:
         return(evalINCs)
 
-    
 
     if img_arr is None:
         return(evalINCs)
   
-
     ###############################
     img = converIMAGE(img_arr, angle=angle, scale=scale, size=128)
 
@@ -163,29 +237,55 @@ def model(params, myModels, saveRescaled=True, scaledImage=None):
     ###############################
 
     evalRej = {}
+    evalRej_list = []
     for Model in myModels[0]:
         evalINC = {}
         modelName = Model[0]
-        evalRej[modelName] = predictor_binary(Model[1], All_images)
+        rej = predictor_binary(Model[1], All_images)
+        evalRej[modelName] = rej
+        evalRej_list.append(rej)
 
-    
+    evalINCs_list = []
     for i, modelGroup in enumerate(myModels[1:]):
 
         evalINC = {}
         
         for Model in modelGroup:
             modelName = Model[0]
-            evalINC[modelName] = predictor(Model[1], All_images)
+            inc = predictor(Model[1], All_images)
+            evalINC[modelName] = inc
+            evalINCs_list.append(inc)
 
         gKey = "Group_"+str(i)
         evalINCs[gKey] = evalINC
-        
+
+    evalINCs["summary"] = {}
+    evalINCs["summary"]["mean"] = np.mean(evalINCs_list)
+    evalINCs["summary"]["median"] = np.median(evalINCs_list)
+    evalINCs["summary"]["stdev"] = np.std(evalINCs_list)
+
+
+    evalRej["summary"] = {}
+    evalRej["summary"]["mean"] = np.mean(evalRej_list)
+    evalRej["summary"]["median"] = np.median(evalRej_list)
+    evalRej["summary"]["stdev"] = np.std(evalRej_list)
+
     return evalINCs, evalRej
             
             
 ###############################################################
-
 def model2html(params, myModels):
+    """parsing the output results in html format
+    Given a set of parameters, all evalautions are carried out and returned in ``html`` format
+    for the use in the online ``GUI``.
+
+    :param params: input parameter set
+    :type params: python ``dictionary``
+    :param myModels: ``TensorFlow`` models organized in a python ``dictionary``
+    :type myModels: python ``dictionary``
+    :return: a ``sumamry`` of all evaluations
+    :rtype: ``html`` text
+    """   
 
     scaledImage = scaleFileName(params)
     evalINCs, evalRej  = model(params, myModels, scaledImage = scaledImage)
@@ -215,18 +315,10 @@ def model2html(params, myModels):
     """ 
     allincs = []
     for key, evalGroup in evalINCs.items():
-        incs = []
-        # results += "<hr>"
-        # results += '<p style="background-color:gray;"><b>' + key + '</b></p>'
-        for modelName, prediction in evalGroup.items():
-            # results += "<p><b>"+modelName+": </b>" + str('%d' % prediction) + "&nbsp;[deg]</p>"
-            incs.append(prediction)
-            allincs.append(prediction)
-        incs = np.asarray(incs)
-        med = np.median(incs)
-        mean = np.mean(incs)
-        # results += "<p style=\"color:blue;\"><b>Med/Mean: </b>" + str('%d' % med) + '/' + str('%d' % mean) + "&nbsp;[deg]</p>"
-        # results += "<p style=\"color:blue;\"><b>Median: </b>" + str('%d' % med) + "&nbsp;[deg]</p>"
+        if key != 'summary':
+            for modelName, prediction in evalGroup.items():
+                allincs.append(prediction)
+
     
     results += "<hr>"
     results += '<p style="background-color:yellow;"><b>Evaluated Inclinations</b></p>'
@@ -234,7 +326,6 @@ def model2html(params, myModels):
     med = np.median(allincs)
     mean = np.mean(allincs)
     stdev = np.std(allincs)
-    # results += "<p style=\"color:green;\"><b>Med/Mean: </b>" + str('%d' % med) + '/' + str('%d' % mean) + "&nbsp;[deg]</p>"
     results += "<p style=\"color:blue;\"><b>Median: </b>" + str('%d' % med) + "&nbsp;[deg]</p>"
     results += "<p style=\"color:blue;\"><b>Mean: </b>" + str('%d' % mean) + "&nbsp;[deg]</p>"
     results += "<p style=\"color:blue;\"><b>Stdev: </b>" + str('%d' % stdev) + "&nbsp;[deg]</p>"
@@ -245,13 +336,12 @@ def model2html(params, myModels):
 
     rejs = []
     for rejmodel, rejlike in evalRej.items():
-        # results += "<p><b>"+rejmodel+": </b>" + '%.0f'%(rejlike) + '%</p>'
-        rejs.append(rejlike)
+        if rejmodel != 'summary':
+            rejs.append(rejlike)
     
     med = np.median(rejs)
     mean = np.mean(rejs)
     stdev = np.std(rejs)
-    # results += "<p style=\"color:red;\"><b>Med/Mean: </b>" + '%.0f'%(med) + '/' + '%.0f'%(mean) + ' %</p>'
 
     color = 'green'
     if med > 50:

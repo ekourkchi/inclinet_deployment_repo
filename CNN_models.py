@@ -4,13 +4,33 @@ from tensorflow.keras.layers import Dense, Conv2D, Flatten
 from tensorflow.keras.utils import to_categorical
 
 class Models:
+    """The definition of all TensorFlow convolutional Neural Networks used 
+    in this project.
+    """
 
     def __init__(self, input_shape=(128, 128, 3), n_classes = None):
+        """constructor
+        If the number of classess is given, it means that the network uses a ``softmax`` in the output layer and the problem 
+        is treated as a classification problem, otherwise a single value between -1 and 1 is returned given
+        the ``tanh`` function in the last fully connected layer.
+
+        :param input_shape: the size of input images, defaults to ``(128, 128, 3)``
+        :type input_shape: tuple, optional
+        :param n_classes: number of output classess in the case of classification, defaults to None
+        :type n_classes: ``int``, optional
+        """
         
         self.input_shape = input_shape
         self.n_classes   = n_classes
 
     def getModel(self, model_name):
+        """Given the model name, this returns a function that instantiates the desired model.
+
+        :param model_name: name of the desired model
+        :type model_name: ``str``
+        :return: the model
+        :rtype: ``function``
+        """
 
         if model_name == 'model4':
             return self.model4
@@ -21,6 +41,12 @@ class Models:
 
     ## n_classes is None if the network is used for regression
     def model4(self):
+        """This is the simplest model in our series of models. 
+        The total number of weight number of this model is ``~1.600,000``. It has two sets of double convolutional layers.
+
+        :return: a ``TensorFlow`` model
+        :rtype: ``tf.keras.models``
+        """
 
         model = tf.keras.models.Sequential()
         model.add(tf.keras.layers.Conv2D(16, (3, 3), activation='relu', input_shape=self.input_shape, name='conv1'))
@@ -52,6 +78,12 @@ class Models:
 
     ## n_classes is None if the network is used for regression
     def model5(self):
+        """This model is the most complex model in our study. 
+        It has ``~2,500,000`` free parameters and three sets of double convolutional layers.
+
+        :return: a ``TensorFlow`` model
+        :rtype: ``tf.keras.models``
+        """
 
         model = tf.keras.models.Sequential()
 
@@ -90,6 +122,12 @@ class Models:
 
     ## n_classes is None if the network is used for regression
     def model6(self):
+        """This model is comparable to ``model4`` in terms of complexity, 
+        although the number of convolutional units is larger in this model.
+
+        :return: a ``TensorFlow`` model
+        :rtype: ``tf.keras.models``
+        """
 
         model = tf.keras.models.Sequential()
 
