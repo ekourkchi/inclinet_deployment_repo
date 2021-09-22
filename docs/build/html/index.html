@@ -166,6 +166,19 @@ For more information, read the <a class="reference external" href="https://edd.i
 <a class="reference external image-reference" href="https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png"><img alt="Inclinet_Deployment_flowchart" src="https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png" /></a>
 </div>
 </div>
+<div class="section" id="bulding-the-docker-package">
+<h2>Bulding the Docker Package<a class="headerlink" href="#bulding-the-docker-package" title="Permalink to this headline"></a></h2>
+<p>In the code repository run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker build --tag myimage:x.x .
+docker login -u &lt;username&gt;
+docker push myimage:x.x .
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">x.x</span></code> is the package version.</p>
+<ul class="simple">
+<li><p>Docker simple <a class="reference external" href="https://www.docker.com/sites/default/files/d8/2019-09/docker-cheat-sheet.pdf">cheat sheet</a></p></li>
+</ul>
+</div>
 <div class="section" id="api">
 <h2>API<a class="headerlink" href="#api" title="Permalink to this headline"></a></h2>
 <ul class="simple">
@@ -336,25 +349,50 @@ For more information, read the <a class="reference external" href="https://edd.i
 </div>
 </li>
 </ul>
+</div>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline"></a></h2>
+<div class="section" id="id2">
+<h3><a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a><a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<p>The full documentation of our application is <a class="reference external" href="https://edd.ifa.hawaii.edu/static/html/index.html">available here</a>.</p>
+<p><strong>Notes:</strong></p>
+<ul class="simple">
+<li><p>A <a class="reference external" href="https://techwritingmatters.com/documenting-with-sphinx-tutorial-intro-overview">nice article</a> on the Sphinx workflow.</p></li>
+<li><p>A <a class="reference external" href="https://github.com/finsberg/sphinx-tutorial">short tutorial</a> on how to easily get <code class="docutils literal notranslate"><span class="pre">Sphinx</span></code> to work.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;code_repository&gt;/docs</span></code>: Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> here to update the Sphinx documentations. Sphinx parses all the docstrings into a set of html pages.</p></li>
+<li><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;code_repository&gt;/docs/source/conf.py</span></code>: Running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> executes <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>, so any errors and/or conflict should be addressed here.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;code_repository&gt;/docs/source</span></code>: <code class="docutils literal notranslate"><span class="pre">*.rsd</span></code> files contain lists of linkes and bookmarks that appear on the left side of html documentations. I have manually revised these index files after the first round of executing <code class="docutils literal notranslate"><span class="pre">sphinx-apidoc</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="swagger">
+<h3>Swagger<a class="headerlink" href="#swagger" title="Permalink to this headline"></a></h3>
+<p>The documentation of the <strong>REST API</strong> of our application is <a class="reference external" href="https://edd.ifa.hawaii.edu/inclinet/api/docs">available here</a>.</p>
+<p><strong>Notes:</strong> You may follow <a class="reference external" href="https://dev.to/sanjan/how-to-add-swagger-ui-to-a-plain-flask-api-project-with-an-openapi-specification-file-1jl8">this toturial</a> to easily setup the Swagger API documentation under <code class="docutils literal notranslate"><span class="pre">Flask</span></code>.</p>
+</div>
+</div>
 <div class="section" id="related-information">
-<h3>Related information<a class="headerlink" href="#related-information" title="Permalink to this headline"></a></h3>
+<h2>Related information<a class="headerlink" href="#related-information" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>For furhter details on various VGG models we considered in this project <a class="reference external" href="https://github.com/ekourkchi/incNET-data/tree/master/incNET_VGGcnn_withAugmentation">click here</a>.</p></li>
 <li><p><a class="reference external" href="https://github.com/ekourkchi/inclinet_production_repo/blob/main/Inclinet_Deployment_Architecture.pdf">Visit here</a> to get the full picture of the deployment plan.</p></li>
+<li><p><a class="reference external" href="https://github.com/ekourkchi/inclinet_production_repo">The Production Pipeline</a></p></li>
 <li><p><a class="reference external" href="https://github.com/ekourkchi/incNET-data">Project proposal and motivations</a></p></li>
 <li><p><a class="reference external" href="https://github.com/ekourkchi/incNET-data/blob/master/incNET_dataPrep/incNET_dataClean.ipynb">Data Preprocessing</a> in order to get reliable labels</p></li>
 <li><p>On how to download data from the SDSS image service and preprocess them <a class="reference external" href="https://github.com/ekourkchi/SDSS_get">click here</a></p></li>
 </ul>
 </div>
 <div class="section" id="about-the-data">
-<h3>ABOUT THE DATA<a class="headerlink" href="#about-the-data" title="Permalink to this headline"></a></h3>
-<p>All data exposed by the IncliNET project belongs to</p>
+<h2>ABOUT THE DATA<a class="headerlink" href="#about-the-data" title="Permalink to this headline"></a></h2>
+<p>All data exposed by the <em>IncliNET</em> project belongs to</p>
 <blockquote>
 <div><p>Cosmicflows-4 program
 Copyright (C) Cosmicflows
 Team - The Extragalactic Distance Database (EDD)</p>
 </div></blockquote>
-<p>Please cite:</p>
+<p><strong>Please cite:</strong></p>
 <blockquote>
 <div><p>Cosmicflows-4: The Catalog of ∼10,000 Tully-Fisher Distances</p>
 </div></blockquote>
@@ -377,7 +415,6 @@ Team - The Extragalactic Distance Database (EDD)</p>
       <span class="na">adsnote</span> <span class="p">=</span> <span class="s">{Provided by the SAO/NASA Astrophysics Data System}</span>
 <span class="p">}</span>
 </pre></div>
-</div>
 </div>
 </div>
 <div class="section" id="author">

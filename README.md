@@ -81,6 +81,19 @@ For more information, read the [tutorial](https://edd.ifa.hawaii.edu/static/html
 
 ![Inclinet_Deployment_flowchart](https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png)
 
+## Bulding the Docker Package
+
+In the code repository run:
+
+```bash
+        docker build --tag myimage:x.x .
+        docker login -u <username>
+        docker push myimage:x.x .
+```
+where `x.x` is the package version.
+
+- Docker simple [cheat sheet](https://www.docker.com/sites/default/files/d8/2019-09/docker-cheat-sheet.pdf)
+
 ## API
 
 - See the `API documentation` [here](https://edd.ifa.hawaii.edu/inclinet/api/docs)
@@ -256,23 +269,49 @@ where `/path/to/image/galaxy.jpg` would be replaced by the name of the galaxy im
         }
  ```
 
-### Related information
+## Documentation
+
+### [Sphinx](https://www.sphinx-doc.org/en/master/)
+
+The full documentation of our application is [available here](https://edd.ifa.hawaii.edu/static/html/index.html).
+
+
+**Notes:**
+
+- A [nice article](https://techwritingmatters.com/documenting-with-sphinx-tutorial-intro-overview) on the Sphinx workflow.
+- A [short tutorial](https://github.com/finsberg/sphinx-tutorial) on how to easily get `Sphinx` to work.
+
+- `<code_repository>/docs`: Run `make html` here to update the Sphinx documentations. Sphinx parses all the docstrings into a set of html pages. 
+
+- - `<code_repository>/docs/source/conf.py`: Running `make html` executes `conf.py`, so any errors and/or conflict should be addressed here.
+
+- `<code_repository>/docs/source`: `*.rsd` files contain lists of linkes and bookmarks that appear on the left side of html documentations. I have manually revised these index files after the first round of executing `sphinx-apidoc`.
+
+
+### Swagger
+
+The documentation of the **REST API** of our application is [available here](https://edd.ifa.hawaii.edu/inclinet/api/docs).
+
+**Notes:** You may follow [this toturial](https://dev.to/sanjan/how-to-add-swagger-ui-to-a-plain-flask-api-project-with-an-openapi-specification-file-1jl8) to easily setup the Swagger API documentation under ``Flask``.
+
+## Related information
 
 - For furhter details on various VGG models we considered in this project [click here](https://github.com/ekourkchi/incNET-data/tree/master/incNET_VGGcnn_withAugmentation).
 - [Visit here](https://github.com/ekourkchi/inclinet_production_repo/blob/main/Inclinet_Deployment_Architecture.pdf) to get the full picture of the deployment plan.
+- [The Production Pipeline](https://github.com/ekourkchi/inclinet_production_repo)
 - [Project proposal and motivations](https://github.com/ekourkchi/incNET-data)
 - [Data Preprocessing](https://github.com/ekourkchi/incNET-data/blob/master/incNET_dataPrep/incNET_dataClean.ipynb) in order to get reliable labels
 - On how to download data from the SDSS image service and preprocess them [click here](https://github.com/ekourkchi/SDSS_get)
 
-### ABOUT THE DATA
+## ABOUT THE DATA
 
-All data exposed by the IncliNET project belongs to 
+All data exposed by the *IncliNET* project belongs to 
 
 > Cosmicflows-4 program
 > Copyright (C) Cosmicflows
 > Team - The Extragalactic Distance Database (EDD)
 
-Please cite:
+**Please cite:**
 
 > Cosmicflows-4: The Catalog of ∼10,000 Tully-Fisher Distances
 
@@ -296,6 +335,7 @@ archivePrefix = {arXiv},
       adsnote = {Provided by the SAO/NASA Astrophysics Data System}
 }
 ```
+
 
 ## Author
 
