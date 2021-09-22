@@ -1,0 +1,58 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Inclinet API",
+    "description": "An API interact with the Inclinet service"
+  },
+  "basePath": "/v2",
+  "paths": {
+    "/api/getPGC": {
+      "post": {
+        "tags": [
+          "PGC"
+        ],
+        "summary": "Get information about the galaxy providing the PGC ID",
+        "description": "",
+        "operationId": "getPGC",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "galaxy ID",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/getPGC"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "getPGC": {
+      "type": "object",
+      "required": [
+        "pgc"
+      ],
+      "properties": {
+        "pgc": {
+          "type": "integer",
+          "format": "int64",
+          "example": 2557
+        }
+      }
+    }
+  }
+}
