@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IncliNET - &mdash; inclinet 21.09 documentation</title>
+  <title>IncliNET &mdash; inclinet 21.09 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -55,7 +55,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-      <li>IncliNET -</li>
+      <li>IncliNET</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -90,15 +90,14 @@
 }
 </style>
 <div class="section" id="inclinet">
-<h1>IncliNET -<a class="headerlink" href="#inclinet" title="Permalink to this headline"></a></h1>
-<a class="reference external image-reference" href="https://user-images.githubusercontent.com/13570487/134272581-5720cada-75b4-4f4e-9eda-4bd9753a34e5.png"><img alt="inclinet" src="https://user-images.githubusercontent.com/13570487/134272581-5720cada-75b4-4f4e-9eda-4bd9753a34e5.png" /></a>
-<hr class="docutils" />
+<h1>IncliNET<a class="headerlink" href="#inclinet" title="Permalink to this headline"></a></h1>
+<a class="reference external image-reference" href="https://user-images.githubusercontent.com/13570487/134275660-2585ec68-0744-4ad0-b02c-05ddb51bd9e4.png"><img alt="inclinet_logo" src="https://user-images.githubusercontent.com/13570487/134275660-2585ec68-0744-4ad0-b02c-05ddb51bd9e4.png" /></a>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
 <p>IncliNET is a Python application to determine the inclination of Spiral Galaxies</p>
 <ul class="simple">
 <li><p>This application is hosted on EDD: <a class="reference external" href="http://edd.ifa.hawaii.edu/inclinet/">IncliNET</a></p></li>
-<li><p><a class="reference external" href="ttp://edd.ifa.hawaii.edu">EDD: Extragalactic Distance Database</a></p></li>
+<li><p><a class="reference external" href="https://edd.ifa.hawaii.edu">EDD: Extragalactic Distance Database</a></p></li>
 </ul>
 </div>
 <div class="section" id="code-repository-issues">
@@ -115,19 +114,69 @@
 <div class="section" id="installing-from-dockerhub">
 <h2>Installing from DockerHub<a class="headerlink" href="#installing-from-dockerhub" title="Permalink to this headline"></a></h2>
 </div>
-<div class="section" id="quick-usage">
-<h2>Quick Usage<a class="headerlink" href="#quick-usage" title="Permalink to this headline"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; import pycf3
-&gt;&gt;&gt; <span class="nv">cf3</span> <span class="o">=</span> pycf3.CF3<span class="o">()</span>
-&gt;&gt;&gt; <span class="nv">result</span> <span class="o">=</span> cf3.calculate_distance<span class="o">(</span><span class="nv">velocity</span><span class="o">=</span><span class="m">9000</span>, <span class="nv">glon</span><span class="o">=</span><span class="m">283</span>, <span class="nv">glat</span><span class="o">=</span><span class="m">75</span><span class="o">)</span>
-&gt;&gt;&gt; print<span class="o">(</span>result.observed_velocity_<span class="o">)</span>
-<span class="m">9000</span>.0
-&gt;&gt;&gt; result.observed_distance_
-array<span class="o">([</span><span class="m">136</span>.90134347<span class="o">])</span>
+<div class="section" id="api">
+<h2>API<a class="headerlink" href="#api" title="Permalink to this headline"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl https://edd.ifa.hawaii.edu/inclinet/api/pgc/2557
+<span class="o">{</span>
+<span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;success&quot;</span>,
+<span class="s2">&quot;galaxy&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;pgc&quot;</span>: <span class="s2">&quot;2557&quot;</span>,
+    <span class="s2">&quot;ra&quot;</span>: <span class="s2">&quot;10.6848 deg&quot;</span>,
+    <span class="s2">&quot;dec&quot;</span>: <span class="s2">&quot;41.2689 deg&quot;</span>,
+    <span class="s2">&quot;fov&quot;</span>: <span class="s2">&quot;266.74 arcmin&quot;</span>,
+    <span class="s2">&quot;pa&quot;</span>: <span class="s2">&quot;35.0 deg&quot;</span>,
+    <span class="s2">&quot;objname&quot;</span>: <span class="s2">&quot;NGC0224&quot;</span>
+<span class="o">}</span>,
+<span class="s2">&quot;inclinations&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;Group_0&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;model4&quot;</span>: <span class="m">69</span>.0,
+    <span class="s2">&quot;model41&quot;</span>: <span class="m">72</span>.0,
+    <span class="s2">&quot;model42&quot;</span>: <span class="m">76</span>.0,
+    <span class="s2">&quot;model43&quot;</span>: <span class="m">71</span>.0
+    <span class="o">}</span>,
+    <span class="s2">&quot;Group_1&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;model5&quot;</span>: <span class="m">73</span>.0,
+    <span class="s2">&quot;model51&quot;</span>: <span class="m">73</span>.0,
+    <span class="s2">&quot;model52&quot;</span>: <span class="m">74</span>.0,
+    <span class="s2">&quot;model53&quot;</span>: <span class="m">74</span>.0
+    <span class="o">}</span>,
+    <span class="s2">&quot;Group_2&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;model6&quot;</span>: <span class="m">73</span>.0,
+    <span class="s2">&quot;model61&quot;</span>: <span class="m">76</span>.0,
+    <span class="s2">&quot;model62&quot;</span>: <span class="m">76</span>.0,
+    <span class="s2">&quot;model63&quot;</span>: <span class="m">67</span>.0
+    <span class="o">}</span>,
+    <span class="s2">&quot;summary&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;mean&quot;</span>: <span class="m">72</span>.83333333333333,
+    <span class="s2">&quot;median&quot;</span>: <span class="m">73</span>.0,
+    <span class="s2">&quot;stdev&quot;</span>: <span class="m">2</span>.6718699236468995
+    <span class="o">}</span>
+<span class="o">}</span>,
+<span class="s2">&quot;rejection_likelihood&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;model4-binary&quot;</span>: <span class="m">50</span>.396937131881714,
+    <span class="s2">&quot;model5-binary&quot;</span>: <span class="m">20</span>.49814760684967,
+    <span class="s2">&quot;model6-binary&quot;</span>: <span class="m">65</span>.37048816680908,
+    <span class="s2">&quot;summary&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;mean&quot;</span>: <span class="m">45</span>.42185763518015,
+    <span class="s2">&quot;median&quot;</span>: <span class="m">50</span>.396937131881714,
+    <span class="s2">&quot;stdev&quot;</span>: <span class="m">18</span>.65378065042258
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 </div>
-<p>For more information, read the <a class="reference external" href="https://pycf3.readthedocs.io">tutorial in the
-documentation</a>.</p>
+<a class="reference external image-reference" href="https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png"><img alt="Inclinet_Deployment_flowchart" src="https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png" /></a>
+<p>For more information, read the <a class="reference external" href="https://edd.ifa.hawaii.edu/static/html/index.html">tutorial in the documentation</a>.</p>
+<div class="section" id="related-information">
+<h3>Related information<a class="headerlink" href="#related-information" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>For furhter details on various VGG models we considered in this project <a class="reference external" href="https://github.com/ekourkchi/incNET-data/tree/master/incNET_VGGcnn_withAugmentation">click here</a>.</p></li>
+<li><p><a class="reference external" href="https://github.com/ekourkchi/inclinet_production_repo/blob/main/Inclinet_Deployment_Architecture.pdf">Visit here</a> to get the full picture of the deployment plan.</p></li>
+<li><p><a class="reference external" href="https://github.com/ekourkchi/incNET-data">Project proposal and motivations</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ekourkchi/incNET-data/blob/master/incNET_dataPrep/incNET_dataClean.ipynb">Data Preprocessing</a> in order to get reliable labels</p></li>
+<li><p>On how to download data from the SDSS image service and preprocess them <a class="reference external" href="https://github.com/ekourkchi/SDSS_get">click here</a></p></li>
+</ul>
+</div>
 <div class="section" id="about-the-data">
 <h3>ABOUT THE DATA<a class="headerlink" href="#about-the-data" title="Permalink to this headline"></a></h3>
 <p>All data exposed by the IncliNET project belongs to</p>
@@ -162,10 +211,16 @@ Team - The Extragalactic Distance Database (EDD)</p>
 </div>
 </div>
 </div>
-<div class="section" id="authors">
-<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline"></a></h2>
+<div class="section" id="author">
+<h2>Author<a class="headerlink" href="#author" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>Ehsan Kourkchi - <a class="reference external" href="mailto:ekourkchi&#37;&#52;&#48;gmail&#46;com">ekourkchi<span>&#64;</span>gmail<span>&#46;</span>com</a></p></li>
+</ul>
+</div>
+<div class="section" id="disclaimer-a-name-disclaimer-a">
+<h2>Disclaimer <span class="raw-html-m2r"><a name="Disclaimer"></a></span><a class="headerlink" href="#disclaimer-a-name-disclaimer-a" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>All rights reserved. The material may not be used, reproduced or distributed, in whole or in part, without the prior agreement.</p></li>
 </ul>
 </div>
 <div class="section" id="contents">

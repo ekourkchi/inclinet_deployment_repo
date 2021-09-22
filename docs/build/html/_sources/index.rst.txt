@@ -1,16 +1,17 @@
 
 
-
-IncliNET -
-==========
-
-
-.. image:: https://user-images.githubusercontent.com/13570487/134272581-5720cada-75b4-4f4e-9eda-4bd9753a34e5.png
-   :target: https://user-images.githubusercontent.com/13570487/134272581-5720cada-75b4-4f4e-9eda-4bd9753a34e5.png
-   :alt: inclinet
+.. role:: raw-html-m2r(raw)
+   :format: html
 
 
-----
+IncliNET
+========
+
+
+.. image:: https://user-images.githubusercontent.com/13570487/134275660-2585ec68-0744-4ad0-b02c-05ddb51bd9e4.png
+   :target: https://user-images.githubusercontent.com/13570487/134275660-2585ec68-0744-4ad0-b02c-05ddb51bd9e4.png
+   :alt: inclinet_logo
+
 
 Description
 -----------
@@ -19,7 +20,7 @@ IncliNET is a Python application to determine the inclination of Spiral Galaxies
 
 
 * This application is hosted on EDD: `IncliNET <http://edd.ifa.hawaii.edu/inclinet/>`_
-* `EDD: Extragalactic Distance Database <ttp://edd.ifa.hawaii.edu>`_
+* `EDD: Extragalactic Distance Database <https://edd.ifa.hawaii.edu>`_
 
 Code Repository & Issues
 ------------------------
@@ -38,21 +39,76 @@ Execute
 Installing from DockerHub
 -------------------------
 
-Quick Usage
------------
+API
+---
 
 .. code-block:: bash
 
-   >>> import pycf3
-   >>> cf3 = pycf3.CF3()
-   >>> result = cf3.calculate_distance(velocity=9000, glon=283, glat=75)
-   >>> print(result.observed_velocity_)
-   9000.0
-   >>> result.observed_distance_
-   array([136.90134347])
+   $ curl https://edd.ifa.hawaii.edu/inclinet/api/pgc/2557
+   {
+   "status": "success",
+   "galaxy": {
+       "pgc": "2557",
+       "ra": "10.6848 deg",
+       "dec": "41.2689 deg",
+       "fov": "266.74 arcmin",
+       "pa": "35.0 deg",
+       "objname": "NGC0224"
+   },
+   "inclinations": {
+       "Group_0": {
+       "model4": 69.0,
+       "model41": 72.0,
+       "model42": 76.0,
+       "model43": 71.0
+       },
+       "Group_1": {
+       "model5": 73.0,
+       "model51": 73.0,
+       "model52": 74.0,
+       "model53": 74.0
+       },
+       "Group_2": {
+       "model6": 73.0,
+       "model61": 76.0,
+       "model62": 76.0,
+       "model63": 67.0
+       },
+       "summary": {
+       "mean": 72.83333333333333,
+       "median": 73.0,
+       "stdev": 2.6718699236468995
+       }
+   },
+   "rejection_likelihood": {
+       "model4-binary": 50.396937131881714,
+       "model5-binary": 20.49814760684967,
+       "model6-binary": 65.37048816680908,
+       "summary": {
+       "mean": 45.42185763518015,
+       "median": 50.396937131881714,
+       "stdev": 18.65378065042258
+       }
+   }
+   }
 
-For more information, read the `tutorial in the
-documentation <https://pycf3.readthedocs.io>`_.
+
+.. image:: https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png
+   :target: https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png
+   :alt: Inclinet_Deployment_flowchart
+
+
+For more information, read the `tutorial in the documentation <https://edd.ifa.hawaii.edu/static/html/index.html>`_.
+
+Related information
+^^^^^^^^^^^^^^^^^^^
+
+
+* For furhter details on various VGG models we considered in this project `click here <https://github.com/ekourkchi/incNET-data/tree/master/incNET_VGGcnn_withAugmentation>`_.
+* `Visit here <https://github.com/ekourkchi/inclinet_production_repo/blob/main/Inclinet_Deployment_Architecture.pdf>`_ to get the full picture of the deployment plan.
+* `Project proposal and motivations <https://github.com/ekourkchi/incNET-data>`_
+* `Data Preprocessing <https://github.com/ekourkchi/incNET-data/blob/master/incNET_dataPrep/incNET_dataClean.ipynb>`_ in order to get reliable labels
+* On how to download data from the SDSS image service and preprocess them `click here <https://github.com/ekourkchi/SDSS_get>`_
 
 ABOUT THE DATA
 ^^^^^^^^^^^^^^
@@ -94,11 +150,17 @@ Please cite:
          adsnote = {Provided by the SAO/NASA Astrophysics Data System}
    }
 
-Authors
--------
+Author
+------
 
 
 * Ehsan Kourkchi - `ekourkchi@gmail.com <ekourkchi@gmail.com>`_
+
+Disclaimer :raw-html-m2r:`<a name="Disclaimer"></a>`
+--------------------------------------------------------
+
+
+* All rights reserved. The material may not be used, reproduced or distributed, in whole or in part, without the prior agreement. 
 
 
 Contents:
