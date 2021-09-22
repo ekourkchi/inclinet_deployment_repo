@@ -76,11 +76,14 @@ Execution of `server.py` launches the application.
 
 ```
 
-Please refer to [the IncliNET code documentation](https://edd.ifa.hawaii.edu/static/html/server.html#server.addGalaxyInfo) for further details. 
+Please refer to [the IncliNET code documentation](https://edd.ifa.hawaii.edu/static/html/server.html) for further details. 
+For more information, read the [tutorial](https://edd.ifa.hawaii.edu/static/html/index.html).
+
+![Inclinet_Deployment_flowchart](https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png)
 
 ## API
 
-- See documentation [here](https://edd.ifa.hawaii.edu/inclinet/api/docs)
+- See the `API documentation` [here](https://edd.ifa.hawaii.edu/inclinet/api/docs)
 
 - URL guery that reports all evaluated inclinations and other results in `json` format. `<PGC_id>` is the galaxy ID in the [HyperLeda](http://leda.univ-lyon1.fr/) catalog.
 
@@ -141,10 +144,117 @@ $ curl http://edd.ifa.hawaii.edu/inclinet/api/pgc/<PGC_id>
     }
     ```
 
-![Inclinet_Deployment_flowchart](https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png)
+- Given the `galaxy common name`, the following URL reports all evaluated inclinations and other results in `json` format. `<obj_name>` is the galaxy galaxy name. Galaxy name is looked up on [NASA/IPAC Extragalactic Database](https://ned.ipac.caltech.edu/) and the corresponding `PGC` number would be used for the purpose of our analysis.
 
+```bash
+$ curl http://edd.ifa.hawaii.edu/inclinet/api/objname/<obj_name>
 
-For more information, read the [tutorial in the documentation](https://edd.ifa.hawaii.edu/static/html/index.html).
+```
+
+ - example:
+
+    ```bash
+        $ curl http://edd.ifa.hawaii.edu/inclinet/api/objname/M33
+        {
+        "status": "success",
+        "galaxy": {
+            "pgc": 5818,
+            "ra": "23.4621 deg",
+            "dec": "30.6599 deg",
+            "fov": "92.49 arcmin",
+            "pa": "22.5 deg",
+            "objname": "M33"
+        },
+        "inclinations": {
+            "Group_0": {
+            "model4": 54.0,
+            "model41": 58.0,
+            "model42": 54.0,
+            "model43": 52.0
+            },
+            "Group_1": {
+            "model5": 54.0,
+            "model51": 55.0,
+            "model52": 52.0,
+            "model53": 55.0
+            },
+            "Group_2": {
+            "model6": 56.0,
+            "model61": 57.0,
+            "model62": 55.0,
+            "model63": 53.0
+            },
+            "summary": {
+            "mean": 54.583333333333336,
+            "median": 54.5,
+            "stdev": 1.753963764987432
+            }
+        },
+        "rejection_likelihood": {
+            "model4-binary": 41.28798842430115,
+            "model5-binary": 4.068140685558319,
+            "model6-binary": 55.70455193519592,
+            "summary": {
+            "mean": 33.68689368168513,
+            "median": 41.28798842430115,
+            "stdev": 21.754880259382322
+            }
+        }
+        }
+    ```
+
+- Given the `galaxy image`, the following API call reports all evaluated inclinations and other results in `json` format.
+
+```bash
+$ curl -F 'file=@/path/to/image/galaxy.jpg' http://edd.ifa.hawaii.edu/inclinet/api/file
+```
+
+where `/path/to/image/galaxy.jpg` would be replaced by the name of the galaxy image. The accepted suffixes are `'PNG', 'JPG', 'JPEG', 'GIF'` and uploaded files shoule be smaller than `1 MB`. 
+
+ - example:
+
+ ```bash
+        $ curl -F 'file=@/path/to/image/NGC_4579.jpg' http://edd.ifa.hawaii.edu/inclinet/api/file
+        {
+        "status": "success",
+        "filename": "NGC_4579.jpg",
+        "inclinations": {
+            "Group_0": {
+            "model4": 47.0,
+            "model41": 51.0,
+            "model42": 50.0,
+            "model43": 47.0
+            },
+            "Group_1": {
+            "model5": 49.0,
+            "model51": 49.0,
+            "model52": 51.0,
+            "model53": 52.0
+            },
+            "Group_2": {
+            "model6": 50.0,
+            "model61": 49.0,
+            "model62": 49.0,
+            "model63": 48.0
+            },
+            "summary": {
+            "mean": 49.333333333333336,
+            "median": 49.0,
+            "stdev": 1.49071198499986
+            }
+        },
+        "rejection_likelihood": {
+            "model4-binary": 84.28281545639038,
+            "model5-binary": 94.24970746040344,
+            "model6-binary": 88.11054229736328,
+            "summary": {
+            "mean": 88.88102173805237,
+            "median": 88.11054229736328,
+            "stdev": 4.105278145778375
+            }
+        }
+        }
+ ```
 
 ### Related information
 
