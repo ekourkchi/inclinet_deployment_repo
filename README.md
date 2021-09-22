@@ -6,8 +6,15 @@
 
 IncliNET is a Python application to determine the inclination of Spiral Galaxies
 
-- This application is hosted on EDD: [IncliNET](http://edd.ifa.hawaii.edu/inclinet/)
-- [EDD: Extragalactic Distance Database](https://edd.ifa.hawaii.edu)
+- This application is hosted on EDD: [http://edd.ifa.hawaii.edu/inclinet/](http://edd.ifa.hawaii.edu/inclinet/)
+
+## IncliNET Tutorial 
+
+An application with and online web GUI and an easy to access API for determining the inclinations of the spiral galaxies using their optical images.
+
+This program is powered by several deep convolutional neural networks (CNN) implemented in TensorFlow. All CNNs are constructed based on the well-known VGG structure, where the convolutional filters are of size 3x3.
+
+[tutorial.ipynb](https://github.com/ekourkchi/inclinet_deployment_repo/blob/main/docs/source/tutorial.ipynb)
 
 
 ## Code Repository & Issues

@@ -223,11 +223,11 @@ def model(params, myModels, saveRescaled=True, scaledImage=None):
 
     img_arr_ = np.asarray(img)
     nx, ny, channels = img_arr_.shape
-    All_images = np.zeros((4, nx, ny, channels), dtype=np.dtype('>i4'))
+    All_images = np.zeros((2, nx, ny, channels), dtype=np.dtype('>i4'))
     All_images[0] = img_arr_.reshape(1, nx, ny, channels)
 
     i = 1
-    for delAngle in range(90,360,90):
+    for delAngle in range(180,360,180):
         img = converIMAGE(img_arr, angle=angle+delAngle, scale=scale, size=128)
         img_arr_ = np.asarray(img)
         All_images[i] = img_arr_.reshape(1, nx, ny, channels)
