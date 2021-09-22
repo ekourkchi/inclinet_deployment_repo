@@ -14,7 +14,8 @@ An application with and online web GUI and an easy to access API for determining
 
 This program is powered by several deep convolutional neural networks (CNN) implemented in TensorFlow. All CNNs are constructed based on the well-known VGG structure, where the convolutional filters are of size 3x3.
 
-[tutorial.ipynb](https://github.com/ekourkchi/inclinet_deployment_repo/blob/main/docs/source/tutorial.ipynb)
+- Tutorial in Jupyter Notebook: [tutorial.ipynb](https://github.com/ekourkchi/inclinet_deployment_repo/blob/main/docs/source/tutorial.ipynb)
+- Full Documentation: [https://edd.ifa.hawaii.edu/static/html/index.html](https://edd.ifa.hawaii.edu/static/html/index.html)
 
 
 ## Code Repository & Issues
