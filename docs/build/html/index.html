@@ -106,17 +106,78 @@
 </div>
 <div class="section" id="basic-install">
 <h2>Basic Install<a class="headerlink" href="#basic-install" title="Permalink to this headline"></a></h2>
-<p>Execute</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sh serverup.sh
+<div class="section" id="on-a-local-machine-using-docker">
+<h3>on a local machine using <a class="reference external" href="https://www.docker.com/">Docker</a><a class="headerlink" href="#on-a-local-machine-using-docker" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>First, you need to <a class="reference external" href="https://docs.docker.com/compose/install/">install</a> Docker Compose.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install docker-compose
 </pre></div>
 </div>
+<ul class="simple">
+<li><p>Execute</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> docker run -it --entrypoint /inclinet/serverup.sh -p <span class="m">3030</span>:3030  ekourkchi/inclinet
+</pre></div>
 </div>
-<div class="section" id="installing-from-dockerhub">
-<h2>Installing from DockerHub<a class="headerlink" href="#installing-from-dockerhub" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Open the Application: Once the service is running in the terminal, open a browser like <em>Firefox</em> or <em>Google Chrome</em> and enter the following url: <a class="reference external" href="http://0.0.0.0:3030/">http://0.0.0.0:3030/</a></p></li>
+</ul>
+</div>
+<div class="section" id="on-a-server-using-docker">
+<h3>On a server using Docker<a class="headerlink" href="#on-a-server-using-docker" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>First, you need to install Docker Compose. <a class="reference external" href="https://docs.docker.com/compose/install/">How to install</a></p></li>
+<li><p>Execute</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> docker run -it --entrypoint /inclinet/serverup.sh --env<span class="o">=</span><span class="s2">&quot;WEBROOT=/inclinet/&quot;</span> -p pppp:3030 -v /pathTO/public_html/static/:/inclinet/static ekourkchi/inclinet
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">WEBROOT</span></code> is an environmental variable that points to the root of the application in the URL path. <code class="docutils literal notranslate"><span class="pre">pppp</span></code> is the port number that the service would be available to the world. <code class="docutils literal notranslate"><span class="pre">3030</span></code> is the port number of the docker container that our application uses by default. <code class="docutils literal notranslate"><span class="pre">/pathTO/public_html/static/</span></code> is the path to the <code class="docutils literal notranslate"><span class="pre">public_html</span></code> or any folder that the backend server uses to expose communicate with Internet. We basically need to mount <code class="docutils literal notranslate"><span class="pre">/pathTO/public_html/static/</span></code> to forlde <code class="docutils literal notranslate"><span class="pre">inclinet/static</span></code> whithin the container which is used internally by the application.</p>
+<p><strong>URL</strong>: Following the above example, if the server host is accessible through <code class="docutils literal notranslate"><span class="pre">www.example.com</span></code>, then our application would be launched on <code class="docutils literal notranslate"><span class="pre">www.example.com/inclinet:pppp</span></code>. Remember <code class="docutils literal notranslate"><span class="pre">http</span></code> or <code class="docutils literal notranslate"><span class="pre">https</span></code> by default use ports 80 and 443, respectively.</p>
+</div>
+<div class="section" id="using-the-codes-without-docker">
+<h3>Using the codes without Docker<a class="headerlink" href="#using-the-codes-without-docker" title="Permalink to this headline"></a></h3>
+<p>Just put the repository on the server or on a local machine and make sure that folder <code class="docutils literal notranslate"><span class="pre">&lt;repository&gt;/static</span></code> is linked to a folder that is exposed by the server to the outside world. Set <code class="docutils literal notranslate"><span class="pre">WEBROOT</span></code> prior to launching the application to point the application to the correct URL path.</p>
+<p>Execution of <code class="docutils literal notranslate"><span class="pre">server.py</span></code> launches the application.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python server.py -h
+
+
+<span class="go">- starting up the service on the desired host:port</span>
+
+<span class="go">- How to run:</span>
+
+<span class="gp">    $</span> python server.py -t &lt;host IP&gt; -p &lt;port_number&gt; -d &lt;debugging_mode&gt;
+
+<span class="go">- To get help</span>
+<span class="gp">    $</span> python server.py -h
+
+
+
+<span class="go">Options:</span>
+<span class="go">-h, --help            show this help message and exit</span>
+<span class="go">-p PORT, --port=PORT  the port number to run the service on</span>
+<span class="go">-t HOST, --host=HOST  service host</span>
+<span class="go">-d, --debug           debugging mode</span>
+</pre></div>
+</div>
+<p>Please refer to <a class="reference external" href="https://edd.ifa.hawaii.edu/static/html/server.html">the IncliNET code documentation</a> for further details.
+For more information, read the <a class="reference external" href="https://edd.ifa.hawaii.edu/static/html/index.html">tutorial</a>.</p>
+<a class="reference external image-reference" href="https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png"><img alt="Inclinet_Deployment_flowchart" src="https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png" /></a>
+</div>
 </div>
 <div class="section" id="api">
 <h2>API<a class="headerlink" href="#api" title="Permalink to this headline"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl https://edd.ifa.hawaii.edu/inclinet/api/pgc/2557
+<ul class="simple">
+<li><p>See the <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">documentation</span></code> <a class="reference external" href="https://edd.ifa.hawaii.edu/inclinet/api/docs">here</a></p></li>
+<li><p>URL guery that reports all evaluated inclinations and other results in <code class="docutils literal notranslate"><span class="pre">json</span></code> format. <code class="docutils literal notranslate"><span class="pre">&lt;PGC_id&gt;</span></code> is the galaxy ID in the <a class="reference external" href="http://leda.univ-lyon1.fr/">HyperLeda</a> catalog.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl http://edd.ifa.hawaii.edu/inclinet/api/pgc/&lt;PGC_id&gt;
+</pre></div>
+</div>
+<ul>
+<li><p>example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl http://edd.ifa.hawaii.edu/inclinet/api/pgc/2557
 <span class="o">{</span>
 <span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;success&quot;</span>,
 <span class="s2">&quot;galaxy&quot;</span>: <span class="o">{</span>
@@ -165,8 +226,116 @@
 <span class="o">}</span>
 </pre></div>
 </div>
-<a class="reference external image-reference" href="https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png"><img alt="Inclinet_Deployment_flowchart" src="https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png" /></a>
-<p>For more information, read the <a class="reference external" href="https://edd.ifa.hawaii.edu/static/html/index.html">tutorial in the documentation</a>.</p>
+</li>
+<li><p>Given the <code class="docutils literal notranslate"><span class="pre">galaxy</span> <span class="pre">common</span> <span class="pre">name</span></code>, the following URL reports all evaluated inclinations and other results in <code class="docutils literal notranslate"><span class="pre">json</span></code> format. <code class="docutils literal notranslate"><span class="pre">&lt;obj_name&gt;</span></code> is the galaxy galaxy name. Galaxy name is looked up on <a class="reference external" href="https://ned.ipac.caltech.edu/">NASA/IPAC Extragalactic Database</a> and the corresponding <code class="docutils literal notranslate"><span class="pre">PGC</span></code> number would be used for the purpose of our analysis.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl http://edd.ifa.hawaii.edu/inclinet/api/objname/&lt;obj_name&gt;
+</pre></div>
+</div>
+<ul>
+<li><p>example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl http://edd.ifa.hawaii.edu/inclinet/api/objname/M33
+<span class="o">{</span>
+<span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;success&quot;</span>,
+<span class="s2">&quot;galaxy&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;pgc&quot;</span>: <span class="m">5818</span>,
+    <span class="s2">&quot;ra&quot;</span>: <span class="s2">&quot;23.4621 deg&quot;</span>,
+    <span class="s2">&quot;dec&quot;</span>: <span class="s2">&quot;30.6599 deg&quot;</span>,
+    <span class="s2">&quot;fov&quot;</span>: <span class="s2">&quot;92.49 arcmin&quot;</span>,
+    <span class="s2">&quot;pa&quot;</span>: <span class="s2">&quot;22.5 deg&quot;</span>,
+    <span class="s2">&quot;objname&quot;</span>: <span class="s2">&quot;M33&quot;</span>
+<span class="o">}</span>,
+<span class="s2">&quot;inclinations&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;Group_0&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;model4&quot;</span>: <span class="m">54</span>.0,
+    <span class="s2">&quot;model41&quot;</span>: <span class="m">58</span>.0,
+    <span class="s2">&quot;model42&quot;</span>: <span class="m">54</span>.0,
+    <span class="s2">&quot;model43&quot;</span>: <span class="m">52</span>.0
+    <span class="o">}</span>,
+    <span class="s2">&quot;Group_1&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;model5&quot;</span>: <span class="m">54</span>.0,
+    <span class="s2">&quot;model51&quot;</span>: <span class="m">55</span>.0,
+    <span class="s2">&quot;model52&quot;</span>: <span class="m">52</span>.0,
+    <span class="s2">&quot;model53&quot;</span>: <span class="m">55</span>.0
+    <span class="o">}</span>,
+    <span class="s2">&quot;Group_2&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;model6&quot;</span>: <span class="m">56</span>.0,
+    <span class="s2">&quot;model61&quot;</span>: <span class="m">57</span>.0,
+    <span class="s2">&quot;model62&quot;</span>: <span class="m">55</span>.0,
+    <span class="s2">&quot;model63&quot;</span>: <span class="m">53</span>.0
+    <span class="o">}</span>,
+    <span class="s2">&quot;summary&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;mean&quot;</span>: <span class="m">54</span>.583333333333336,
+    <span class="s2">&quot;median&quot;</span>: <span class="m">54</span>.5,
+    <span class="s2">&quot;stdev&quot;</span>: <span class="m">1</span>.753963764987432
+    <span class="o">}</span>
+<span class="o">}</span>,
+<span class="s2">&quot;rejection_likelihood&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;model4-binary&quot;</span>: <span class="m">41</span>.28798842430115,
+    <span class="s2">&quot;model5-binary&quot;</span>: <span class="m">4</span>.068140685558319,
+    <span class="s2">&quot;model6-binary&quot;</span>: <span class="m">55</span>.70455193519592,
+    <span class="s2">&quot;summary&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;mean&quot;</span>: <span class="m">33</span>.68689368168513,
+    <span class="s2">&quot;median&quot;</span>: <span class="m">41</span>.28798842430115,
+    <span class="s2">&quot;stdev&quot;</span>: <span class="m">21</span>.754880259382322
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Given the <code class="docutils literal notranslate"><span class="pre">galaxy</span> <span class="pre">image</span></code>, the following API call reports all evaluated inclinations and other results in <code class="docutils literal notranslate"><span class="pre">json</span></code> format.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -F <span class="s1">&#39;file=@/path/to/image/galaxy.jpg&#39;</span> http://edd.ifa.hawaii.edu/inclinet/api/file
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">/path/to/image/galaxy.jpg</span></code> would be replaced by the name of the galaxy image. The accepted suffixes are <code class="docutils literal notranslate"><span class="pre">'PNG',</span> <span class="pre">'JPG',</span> <span class="pre">'JPEG',</span> <span class="pre">'GIF'</span></code> and uploaded files shoule be smaller than <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">MB</span></code>.</p>
+<ul>
+<li><p>example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -F <span class="s1">&#39;file=@/path/to/image/NGC_4579.jpg&#39;</span> http://edd.ifa.hawaii.edu/inclinet/api/file
+<span class="o">{</span>
+<span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;success&quot;</span>,
+<span class="s2">&quot;filename&quot;</span>: <span class="s2">&quot;NGC_4579.jpg&quot;</span>,
+<span class="s2">&quot;inclinations&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;Group_0&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;model4&quot;</span>: <span class="m">47</span>.0,
+    <span class="s2">&quot;model41&quot;</span>: <span class="m">51</span>.0,
+    <span class="s2">&quot;model42&quot;</span>: <span class="m">50</span>.0,
+    <span class="s2">&quot;model43&quot;</span>: <span class="m">47</span>.0
+    <span class="o">}</span>,
+    <span class="s2">&quot;Group_1&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;model5&quot;</span>: <span class="m">49</span>.0,
+    <span class="s2">&quot;model51&quot;</span>: <span class="m">49</span>.0,
+    <span class="s2">&quot;model52&quot;</span>: <span class="m">51</span>.0,
+    <span class="s2">&quot;model53&quot;</span>: <span class="m">52</span>.0
+    <span class="o">}</span>,
+    <span class="s2">&quot;Group_2&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;model6&quot;</span>: <span class="m">50</span>.0,
+    <span class="s2">&quot;model61&quot;</span>: <span class="m">49</span>.0,
+    <span class="s2">&quot;model62&quot;</span>: <span class="m">49</span>.0,
+    <span class="s2">&quot;model63&quot;</span>: <span class="m">48</span>.0
+    <span class="o">}</span>,
+    <span class="s2">&quot;summary&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;mean&quot;</span>: <span class="m">49</span>.333333333333336,
+    <span class="s2">&quot;median&quot;</span>: <span class="m">49</span>.0,
+    <span class="s2">&quot;stdev&quot;</span>: <span class="m">1</span>.49071198499986
+    <span class="o">}</span>
+<span class="o">}</span>,
+<span class="s2">&quot;rejection_likelihood&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;model4-binary&quot;</span>: <span class="m">84</span>.28281545639038,
+    <span class="s2">&quot;model5-binary&quot;</span>: <span class="m">94</span>.24970746040344,
+    <span class="s2">&quot;model6-binary&quot;</span>: <span class="m">88</span>.11054229736328,
+    <span class="s2">&quot;summary&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;mean&quot;</span>: <span class="m">88</span>.88102173805237,
+    <span class="s2">&quot;median&quot;</span>: <span class="m">88</span>.11054229736328,
+    <span class="s2">&quot;stdev&quot;</span>: <span class="m">4</span>.105278145778375
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
 <div class="section" id="related-information">
 <h3>Related information<a class="headerlink" href="#related-information" title="Permalink to this headline"></a></h3>
 <ul class="simple">
