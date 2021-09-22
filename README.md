@@ -1,8 +1,8 @@
-# IncliNET - 
+# IncliNET
 
 ![inclinet](https://user-images.githubusercontent.com/13570487/134272581-5720cada-75b4-4f4e-9eda-4bd9753a34e5.png)
 
-----
+![Screenshot from 2021-09-21 19-05-20](https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png)
 
 
 ## Description
@@ -30,16 +30,56 @@ $ sh serverup.sh
 ## Installing from DockerHub
 
 
-## Quick Usage
+## API
 
 ```bash
->>> import pycf3
->>> cf3 = pycf3.CF3()
->>> result = cf3.calculate_distance(velocity=9000, glon=283, glat=75)
->>> print(result.observed_velocity_)
-9000.0
->>> result.observed_distance_
-array([136.90134347])
+$ curl https://edd.ifa.hawaii.edu/inclinet/api/pgc/2557
+{
+"status": "success",
+"galaxy": {
+    "pgc": "2557",
+    "ra": "10.6848 deg",
+    "dec": "41.2689 deg",
+    "fov": "266.74 arcmin",
+    "pa": "35.0 deg",
+    "objname": "NGC0224"
+},
+"inclinations": {
+    "Group_0": {
+    "model4": 69.0,
+    "model41": 72.0,
+    "model42": 76.0,
+    "model43": 71.0
+    },
+    "Group_1": {
+    "model5": 73.0,
+    "model51": 73.0,
+    "model52": 74.0,
+    "model53": 74.0
+    },
+    "Group_2": {
+    "model6": 73.0,
+    "model61": 76.0,
+    "model62": 76.0,
+    "model63": 67.0
+    },
+    "summary": {
+    "mean": 72.83333333333333,
+    "median": 73.0,
+    "stdev": 2.6718699236468995
+    }
+},
+"rejection_likelihood": {
+    "model4-binary": 50.396937131881714,
+    "model5-binary": 20.49814760684967,
+    "model6-binary": 65.37048816680908,
+    "summary": {
+    "mean": 45.42185763518015,
+    "median": 50.396937131881714,
+    "stdev": 18.65378065042258
+    }
+}
+}
 ```
 
 For more information, read the [tutorial in the
