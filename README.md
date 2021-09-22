@@ -1,6 +1,6 @@
 # IncliNET
 
-![inclinet](https://user-images.githubusercontent.com/13570487/134272581-5720cada-75b4-4f4e-9eda-4bd9753a34e5.png)
+![inclinetx128](https://user-images.githubusercontent.com/13570487/134274377-22e81a98-6863-46a8-ab44-10d1b73b398b.png)
 
 ![Screenshot from 2021-09-21 19-05-20](https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png)
 
