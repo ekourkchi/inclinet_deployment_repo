@@ -42,7 +42,7 @@
             "name": "object_name",
             "type": "string",
             "required": true,
-            "description": "Galaxy Name (Example Andromeda)"
+            "description": "Galaxy Name (Example Sombrero)"
           }
         ],
         "responses": {
@@ -52,7 +52,7 @@
         }
       }
     },
-    "/api/getPGC": {
+    "/getPGC": {
       "post": {
         "tags": [
           "PGC"
@@ -84,7 +84,7 @@
         }
       }
     },
-    "/api/getObj": {
+    "/getObj": {
       "post": {
         "tags": [
           "Object"

@@ -613,7 +613,7 @@ def pgc_api(pgcID):
 
 ##########################################################################
 
-@app.route('/objname/api/<objname>')
+@app.route('/api/objname/<objname>')
 def obj_api(objname):
     """the URL ``API`` that evaluates inclinations by providing the ``PGC ID`` in the URL
 

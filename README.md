@@ -1,9 +1,6 @@
 # IncliNET
 
-![inclinetx128](https://user-images.githubusercontent.com/13570487/134274377-22e81a98-6863-46a8-ab44-10d1b73b398b.png)
-
-![Screenshot from 2021-09-21 19-05-20](https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png)
-
+![inclinet_logo](https://user-images.githubusercontent.com/13570487/134275660-2585ec68-0744-4ad0-b02c-05ddb51bd9e4.png)
 
 ## Description
 
@@ -82,8 +79,10 @@ $ curl https://edd.ifa.hawaii.edu/inclinet/api/pgc/2557
 }
 ```
 
-For more information, read the [tutorial in the
-documentation]().
+![Inclinet_Deployment_flowchart](https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png)
+
+
+For more information, read the [tutorial in the documentation](https://edd.ifa.hawaii.edu/static/html/index.html).
 
 ### Related information
 
