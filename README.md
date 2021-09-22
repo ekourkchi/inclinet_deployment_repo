@@ -98,7 +98,7 @@ where `x.x` is the package version.
 
 - See the `API documentation` [here](https://edd.ifa.hawaii.edu/inclinet/api/docs)
 
-- URL guery that reports all evaluated inclinations and other results in `json` format. `<PGC_id>` is the galaxy ID in the [HyperLeda](http://leda.univ-lyon1.fr/) catalog.
+1. URL guery that reports all evaluated inclinations and other results in `json` format. `<PGC_id>` is the galaxy ID in the [HyperLeda](http://leda.univ-lyon1.fr/) catalog.
 
 ```bash
 $ curl http://edd.ifa.hawaii.edu/inclinet/api/pgc/<PGC_id>
@@ -157,7 +157,7 @@ $ curl http://edd.ifa.hawaii.edu/inclinet/api/pgc/<PGC_id>
     }
     ```
 
-- Given the `galaxy common name`, the following URL reports all evaluated inclinations and other results in `json` format. `<obj_name>` is the galaxy galaxy name. Galaxy name is looked up on [NASA/IPAC Extragalactic Database](https://ned.ipac.caltech.edu/) and the corresponding `PGC` number would be used for the purpose of our analysis.
+2. Given the `galaxy common name`, the following URL reports all evaluated inclinations and other results in `json` format. `<obj_name>` is the galaxy galaxy name. Galaxy name is looked up on [NASA/IPAC Extragalactic Database](https://ned.ipac.caltech.edu/) and the corresponding `PGC` number would be used for the purpose of our analysis.
 
 ```bash
 $ curl http://edd.ifa.hawaii.edu/inclinet/api/objname/<obj_name>
@@ -216,7 +216,7 @@ $ curl http://edd.ifa.hawaii.edu/inclinet/api/objname/<obj_name>
         }
     ```
 
-- Given the `galaxy image`, the following API call reports all evaluated inclinations and other results in `json` format.
+3. Given the `galaxy image`, the following API call reports all evaluated inclinations and other results in `json` format.
 
 ```bash
 $ curl -F 'file=@/path/to/image/galaxy.jpg' http://edd.ifa.hawaii.edu/inclinet/api/file
