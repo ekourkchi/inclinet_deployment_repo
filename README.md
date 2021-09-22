@@ -16,9 +16,9 @@ https://github.com/ekourkchi/inclinet_deployment_repo
 
 
 ## Basic Install 
-### on a local machine using Docker
+### on a local machine using [Docker](https://www.docker.com/)
 
-- First, you need to install Docker Compose. [How to install](https://docs.docker.com/compose/install/)
+- First, you need to [install](https://docs.docker.com/compose/install/) Docker Compose. 
 
 ```bash
  pip install docker-compose
@@ -27,7 +27,7 @@ https://github.com/ekourkchi/inclinet_deployment_repo
 - Execute
 
 ```console
-$ docker run -it --entrypoint /inclinet/serverup.sh -p 3030:3030  ekourkchi/inclinet:21.09
+$ docker run -it --entrypoint /inclinet/serverup.sh -p 3030:3030  ekourkchi/inclinet
 ```
 
 - Open the Application: Once the service is running in the terminal, open a browser like *Firefox* or *Google Chrome* and enter the following url: [http://0.0.0.0:3030/](http://0.0.0.0:3030/)
@@ -39,7 +39,7 @@ $ docker run -it --entrypoint /inclinet/serverup.sh -p 3030:3030  ekourkchi/incl
 - Execute
 
 ```console
-$ docker run -it --entrypoint /inclinet/serverup.sh --env="WEBROOT=/inclinet/" -p pppp:3030 -v /pathTO/public_html/static/:/inclinet/static ekourkchi/inclinet:21.09
+$ docker run -it --entrypoint /inclinet/serverup.sh --env="WEBROOT=/inclinet/" -p pppp:3030 -v /pathTO/public_html/static/:/inclinet/static ekourkchi/inclinet
 ```
 
 where `WEBROOT` is an environmental variable that points to the root of the application in the URL path. `pppp` is the port number that the service would be available to the world. `3030` is the port number of the docker container that our application uses by default. `/pathTO/public_html/static/` is the path to the `public_html` or any folder that the backend server uses to expose communicate with Internet. We basically need to mount `/pathTO/public_html/static/` to forlde `inclinet/static` whithin the container which is used internally by the application. 
@@ -78,60 +78,68 @@ Execution of `server.py` launches the application.
 
 Please refer to [the IncliNET code documentation](https://edd.ifa.hawaii.edu/static/html/server.html#server.addGalaxyInfo) for further details. 
 
-## Installing from DockerHub
-
-
 ## API
 
+- See documentation [here](https://edd.ifa.hawaii.edu/inclinet/api/docs)
+
+- URL guery that reports all evaluated inclinations and other results in `json` format. `<PGC_id>` is the galaxy ID in the [HyperLeda](http://leda.univ-lyon1.fr/) catalog.
+
 ```bash
-$ curl https://edd.ifa.hawaii.edu/inclinet/api/pgc/2557
-{
-"status": "success",
-"galaxy": {
-    "pgc": "2557",
-    "ra": "10.6848 deg",
-    "dec": "41.2689 deg",
-    "fov": "266.74 arcmin",
-    "pa": "35.0 deg",
-    "objname": "NGC0224"
-},
-"inclinations": {
-    "Group_0": {
-    "model4": 69.0,
-    "model41": 72.0,
-    "model42": 76.0,
-    "model43": 71.0
-    },
-    "Group_1": {
-    "model5": 73.0,
-    "model51": 73.0,
-    "model52": 74.0,
-    "model53": 74.0
-    },
-    "Group_2": {
-    "model6": 73.0,
-    "model61": 76.0,
-    "model62": 76.0,
-    "model63": 67.0
-    },
-    "summary": {
-    "mean": 72.83333333333333,
-    "median": 73.0,
-    "stdev": 2.6718699236468995
-    }
-},
-"rejection_likelihood": {
-    "model4-binary": 50.396937131881714,
-    "model5-binary": 20.49814760684967,
-    "model6-binary": 65.37048816680908,
-    "summary": {
-    "mean": 45.42185763518015,
-    "median": 50.396937131881714,
-    "stdev": 18.65378065042258
-    }
-}
-}
+$ curl http://edd.ifa.hawaii.edu/inclinet/api/pgc/<PGC_id>
+
 ```
+
+ - example:
+
+    ```bash
+    $ curl http://edd.ifa.hawaii.edu/inclinet/api/pgc/2557
+    {
+    "status": "success",
+    "galaxy": {
+        "pgc": "2557",
+        "ra": "10.6848 deg",
+        "dec": "41.2689 deg",
+        "fov": "266.74 arcmin",
+        "pa": "35.0 deg",
+        "objname": "NGC0224"
+    },
+    "inclinations": {
+        "Group_0": {
+        "model4": 69.0,
+        "model41": 72.0,
+        "model42": 76.0,
+        "model43": 71.0
+        },
+        "Group_1": {
+        "model5": 73.0,
+        "model51": 73.0,
+        "model52": 74.0,
+        "model53": 74.0
+        },
+        "Group_2": {
+        "model6": 73.0,
+        "model61": 76.0,
+        "model62": 76.0,
+        "model63": 67.0
+        },
+        "summary": {
+        "mean": 72.83333333333333,
+        "median": 73.0,
+        "stdev": 2.6718699236468995
+        }
+    },
+    "rejection_likelihood": {
+        "model4-binary": 50.396937131881714,
+        "model5-binary": 20.49814760684967,
+        "model6-binary": 65.37048816680908,
+        "summary": {
+        "mean": 45.42185763518015,
+        "median": 50.396937131881714,
+        "stdev": 18.65378065042258
+        }
+    }
+    }
+    ```
 
 ![Inclinet_Deployment_flowchart](https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png)
 
