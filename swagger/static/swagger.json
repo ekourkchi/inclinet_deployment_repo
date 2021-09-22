@@ -7,6 +7,10 @@
   },
   "host": "edd.ifa.hawaii.edu",
   "basePath": "/inclinet",
+  "schemes": [
+    "https",
+    "http"
+  ],
   "paths": {
     "/api/pgc/{PGC_ID}": {
       "get": {
