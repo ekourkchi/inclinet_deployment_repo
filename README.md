@@ -15,14 +15,68 @@ IncliNET is a Python application to determine the inclination of Spiral Galaxies
 https://github.com/ekourkchi/inclinet_deployment_repo
 
 
-## Basic Install
+## Basic Install 
+### on a local machine using Docker
 
+- First, you need to install Docker Compose. [How to install](https://docs.docker.com/compose/install/)
 
-Execute
+```bash
+ pip install docker-compose
+```
+
+- Execute
 
 ```console
-$ sh serverup.sh
+$ docker run -it --entrypoint /inclinet/serverup.sh -p 3030:3030  ekourkchi/inclinet:21.09
 ```
+
+- Open the Application: Once the service is running in the terminal, open a browser like *Firefox* or *Google Chrome* and enter the following url: [http://0.0.0.0:3030/](http://0.0.0.0:3030/)
+
+### On a server using Docker
+
+- First, you need to install Docker Compose. [How to install](https://docs.docker.com/compose/install/)
+
+- Execute
+
+```console
+$ docker run -it --entrypoint /inclinet/serverup.sh --env="WEBROOT=/inclinet/" -p pppp:3030 -v /pathTO/public_html/static/:/inclinet/static ekourkchi/inclinet:21.09
+```
+
+where `WEBROOT` is an environmental variable that points to the root of the application in the URL path. `pppp` is the port number that the service would be available to the world. `3030` is the port number of the docker container that our application uses by default. `/pathTO/public_html/static/` is the path to the `public_html` or any folder that the backend server uses to expose communicate with Internet. We basically need to mount `/pathTO/public_html/static/` to forlde `inclinet/static` whithin the container which is used internally by the application. 
+
+**URL**: Following the above example, if the server host is accessible through `www.example.com`, then our application would be launched on `www.example.com/inclinet:pppp`. Remember `http` or `https` by default use ports 80 and 443, respectively.
+
+
+### Using the codes without Docker
+
+Just put the repository on the server or on a local machine and make sure that folder `<repository>/static` is linked to a folder that is exposed by the server to the outside world. Set `WEBROOT` prior to launching the application to point the application to the correct URL path.
+
+Execution of `server.py` launches the application. 
+
+```console
+        $ python server.py -h
+
+
+        - starting up the service on the desired host:port
+        
+        - How to run: 
+        
+            $ python server.py -t <host IP> -p <port_number> -d <debugging_mode>
+
+        - To get help
+            $ python server.py -h
+        
+
+
+        Options:
+        -h, --help            show this help message and exit
+        -p PORT, --port=PORT  the port number to run the service on
+        -t HOST, --host=HOST  service host
+        -d, --debug           debugging mode
+
+```
+
+Please refer to [the IncliNET code documentation](https://edd.ifa.hawaii.edu/static/html/server.html#server.addGalaxyInfo) for further details. 
 
 ## Installing from DockerHub
 
