@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# Copyright (c) 2021, Ehsan Kourkchi
+
 # =============================================================================
 # DOCS
 # =============================================================================
@@ -13,11 +18,9 @@ For citation check:
 
 """
 
-
 # =============================================================================
 # IMPORTS
 # =============================================================================
-
 
 from flask import render_template
 from flask import Flask, jsonify, request
@@ -30,14 +33,49 @@ import bs4
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 from PIL import Image
+from optparse import OptionParser
 from copy import deepcopy
 import CNN_models
 from incNET import *
 
+# =============================================================================
+# Flask initializationa
+# =============================================================================
+
+# Create the application instance
+app = connexion.App(__name__, specification_dir='./')
+flask_app = app.app
+flask_app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024  # set the maximum upload size to 1 MB
+
 ##########################################################################
-WEBROOT = os.getenv('WEBROOT')
-if WEBROOT is None:
-    WEBROOT = './'
+
+## This function allows to execute the OS commands
+def xcmd(cmd, verbose=True):
+    """Runs the OS commands 
+
+    :param cmd: terminal command
+    :type cmd: ``str``
+    :param verbose: printing the details, default True 
+    :type verbose: ``boolean``
+    :return: OS outputs
+    :rtype: ``str``
+    """
+
+    if verbose: print('\n'+cmd)
+
+    tmp=os.popen(cmd)
+    output=''
+    for x in tmp: output+=x
+    if 'abort' in output:
+        failure=True
+    else:
+        failure=tmp.close()
+    if False:
+        print('execution of %s failed' % cmd)
+        print('error is as follows', output)
+        sys.exit()
+    else:
+        return output
 
 ##########################################################################
 
@@ -58,133 +96,141 @@ def createDir(folderPath):
 
 ##########################################################################
 
-createDir('./static')
-createDir('./static/tempImages')
-createDir('./static/tempImages/uploads')
-createDir('./static/tempImages/resized')
-
-# Create the application instance
-app = connexion.App(__name__, specification_dir='./')
-flask_app = app.app
-flask_app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024  # set the maximum upload size to 1 MB
-
 # Read the swagger.yml file to configure the endpoints
 # app.add_api('swagger.yml')
 
 # Create a URL route in our application for "/"
 
-
+## Old models used for Demo purpose
 # regression = load_model("./models/CNN_inc_VGG6_regr_seed100.h5")
 # binary = load_model("./models/CNN_inc_VGG6_binary.h5")
 
-myModels = []
-myModel = []
+def loadModels():
+    """Loading all ML models (deployment versions)
 
-classify_models = CNN_models.Models(n_classes=2)
-regression_models = CNN_models.Models(input_shape=(128, 128, 3))
+    :return: a Python dictionary that holds all models in groups
+    :rtype: python ``Dictionary``
+    """
 
-ckpt_dir = "./models/U0_model04_binary_ckpt/"
-MODEL4 = classify_models.getModel("model4")()
-MODEL4.load_weights(ckpt_dir+"200.ckpt")
-myModel.append(("model4-binary" , MODEL4))
+    myModels = []
+    myModel = []
 
-ckpt_dir = "./models/U0_model05_binary_ckpt/"
-MODEL5 = classify_models.getModel("model5")()
-MODEL5.load_weights(ckpt_dir+"200.ckpt")
-myModel.append(("model5-binary" , MODEL5))
+    classify_models = CNN_models.Models(n_classes=2)
+    regression_models = CNN_models.Models(input_shape=(128, 128, 3))
 
-ckpt_dir = "./models/U0_model06_binary_ckpt/"
-MODEL6 = classify_models.getModel("model6")()
-MODEL6.load_weights(ckpt_dir+"200.ckpt")
-myModel.append(("model6-binary" , MODEL6))
+    ckpt_dir = "./models/U0_model04_binary_ckpt/"
+    MODEL4 = classify_models.getModel("model4")()
+    MODEL4.load_weights(ckpt_dir+"200.ckpt")
+    myModel.append(("model4-binary" , MODEL4))
 
-################################################
-myModels.append(myModel)
-myModel = []
+    ckpt_dir = "./models/U0_model05_binary_ckpt/"
+    MODEL5 = classify_models.getModel("model5")()
+    MODEL5.load_weights(ckpt_dir+"200.ckpt")
+    myModel.append(("model5-binary" , MODEL5))
 
-model4 = regression_models.getModel("model4")
+    ckpt_dir = "./models/U0_model06_binary_ckpt/"
+    MODEL6 = classify_models.getModel("model6")()
+    MODEL6.load_weights(ckpt_dir+"200.ckpt")
+    myModel.append(("model6-binary" , MODEL6))
 
-ckpt_dir = "./models/U0_model04_ckpt/"
-MODEL = model4()
-MODEL.load_weights(ckpt_dir+"2999.ckpt")
-myModel.append(("model4" , MODEL))
+    ################################################
+    myModels.append(myModel)
+    myModel = []
 
-ckpt_dir = "./models/U1_model04_ckpt/"
-MODEL = model4()
-MODEL.load_weights(ckpt_dir+"1503.ckpt")
-myModel.append(("model41" , MODEL))
+    model4 = regression_models.getModel("model4")
 
-ckpt_dir = "./models/U2_model04_ckpt/"
-MODEL = model4()
-MODEL.load_weights(ckpt_dir+"1800.ckpt")
-myModel.append(("model42" , MODEL))
+    ckpt_dir = "./models/U0_model04_ckpt/"
+    MODEL = model4()
+    MODEL.load_weights(ckpt_dir+"2999.ckpt")
+    myModel.append(("model4" , MODEL))
 
-ckpt_dir = "./models/U3_model04_ckpt/"
-MODEL = model4()
-MODEL.load_weights(ckpt_dir+"1000.ckpt")
-myModel.append(("model43" , MODEL))
+    ckpt_dir = "./models/U1_model04_ckpt/"
+    MODEL = model4()
+    MODEL.load_weights(ckpt_dir+"1503.ckpt")
+    myModel.append(("model41" , MODEL))
 
+    ckpt_dir = "./models/U2_model04_ckpt/"
+    MODEL = model4()
+    MODEL.load_weights(ckpt_dir+"1800.ckpt")
+    myModel.append(("model42" , MODEL))
 
-################################################
-
-myModels.append(myModel)
-myModel = []
-
-model5 = regression_models.getModel("model5")
-
-ckpt_dir = "./models/U0_model05_ckpt/"
-MODEL = model5()
-MODEL.load_weights(ckpt_dir+"700.ckpt")
-myModel.append(("model5" , MODEL))
-
-ckpt_dir = "./models/U1_model05_ckpt/"
-MODEL = model5()
-MODEL.load_weights(ckpt_dir+"700.ckpt")
-myModel.append(("model51" , MODEL))
-
-ckpt_dir = "./models/U2_model05_ckpt/"
-MODEL = model5()
-MODEL.load_weights(ckpt_dir+"700.ckpt")
-myModel.append(("model52" , MODEL))
-
-ckpt_dir = "./models/U3_model05_ckpt/"
-MODEL = model5()
-MODEL.load_weights(ckpt_dir+"700.ckpt")
-myModel.append(("model53" , MODEL))
-
-################################################
-myModels.append(myModel)
-myModel = []
-
-model6 = regression_models.getModel("model6")
-
-ckpt_dir = "./models/U0_model06_ckpt/"
-MODEL = model6()
-MODEL.load_weights(ckpt_dir+"1200.ckpt")
-myModel.append(("model6" , MODEL))
-
-ckpt_dir = "./models/U1_model06_ckpt/"
-MODEL = model6()
-MODEL.load_weights(ckpt_dir+"1200.ckpt")
-myModel.append(("model61" , MODEL))
-
-ckpt_dir = "./models/U2_model06_ckpt/"
-MODEL = model6()
-MODEL.load_weights(ckpt_dir+"1200.ckpt")
-myModel.append(("model62" , MODEL))
-
-ckpt_dir = "./models/U3_model06_ckpt/"
-MODEL = model6()
-MODEL.load_weights(ckpt_dir+"1500.ckpt")
-myModel.append(("model63" , MODEL))
+    ckpt_dir = "./models/U3_model04_ckpt/"
+    MODEL = model4()
+    MODEL.load_weights(ckpt_dir+"1000.ckpt")
+    myModel.append(("model43" , MODEL))
 
 
-################################################
-myModels.append(myModel)
+    ################################################
 
-df = pd.read_csv('./data/LEDA.csv', delimiter=',')
-df = df.rename(columns=lambda x: x.strip())
-Leda = df.set_index('PGC')
+    myModels.append(myModel)
+    myModel = []
+
+    model5 = regression_models.getModel("model5")
+
+    ckpt_dir = "./models/U0_model05_ckpt/"
+    MODEL = model5()
+    MODEL.load_weights(ckpt_dir+"700.ckpt")
+    myModel.append(("model5" , MODEL))
+
+    ckpt_dir = "./models/U1_model05_ckpt/"
+    MODEL = model5()
+    MODEL.load_weights(ckpt_dir+"700.ckpt")
+    myModel.append(("model51" , MODEL))
+
+    ckpt_dir = "./models/U2_model05_ckpt/"
+    MODEL = model5()
+    MODEL.load_weights(ckpt_dir+"700.ckpt")
+    myModel.append(("model52" , MODEL))
+
+    ckpt_dir = "./models/U3_model05_ckpt/"
+    MODEL = model5()
+    MODEL.load_weights(ckpt_dir+"700.ckpt")
+    myModel.append(("model53" , MODEL))
+
+    ################################################
+    myModels.append(myModel)
+    myModel = []
+
+    model6 = regression_models.getModel("model6")
+
+    ckpt_dir = "./models/U0_model06_ckpt/"
+    MODEL = model6()
+    MODEL.load_weights(ckpt_dir+"1200.ckpt")
+    myModel.append(("model6" , MODEL))
+
+    ckpt_dir = "./models/U1_model06_ckpt/"
+    MODEL = model6()
+    MODEL.load_weights(ckpt_dir+"1200.ckpt")
+    myModel.append(("model61" , MODEL))
+
+    ckpt_dir = "./models/U2_model06_ckpt/"
+    MODEL = model6()
+    MODEL.load_weights(ckpt_dir+"1200.ckpt")
+    myModel.append(("model62" , MODEL))
+
+    ckpt_dir = "./models/U3_model06_ckpt/"
+    MODEL = model6()
+    MODEL.load_weights(ckpt_dir+"1500.ckpt")
+    myModel.append(("model63" , MODEL))
+
+    myModels.append(myModel)
+
+    return myModels
+
+
+##########################################################################
+def loadLeda():
+    """Loading the HyperLeda catalog: 
+    - http://leda.univ-lyon1.fr/
+    - This catalog tabulates the porper information on local galaxies
+
+    :return: the Leda catalog in the Pandas dataFrame format
+    :rtype: Pandas ``dataFrame``
+    """
+
+    df = pd.read_csv('./data/LEDA.csv', delimiter=',')
+    df = df.rename(columns=lambda x: x.strip())
+    return df.set_index('PGC')
 ##########################################################################
 
 def mySoup(url):
@@ -262,24 +308,12 @@ def addGalaxyInfo(Leda, pgc, response=None, objname=None):
 
 
 ##########################################################################
-@app.route('/')
-def home():
-    """mounting the server home
-
-    :return: the rendered template ``index.html``
-    """
-
-    webDict = {"webroot": WEBROOT}
-
-    return render_template('index.html', webDict=webDict)
-
-##########################################################################
 
 @app.route('/getObj', methods=['POST'])
 def getObj():
     """``API`` getObj rule  
-    Object name is provided in json format and it returns the information about 
-    the galaxy in jason
+    Object name is provided in ``json`` format and it returns the information about 
+    the galaxy in ``jason``
 
     :return: galaxy information
     
@@ -289,13 +323,13 @@ def getObj():
     * ``objname``: galaxy name
     * ``status``: success/fail depending on the status of the query
 
-    :rtype: json
+    :rtype: ``json``
 
     **Example:**
 
     ::  
 
-        $ curl -X POST /inclinet/url/getObj -d '{"objname":"M31"}' -H 'Content-Type: application/json'
+        $ curl -X POST <inclinet_url>/getObj -d '{"objname":"M31"}' -H 'Content-Type: application/json'
         {
         "dec": "41.2689", 
         "fov": "266.74", 
@@ -324,8 +358,8 @@ def getObj():
 @app.route('/getPGC', methods=['POST'])
 def getPGC():
     """``API`` getPGC rule  
-    PGC id of the galaxy is provided in json format and it returns the information about 
-    the galaxy in jason
+    The PGC number of galaxy is provided in ``json`` format and it returns the information about 
+    the galaxy in ``json``
 
     :return: galaxy information
 
@@ -335,13 +369,13 @@ def getPGC():
     * ``objname``: galaxy name
     * ``status``: success/fail depending on the status of the query
 
-    :rtype: json
+    :rtype: ``json``
 
     **Example:**
 
     ::  
 
-        $ curl -X POST /inclinet/url/getPGC -d '{"pgc":"2557"}' -H 'Content-Type: application/json'
+        $ curl -X POST <inclinet_url>/getPGC -d '{"pgc":"2557"}' -H 'Content-Type: application/json'
         {
         "dec": "41.2689", 
         "fov": "266.74", 
@@ -371,7 +405,7 @@ def evaluate():
     """An ``API`` rule that accepts galaxy images
     and returns a summary of all results
 
-    :return: evaluated inclination(s) and other results 
+    :return: evaluated inclination(s) and other evaluations/predictions 
     :rtype: ``json``
     """
 
@@ -492,7 +526,7 @@ def modelParams(params):
 
 ##########################################################################
 
-@app.route('/pgc/<pgcID>')
+@app.route('/api/pgc/<pgcID>')
 def pgc_api(pgcID):
     """the URL ``API`` that evaluates inclinations by providing the ``PGC ID`` in the URL
 
@@ -506,7 +540,7 @@ def pgc_api(pgcID):
 
     ::  
 
-        $ curl /inclinet/url/pgc/2557'   
+        $ curl <inclinet_url>/api/pgc/2557'   
         {
         "status": "success",
         "galaxy": {
@@ -579,7 +613,7 @@ def pgc_api(pgcID):
 
 ##########################################################################
 
-@app.route('/objname/<objname>')
+@app.route('/objname/api/<objname>')
 def obj_api(objname):
     """the URL ``API`` that evaluates inclinations by providing the ``PGC ID`` in the URL
 
@@ -593,7 +627,7 @@ def obj_api(objname):
 
     ::  
 
-        $ curl  /inclinet/url/objname/M33
+        $ curl  <inclinet_url>/api/objname/M33
         {
         "status": "success",
         "galaxy": {
@@ -666,8 +700,7 @@ def obj_api(objname):
 
 
 ##########################################################################
-### Example: curl -F 'file=@/home/ehsan/NGC_4579.jpg' https://cropnet.eng.hawaii.edu/inclinet/file
-@app.route('/file', methods=["POST"])
+@app.route('/api/file', methods=["POST"])
 def file_api():
     """``API`` function, evaluating the inclination providing the galaxy image
 
@@ -676,7 +709,7 @@ def file_api():
 
     ::
 
-        $ curl -F 'file=@/path/to/image/NGC_4579.jpg' /inclinet/url/file
+        $ curl -F 'file=@/path/to/image/NGC_4579.jpg' <inclinet_url>/api/file
         {
         "status": "success",
         "filename": "NGC_4579.jpg",
@@ -783,7 +816,6 @@ def imSquarify(imPath, outPath=None):
     return outPath
 
 ##########################################################################
-
 @app.route('/upload', methods=['POST'])
 def IM_upload():
     """An image uploader ``API`` for the use in the online GUI
@@ -815,11 +847,106 @@ def IM_upload():
     return jsonify(response)
 
 ##########################################################################
+def arg_parser():
+
+    """
+    Parsing the command line arguments
+
+    :return: parsed argumetns ``(opts, args)``
+
+    opts: the 
+
+    :rtype: ``tuple``
+    """    
+
+    parser = OptionParser(usage="""\
+\n
+ - starting up the service on the desired host:port
+ 
+ - How to run: 
+ 
+    $ python server.py -t <host IP> -p <port_number> -d <debugging_mode>
+
+- To get help
+    $ python server.py -h
+ 
+""")
+
+    parser.add_option('-p', '--port',
+                      type='int', action='store', default=3030,
+                      help="the port number to run the service on")
+
+    parser.add_option('-t', '--host',
+                      type='string', action='store',
+                      help="service host", default="0.0.0.0")                     
+    
+    parser.add_option("-d", "--debug", action="store_true",
+                      help="debugging mode", default=False)
+
+    (opts, args) = parser.parse_args()
+
+    return opts
+##########################################################################
+
+@app.route('/api/docs')
+def get_docs():
+    print('sending docs')
+    return render_template('swaggerui.html')
+
+##########################################################################
+@app.route('/')
+def home():
+    """mounting the server home
+
+    :return: the rendered template ``index.html``
+    """
+
+    webDict = {"webroot": WEBROOT}
+
+    return render_template('index.html', webDict=webDict)
+
+##########################################################################
+### GLOBAL Variables ###
+# WEBROOT is an environmental variable
+WEBROOT = os.getenv('WEBROOT')  
+if WEBROOT is None:
+    WEBROOT = './'
+
+myModels = None
+Leda = None
+
+##########################################################################
 
 #### autopep8 -i server.py
 # If we're running in sdate_strtand alone mode, run the application
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3030, debug=True)
+
+    opts = arg_parser()
+
+    print("\n------------------------------------")
+    print(" To get HELP enter:")
+    print(" python server.py -h")
+    print("------------------------------------")
+    print("\n------------------------------------")
+    print(" Input Arguments (provided by User)")
+    print("------------------------------------")
+    print(" ", opts)
+    print("------------------------------------")
+
+    ## loading models, Leda catalog
+    myModels = loadModels()
+    Leda = loadLeda()
+
+    ## generating the necessary folders
+    createDir('./static')
+    xcmd("cp -rf swagger/static/* ./static/.")
+    xcmd("cp -rf swagger/templates/* ./templates/.")
+    createDir('./static/tempImages')
+    createDir('./static/tempImages/uploads')
+    createDir('./static/tempImages/resized')
+
+    ## starting up the service
+    app.run(host=opts.host, port=opts.port, debug=opts.debug)
 
 ##########################################################################
 ##########################################################################

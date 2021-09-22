@@ -209,6 +209,23 @@ given the corresponsing PGC ID</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="server.arg_parser">
+<span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">arg_parser</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.arg_parser" title="Permalink to this definition"></a></dt>
+<dd><p>Parsing the command line arguments</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>parsed argumetns <code class="docutils literal notranslate"><span class="pre">(opts,</span> <span class="pre">args)</span></code></p>
+</dd>
+</dl>
+<p>opts: the</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="server.createDir">
 <span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">createDir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folderPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.createDir" title="Permalink to this definition"></a></dt>
 <dd><p>generating a directory if it doesn’t exist</p>
@@ -232,7 +249,7 @@ given the corresponsing PGC ID</p>
 and returns a summary of all results</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>evaluated inclination(s) and other results</p>
+<dd class="field-odd"><p>evaluated inclination(s) and other evaluations/predictions</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">json</span></code></p>
@@ -274,7 +291,7 @@ If a rectangular image is provided, the output image is square in size.
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">json</span></code></p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -F &#39;file=@/path/to/image/NGC_4579.jpg&#39; /inclinet/url/file
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -F &#39;file=@/path/to/image/NGC_4579.jpg&#39; &lt;inclinet_url&gt;/api/file
 {
 &quot;status&quot;: &quot;success&quot;,
 &quot;filename&quot;: &quot;NGC_4579.jpg&quot;,
@@ -322,8 +339,8 @@ If a rectangular image is provided, the output image is square in size.
 <dt class="sig sig-object py" id="server.getObj">
 <span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">getObj</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.getObj" title="Permalink to this definition"></a></dt>
 <dd><p><code class="docutils literal notranslate"><span class="pre">API</span></code> getObj rule
-Object name is provided in json format and it returns the information about
-the galaxy in jason</p>
+Object name is provided in <code class="docutils literal notranslate"><span class="pre">json</span></code> format and it returns the information about
+the galaxy in <code class="docutils literal notranslate"><span class="pre">jason</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>galaxy information</p>
@@ -338,11 +355,11 @@ the galaxy in jason</p>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>json</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">json</span></code></p>
 </dd>
 </dl>
 <p><strong>Example:</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X POST /inclinet/url/getObj -d &#39;{&quot;objname&quot;:&quot;M31&quot;}&#39; -H &#39;Content-Type: application/json&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X POST &lt;inclinet_url&gt;/getObj -d &#39;{&quot;objname&quot;:&quot;M31&quot;}&#39; -H &#39;Content-Type: application/json&#39;
 {
 &quot;dec&quot;: &quot;41.2689&quot;,
 &quot;fov&quot;: &quot;266.74&quot;,
@@ -360,8 +377,8 @@ the galaxy in jason</p>
 <dt class="sig sig-object py" id="server.getPGC">
 <span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">getPGC</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.getPGC" title="Permalink to this definition"></a></dt>
 <dd><p><code class="docutils literal notranslate"><span class="pre">API</span></code> getPGC rule
-PGC id of the galaxy is provided in json format and it returns the information about
-the galaxy in jason</p>
+The PGC number of galaxy is provided in <code class="docutils literal notranslate"><span class="pre">json</span></code> format and it returns the information about
+the galaxy in <code class="docutils literal notranslate"><span class="pre">json</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>galaxy information</p>
@@ -376,11 +393,11 @@ the galaxy in jason</p>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>json</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">json</span></code></p>
 </dd>
 </dl>
 <p><strong>Example:</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X POST /inclinet/url/getPGC -d &#39;{&quot;pgc&quot;:&quot;2557&quot;}&#39; -H &#39;Content-Type: application/json&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X POST &lt;inclinet_url&gt;/getPGC -d &#39;{&quot;pgc&quot;:&quot;2557&quot;}&#39; -H &#39;Content-Type: application/json&#39;
 {
 &quot;dec&quot;: &quot;41.2689&quot;,
 &quot;fov&quot;: &quot;266.74&quot;,
@@ -412,6 +429,11 @@ the galaxy in jason</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="server.get_docs">
+<span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">get_docs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.get_docs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="server.home">
 <span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">home</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.home" title="Permalink to this definition"></a></dt>
 <dd><p>mounting the server home</p>
@@ -439,6 +461,36 @@ the galaxy in jason</p>
 </dl>
 <p>as that of the input image
 :rtype: <code class="docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="server.loadLeda">
+<span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">loadLeda</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.loadLeda" title="Permalink to this definition"></a></dt>
+<dd><p>Loading the HyperLeda catalog:
+- <a class="reference external" href="http://leda.univ-lyon1.fr/">http://leda.univ-lyon1.fr/</a>
+- This catalog tabulates the porper information on local galaxies</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the Leda catalog in the Pandas dataFrame format</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Pandas <code class="docutils literal notranslate"><span class="pre">dataFrame</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="server.loadModels">
+<span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">loadModels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.loadModels" title="Permalink to this definition"></a></dt>
+<dd><p>Loading all ML models (deployment versions)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a Python dictionary that holds all models in groups</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>python <code class="docutils literal notranslate"><span class="pre">Dictionary</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -498,7 +550,7 @@ client, in order to parse the html contents</p>
 </dl>
 <p>The following example shows the output <code class="docutils literal notranslate"><span class="pre">JSON</span></code> that contains the detailed evaluation of the available models.
 The <code class="docutils literal notranslate"><span class="pre">summary</span></code> fields hold the statistical summary of the outputs of all models.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl  /inclinet/url/objname/M33
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl  &lt;inclinet_url&gt;/api/objname/M33
 {
 &quot;status&quot;: &quot;success&quot;,
 &quot;galaxy&quot;: {
@@ -566,7 +618,7 @@ The <code class="docutils literal notranslate"><span class="pre">summary</span><
 </dl>
 <p>As seen in the following example, the output <code class="docutils literal notranslate"><span class="pre">JSON</span></code> contains the detailed evaluation of the available models.
 The <code class="docutils literal notranslate"><span class="pre">summary</span></code> fields hold the statistical summary of the outputs of all models.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl /inclinet/url/pgc/2557&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl &lt;inclinet_url&gt;/api/pgc/2557&#39;
 {
 &quot;status&quot;: &quot;success&quot;,
 &quot;galaxy&quot;: {
@@ -615,6 +667,26 @@ The <code class="docutils literal notranslate"><span class="pre">summary</span><
 }
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="server.xcmd">
+<span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">xcmd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.xcmd" title="Permalink to this definition"></a></dt>
+<dd><p>Runs the OS commands</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cmd</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – terminal command</p></li>
+<li><p><strong>verbose</strong> (<code class="docutils literal notranslate"><span class="pre">boolean</span></code>) – printing the details, default True</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>OS outputs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
