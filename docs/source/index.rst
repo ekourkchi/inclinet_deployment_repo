@@ -126,11 +126,10 @@ API
 ---
 
 
-* 
-  See the ``API documentation`` `here <https://edd.ifa.hawaii.edu/inclinet/api/docs>`_
+* See the ``API documentation`` `here <https://edd.ifa.hawaii.edu/inclinet/api/docs>`_
 
-* 
-  URL guery that reports all evaluated inclinations and other results in ``json`` format. ``<PGC_id>`` is the galaxy ID in the `HyperLeda <http://leda.univ-lyon1.fr/>`_ catalog.
+
+#. URL guery that reports all evaluated inclinations and other results in ``json`` format. ``<PGC_id>`` is the galaxy ID in the `HyperLeda <http://leda.univ-lyon1.fr/>`_ catalog.
 
 .. code-block:: bash
 
@@ -191,7 +190,7 @@ API
       }
 
 
-* Given the ``galaxy common name``\ , the following URL reports all evaluated inclinations and other results in ``json`` format. ``<obj_name>`` is the galaxy galaxy name. Galaxy name is looked up on `NASA/IPAC Extragalactic Database <https://ned.ipac.caltech.edu/>`_ and the corresponding ``PGC`` number would be used for the purpose of our analysis.
+#. Given the ``galaxy common name``\ , the following URL reports all evaluated inclinations and other results in ``json`` format. ``<obj_name>`` is the galaxy galaxy name. Galaxy name is looked up on `NASA/IPAC Extragalactic Database <https://ned.ipac.caltech.edu/>`_ and the corresponding ``PGC`` number would be used for the purpose of our analysis.
 
 .. code-block:: bash
 
@@ -252,13 +251,13 @@ API
           }
 
 
-* Given the ``galaxy image``\ , the following API call reports all evaluated inclinations and other results in ``json`` format.
+#. Given the ``galaxy image``\ , the following API call reports all evaluated inclinations and other results in ``json`` format.
 
 .. code-block:: bash
 
    $ curl -F 'file=@/path/to/image/galaxy.jpg' http://edd.ifa.hawaii.edu/inclinet/api/file
 
-where ``/path/to/image/galaxy.jpg`` would be replaced by the name of the galaxy image. The accepted suffixes are ``'PNG', 'JPG', 'JPEG', 'GIF'`` and uploaded files shoule be smaller than ``1 MB``. 
+where ``/path/to/image/galaxy.jpg`` would be replaced by the name of the galaxy image. The accepted suffixes are ``'PNG', 'JPG', 'JPEG', 'GIF'`` and uploaded files should be smaller than ``1 MB``. 
 
 
 * 
@@ -343,7 +342,7 @@ Related information
 -------------------
 
 
-* For furhter details on various VGG models we considered in this project `click here <https://github.com/ekourkchi/incNET-data/tree/master/incNET_VGGcnn_withAugmentation>`_.
+* For further details on various VGG models we considered in this project `click here <https://github.com/ekourkchi/incNET-data/tree/master/incNET_VGGcnn_withAugmentation>`_.
 * `Visit here <https://github.com/ekourkchi/inclinet_production_repo/blob/main/Inclinet_Deployment_Architecture.pdf>`_ to get the full picture of the deployment plan.
 * `The Production Pipeline <https://github.com/ekourkchi/inclinet_production_repo>`_
 * `Project proposal and motivations <https://github.com/ekourkchi/incNET-data>`_

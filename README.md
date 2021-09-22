@@ -222,7 +222,7 @@ $ curl http://edd.ifa.hawaii.edu/inclinet/api/objname/<obj_name>
 $ curl -F 'file=@/path/to/image/galaxy.jpg' http://edd.ifa.hawaii.edu/inclinet/api/file
 ```
 
-where `/path/to/image/galaxy.jpg` would be replaced by the name of the galaxy image. The accepted suffixes are `'PNG', 'JPG', 'JPEG', 'GIF'` and uploaded files shoule be smaller than `1 MB`. 
+where `/path/to/image/galaxy.jpg` would be replaced by the name of the galaxy image. The accepted suffixes are `'PNG', 'JPG', 'JPEG', 'GIF'` and uploaded files should be smaller than `1 MB`. 
 
  - example:
 
@@ -296,7 +296,7 @@ The documentation of the **REST API** of our application is [available here](htt
 
 ## Related information
 
-- For furhter details on various VGG models we considered in this project [click here](https://github.com/ekourkchi/incNET-data/tree/master/incNET_VGGcnn_withAugmentation).
+- For further details on various VGG models we considered in this project [click here](https://github.com/ekourkchi/incNET-data/tree/master/incNET_VGGcnn_withAugmentation).
 - [Visit here](https://github.com/ekourkchi/inclinet_production_repo/blob/main/Inclinet_Deployment_Architecture.pdf) to get the full picture of the deployment plan.
 - [The Production Pipeline](https://github.com/ekourkchi/inclinet_production_repo)
 - [Project proposal and motivations](https://github.com/ekourkchi/incNET-data)
