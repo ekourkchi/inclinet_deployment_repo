@@ -271,9 +271,9 @@ where `/path/to/image/galaxy.jpg` would be replaced by the name of the galaxy im
 
 ## Documentation
 
-### [Sphinx](https://www.sphinx-doc.org/en/master/)
+The full documentation of this application is [available here](https://edd.ifa.hawaii.edu/static/html/index.html).
 
-The full documentation of our application is [available here](https://edd.ifa.hawaii.edu/static/html/index.html).
+### [Sphinx](https://www.sphinx-doc.org/en/master/)
 
 
 **Notes:**
@@ -294,7 +294,7 @@ The documentation of the **REST API** of our application is [available here](htt
 
 **Notes:** You may follow [this toturial](https://dev.to/sanjan/how-to-add-swagger-ui-to-a-plain-flask-api-project-with-an-openapi-specification-file-1jl8) to easily setup the Swagger API documentation under ``Flask``.
 
-## Related information
+## Related Information
 
 - For further details on various VGG models we considered in this project [click here](https://github.com/ekourkchi/incNET-data/tree/master/incNET_VGGcnn_withAugmentation).
 - [Visit here](https://github.com/ekourkchi/inclinet_production_repo/blob/main/Inclinet_Deployment_Architecture.pdf) to get the full picture of the deployment plan.
@@ -303,15 +303,15 @@ The documentation of the **REST API** of our application is [available here](htt
 - [Data Preprocessing](https://github.com/ekourkchi/incNET-data/blob/master/incNET_dataPrep/incNET_dataClean.ipynb) in order to get reliable labels
 - On how to download data from the SDSS image service and preprocess them [click here](https://github.com/ekourkchi/SDSS_get)
 
-## ABOUT THE DATA
+## About the data
 
 All data exposed by the *IncliNET* project belongs to 
 
-> Cosmicflows-4 program
-> Copyright (C) Cosmicflows
-> Team - The Extragalactic Distance Database (EDD)
+- Cosmicflows-4 program
+- Copyright (C) Cosmicflows
+- Team - The Extragalactic Distance Database (EDD)
 
-**Please cite:**
+### Please cite
 
 > Cosmicflows-4: The Catalog of ∼10,000 Tully-Fisher Distances
 
