@@ -10,18 +10,25 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
- import os
- import sys
-sys.path.insert(0, os.path.abspath('../..'))
+import os
+import sys
+import pathlib
+
+
+CURRENT_PATH = pathlib.Path(os.path.abspath(os.path.dirname(__file__)))
+PROJECT_PATH = CURRENT_PATH.parent.parent
+sys.path.insert(0, str(PROJECT_PATH))
+
+# import info
 
 # -- Project information -----------------------------------------------------
 
-project = 'inclinet'
-copyright = '2021, CF4'
-author = 'Ehsan Kourkchi'
+project   = info.project
+copyright = info.copyright
+author    = info.author
 
 # The full version, including alpha/beta/rc tags
-release = 'v1.0'
+release = info.version
 
 
 # -- General configuration ---------------------------------------------------
@@ -60,3 +67,49 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# Example configuration for intersphinx: refer to the Python standard library.
+intersphinx_mapping = {'https://docs.python.org/': None}
+
+master_doc = 'index'
+
+## Ignore the following packages in the documentation process
+autodoc_mock_imports = ["numpy", "pylab", "scipy", \
+    "math", "datetime", "scipy", "request", "PIL", \
+        'tensorflow', 'matplotlib', 'pandas', 'distutils']
+
+
+# =============================================================================
+# PREPROCESS RST
+# =============================================================================
+
+import m2r
+
+with open(PROJECT_PATH / "README.md") as fp:
+    md = fp.read()
+
+
+index = f"""
+
+{m2r.convert(md)}
+
+Contents:
+---------
+
+.. toctree::
+    :numbered:
+
+    tutorial.ipynb
+    modules
+
+
+Indices and tables
+==================
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
+"""
+
+with open(CURRENT_PATH / "index.rst", "w") as fp:
+    fp.write(index)

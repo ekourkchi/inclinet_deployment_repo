@@ -5,8 +5,53 @@
     "title": "Inclinet API",
     "description": "An API interact with the Inclinet service"
   },
-  "basePath": "/v2",
+  "host": "edd.ifa.hawaii.edu",
+  "basePath": "/inclinet",
   "paths": {
+    "/api/pgc/{PGC_ID}": {
+      "get": {
+        "tags": [
+          "Evaluations"
+        ],
+        "summary": "URL API that evaluates inclinations by providing the PGC ID in the URL",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "PGC_ID",
+            "type": "integer",
+            "required": true,
+            "description": "Numeric PGC ID of the galaxy (Example 2557)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/objname/{object_name}": {
+      "get": {
+        "tags": [
+          "Evaluations"
+        ],
+        "summary": "URL API that evaluates inclinations by providing the galaxy name in the URL",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "object_name",
+            "type": "string",
+            "required": true,
+            "description": "Galaxy Name (Example Andromeda)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/getPGC": {
       "post": {
         "tags": [
@@ -38,6 +83,38 @@
           }
         }
       }
+    },
+    "/api/getObj": {
+      "post": {
+        "tags": [
+          "Object"
+        ],
+        "summary": "Get information about the galaxy providing its common name",
+        "description": "",
+        "operationId": "getObj",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "galaxy name",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/getObj"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -51,6 +128,19 @@
           "type": "integer",
           "format": "int64",
           "example": 2557
+        }
+      }
+    },
+    "getObj": {
+      "type": "object",
+      "required": [
+        "objname"
+      ],
+      "properties": {
+        "objname": {
+          "type": "string",
+          "format": "string",
+          "example": "M31"
         }
       }
     }

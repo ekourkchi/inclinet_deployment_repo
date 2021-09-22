@@ -941,6 +941,7 @@ if __name__ == '__main__':
     createDir('./static')
     xcmd("cp -rf swagger/static/* ./static/.")
     xcmd("cp -rf swagger/templates/* ./templates/.")
+    xcmd("cp -rf docs/build/html ./static/.")
     createDir('./static/tempImages')
     createDir('./static/tempImages/uploads')
     createDir('./static/tempImages/resized')

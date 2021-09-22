@@ -900,13 +900,19 @@
 			<div class="collapse navbar-collapse" id="navbarColor02" style="float:right">
 				<ul class="nav navbar-nav ml-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="https://edd.ifa.hawaii.edu/inclination" target='GIZ'>Galaxy Inclination Zoo</a>
+						<a class="nav-link" href='{{ webDict["webroot"]+"api/docs" }}' target='API'>API</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ url_for('static', filename='html/index.html') }}" target='API'>DOC</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href='https://github.com/ekourkchi/inclinet_deployment_repo' target='API'>gitHub</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://edd.ifa.hawaii.edu/inclination" target='GIZ'>GIZ</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="https://edd.ifa.hawaii.edu" target='EDD'>EDD</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href='{{ webDict["webroot"]+"api/docs" }}' target='API'>API</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#help">HELP</a>
