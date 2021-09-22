@@ -38,7 +38,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">1. <code class="docutils literal notranslate"><span class="pre">IncliNET</span></code> Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">2. Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html#Web-GUI">2. Web GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html#API">3. API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">4. Python Modules</a></li>
 </ul>
 
         </div>
@@ -163,7 +165,6 @@
 </div>
 <p>Please refer to <a class="reference external" href="https://edd.ifa.hawaii.edu/static/html/server.html">the IncliNET code documentation</a> for further details.
 For more information, read the <a class="reference external" href="https://edd.ifa.hawaii.edu/static/html/index.html">tutorial</a>.</p>
-<a class="reference external image-reference" href="https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png"><img alt="Inclinet_Deployment_flowchart" src="https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png" /></a>
 </div>
 </div>
 <div class="section" id="bulding-the-docker-package">
@@ -178,6 +179,7 @@ docker push myimage:x.x .
 <ul class="simple">
 <li><p>Docker simple <a class="reference external" href="https://www.docker.com/sites/default/files/d8/2019-09/docker-cheat-sheet.pdf">cheat sheet</a></p></li>
 </ul>
+<a class="reference external image-reference" href="https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png"><img alt="Inclinet_Deployment_flowchart" src="https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png" /></a>
 </div>
 <div class="section" id="api">
 <h2>API<a class="headerlink" href="#api" title="Permalink to this headline"></a></h2>
@@ -445,42 +447,46 @@ docker push myimage:x.x .
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#Introduction">1.1. Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#Problem">1.2. Problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#Objectives">1.3. Objectives</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#Example-1:-/api/pgc/">1.4. Example 1: /api/pgc/</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Sending-a-request-with-the-galaxy-ID">1.4.1. Sending a request with the galaxy ID</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Erroneous-PGC-ID">1.4.2. Erroneous PGC ID</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#Example-2:-/api/objname">1.5. Example 2: /api/objname</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Sending-a-request-with-the-galaxy-name">1.5.1. Sending a request with the galaxy name</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Wrong-galaxy-name">1.5.2. Wrong galaxy name</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html#Web-GUI">2. Web GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html#API">3. API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#Example-1:-/api/pgc/">3.1. Example 1: /api/pgc/</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Sending-a-request-with-the-galaxy-ID">3.1.1. Sending a request with the galaxy ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Erroneous-PGC-ID">3.1.2. Erroneous PGC ID</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#Example-3:-/api/file">1.6. Example 3: /api/file</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Sending-a-request-with-the-galaxy-image">1.6.1. Sending a request with the galaxy image</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Wrong-file-name">1.6.2. Wrong file name</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Wrong-file-format">1.6.3. Wrong file format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#Example-2:-/api/objname">3.2. Example 2: /api/objname</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Sending-a-request-with-the-galaxy-name">3.2.1. Sending a request with the galaxy name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Wrong-galaxy-name">3.2.2. Wrong galaxy name</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#Example-4:-/getPGC">1.7. Example 4: <em>/getPGC</em></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Get-information-about-the-galaxy-providing-the-PGC-ID">1.7.1. Get information about the galaxy providing the PGC ID</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Generating-a-wrong-API-call">1.7.2. Generating a wrong API call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#Example-3:-/api/file">3.3. Example 3: /api/file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Sending-a-request-with-the-galaxy-image">3.3.1. Sending a request with the galaxy image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Wrong-file-name">3.3.2. Wrong file name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Wrong-file-format">3.3.3. Wrong file format</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#Example-5:-/getObj">1.8. Example 5: <em>/getObj</em></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Get-information-about-the-galaxy-providing-its-common-name">1.8.1. Get information about the galaxy providing its common name</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#id1">1.8.2. Generating a wrong API call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#Example-4:-/getPGC">3.4. Example 4: <em>/getPGC</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Get-information-about-the-galaxy-providing-the-PGC-ID">3.4.1. Get information about the galaxy providing the PGC ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Generating-a-wrong-API-call">3.4.2. Generating a wrong API call</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#Related-Information">1.9. Related Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#About-the-data">1.10. About the data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#Author">1.11. Author</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#Disclaimer">1.12. Disclaimer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#Example-5:-/getObj">3.5. Example 5: <em>/getObj</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Get-information-about-the-galaxy-providing-its-common-name">3.5.1. Get information about the galaxy providing its common name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#id1">3.5.2. Generating a wrong API call</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">2. Python Modules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="server.html">2.1. server.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="incNET.html">2.2. incNET.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="CNN_models.html">2.3. CNN_models.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#Related-Information">3.6. Related Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#About-the-data">3.7. About the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#Author">3.8. Author</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#Disclaimer">3.9. Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">4. Python Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="server.html">4.1. server.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="incNET.html">4.2. incNET.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CNN_models.html">4.3. CNN_models.py</a></li>
 </ul>
 </li>
 </ul>

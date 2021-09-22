@@ -20,7 +20,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. Python Modules" href="modules.html" />
+    <link rel="next" title="4. Python Modules" href="modules.html" />
     <link rel="prev" title="IncliNET" href="index.html" /> 
 </head>
 
@@ -44,39 +44,43 @@
 <li class="toctree-l2"><a class="reference internal" href="#Introduction">1.1. Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Problem">1.2. Problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Objectives">1.3. Objectives</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Example-1:-/api/pgc/">1.4. Example 1: /api/pgc/</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Sending-a-request-with-the-galaxy-ID">1.4.1. Sending a request with the galaxy ID</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Erroneous-PGC-ID">1.4.2. Erroneous PGC ID</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#Example-2:-/api/objname">1.5. Example 2: /api/objname</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Sending-a-request-with-the-galaxy-name">1.5.1. Sending a request with the galaxy name</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Wrong-galaxy-name">1.5.2. Wrong galaxy name</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Web-GUI">2. Web GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#API">3. API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Example-1:-/api/pgc/">3.1. Example 1: /api/pgc/</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Sending-a-request-with-the-galaxy-ID">3.1.1. Sending a request with the galaxy ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Erroneous-PGC-ID">3.1.2. Erroneous PGC ID</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#Example-3:-/api/file">1.6. Example 3: /api/file</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Sending-a-request-with-the-galaxy-image">1.6.1. Sending a request with the galaxy image</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Wrong-file-name">1.6.2. Wrong file name</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Wrong-file-format">1.6.3. Wrong file format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Example-2:-/api/objname">3.2. Example 2: /api/objname</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Sending-a-request-with-the-galaxy-name">3.2.1. Sending a request with the galaxy name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Wrong-galaxy-name">3.2.2. Wrong galaxy name</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#Example-4:-/getPGC">1.7. Example 4: <em>/getPGC</em></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Get-information-about-the-galaxy-providing-the-PGC-ID">1.7.1. Get information about the galaxy providing the PGC ID</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Generating-a-wrong-API-call">1.7.2. Generating a wrong API call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Example-3:-/api/file">3.3. Example 3: /api/file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Sending-a-request-with-the-galaxy-image">3.3.1. Sending a request with the galaxy image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Wrong-file-name">3.3.2. Wrong file name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Wrong-file-format">3.3.3. Wrong file format</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#Example-5:-/getObj">1.8. Example 5: <em>/getObj</em></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Get-information-about-the-galaxy-providing-its-common-name">1.8.1. Get information about the galaxy providing its common name</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">1.8.2. Generating a wrong API call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Example-4:-/getPGC">3.4. Example 4: <em>/getPGC</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Get-information-about-the-galaxy-providing-the-PGC-ID">3.4.1. Get information about the galaxy providing the PGC ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Generating-a-wrong-API-call">3.4.2. Generating a wrong API call</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#Related-Information">1.9. Related Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#About-the-data">1.10. About the data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Author">1.11. Author</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Disclaimer">1.12. Disclaimer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Example-5:-/getObj">3.5. Example 5: <em>/getObj</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Get-information-about-the-galaxy-providing-its-common-name">3.5.1. Get information about the galaxy providing its common name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">3.5.2. Generating a wrong API call</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">2. Python Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Related-Information">3.6. Related Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#About-the-data">3.7. About the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Author">3.8. Author</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Disclaimer">3.9. Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">4. Python Modules</a></li>
 </ul>
 
         </div>
@@ -400,10 +404,20 @@ galaxy (above picture: second panel from the right) providing an extreme example
 <h2><span class="section-number">1.3. </span>Objectives<a class="headerlink" href="#Objectives" title="Permalink to this headline"></a></h2>
 <p>The task of manual evaluation of spirals inclinations is tedious and time consuming. In the future, with the large astronomical survey telescopes coming online, this task could not be efficiently done manually for thousands of galaxies. The objective of this project is to automatically determine the inclination of spiral galaxies with the human level accuracy providing their images (ideally in both colorful and black-and-white formats).</p>
 </div>
+</div>
+<div class="section" id="Web-GUI">
+<h1><span class="section-number">2. </span>Web GUI<a class="headerlink" href="#Web-GUI" title="Permalink to this headline"></a></h1>
+<p><img alt="GUI_screenshot" src="_images/web_gui.png" /></p>
+<p>On the left side of this tool, users have different options to find and load a galaxy image. The PGC-based query relies on the information provided by the <a class="reference external" href="http://leda.univ-lyon1.fr/">HyperLEDA</a> catalog. Each image is rotated and resized based on the LEDA entries for <code class="docutils literal notranslate"><span class="pre">logd25</span></code> and position angle (<code class="docutils literal notranslate"><span class="pre">pa</span></code>), which are reasonable in most cases. Further manual alignment features are provided, however the evaluation process is independent of the orientation of the image. Clicking on the
+<code class="docutils literal notranslate"><span class="pre">Evaluate</span></code> button, the output inclinations generated by various ML models are generated and the average results are displayed on the right side. This step feeds the image to a pre-trained neural network(s) and outputs the averages of the determined inclination value. In addition, there is other networks that separately predict the rejection probability of the galaxy by human users. For practical reasons, all images are converted to square sizes and rescaled to 128x128 pixels prior to the
+evaluation process.</p>
+</div>
+<div class="section" id="API">
+<h1><span class="section-number">3. </span>API<a class="headerlink" href="#API" title="Permalink to this headline"></a></h1>
 <div class="section" id="Example-1:-/api/pgc/">
-<h2><span class="section-number">1.4. </span>Example 1: /api/pgc/<a class="headerlink" href="#Example-1:-/api/pgc/" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">3.1. </span>Example 1: /api/pgc/<a class="headerlink" href="#Example-1:-/api/pgc/" title="Permalink to this headline"></a></h2>
 <div class="section" id="Sending-a-request-with-the-galaxy-ID">
-<h3><span class="section-number">1.4.1. </span>Sending a request with the galaxy ID<a class="headerlink" href="#Sending-a-request-with-the-galaxy-ID" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.1.1. </span>Sending a request with the galaxy ID<a class="headerlink" href="#Sending-a-request-with-the-galaxy-ID" title="Permalink to this headline"></a></h3>
 <p>Evaluating inclination based on the <code class="docutils literal notranslate"><span class="pre">PGC</span> <span class="pre">ID</span></code> of the target galaxy. Here we test the API for <em>pgc=69327</em>.</p>
 <ul class="simple">
 <li><p>On average, there is ~7% that a human user rejects this galaxy.</p></li>
@@ -428,14 +442,14 @@ galaxy (above picture: second panel from the right) providing an extreme example
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7fbbaa4632b0&gt;
+&lt;matplotlib.image.AxesImage at 0x7f411e8be310&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/tutorial_3_1.png" src="_images/tutorial_3_1.png" />
+<img alt="_images/tutorial_5_1.png" src="_images/tutorial_5_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -502,7 +516,7 @@ galaxy (above picture: second panel from the right) providing an extreme example
 </div>
 </div>
 <div class="section" id="Erroneous-PGC-ID">
-<h3><span class="section-number">1.4.2. </span>Erroneous PGC ID<a class="headerlink" href="#Erroneous-PGC-ID" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.1.2. </span>Erroneous PGC ID<a class="headerlink" href="#Erroneous-PGC-ID" title="Permalink to this headline"></a></h3>
 <p>or an ID that doesn’t exist</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -524,9 +538,9 @@ galaxy (above picture: second panel from the right) providing an extreme example
 </div>
 </div>
 <div class="section" id="Example-2:-/api/objname">
-<h2><span class="section-number">1.5. </span>Example 2: /api/objname<a class="headerlink" href="#Example-2:-/api/objname" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">3.2. </span>Example 2: /api/objname<a class="headerlink" href="#Example-2:-/api/objname" title="Permalink to this headline"></a></h2>
 <div class="section" id="Sending-a-request-with-the-galaxy-name">
-<h3><span class="section-number">1.5.1. </span>Sending a request with the galaxy name<a class="headerlink" href="#Sending-a-request-with-the-galaxy-name" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.2.1. </span>Sending a request with the galaxy name<a class="headerlink" href="#Sending-a-request-with-the-galaxy-name" title="Permalink to this headline"></a></h3>
 <p>Evaluating inclination based on the <code class="docutils literal notranslate"><span class="pre">Galaxy</span> <span class="pre">Name</span></code>. Here we test the API for ‘Sombrero’.</p>
 <ul class="simple">
 <li><p>On average, there is ~44% that a human user rejects this galaxy. However the descrepancies between different models is quites large, as 1<span class="math notranslate nohighlight">\(\sigma\)</span> standard devaition of the rejection likelihoods is ~20%. It would be suggested that a human overlooks the automatically determined inclination for this galaxy.</p></li>
@@ -552,14 +566,14 @@ galaxy (above picture: second panel from the right) providing an extreme example
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7fbbf608e130&gt;
+&lt;matplotlib.image.AxesImage at 0x7f4174909190&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/tutorial_8_1.png" src="_images/tutorial_8_1.png" />
+<img alt="_images/tutorial_10_1.png" src="_images/tutorial_10_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -626,7 +640,7 @@ galaxy (above picture: second panel from the right) providing an extreme example
 </div>
 </div>
 <div class="section" id="Wrong-galaxy-name">
-<h3><span class="section-number">1.5.2. </span>Wrong galaxy name<a class="headerlink" href="#Wrong-galaxy-name" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.2.2. </span>Wrong galaxy name<a class="headerlink" href="#Wrong-galaxy-name" title="Permalink to this headline"></a></h3>
 <p>or a name that can not be recognized/parsed from <a class="reference external" href="https://ned.ipac.caltech.edu/">NED</a>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -648,9 +662,9 @@ galaxy (above picture: second panel from the right) providing an extreme example
 </div>
 </div>
 <div class="section" id="Example-3:-/api/file">
-<h2><span class="section-number">1.6. </span>Example 3: /api/file<a class="headerlink" href="#Example-3:-/api/file" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">3.3. </span>Example 3: /api/file<a class="headerlink" href="#Example-3:-/api/file" title="Permalink to this headline"></a></h2>
 <div class="section" id="Sending-a-request-with-the-galaxy-image">
-<h3><span class="section-number">1.6.1. </span>Sending a request with the galaxy image<a class="headerlink" href="#Sending-a-request-with-the-galaxy-image" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.3.1. </span>Sending a request with the galaxy image<a class="headerlink" href="#Sending-a-request-with-the-galaxy-image" title="Permalink to this headline"></a></h3>
 <p>Evaluating inclination using the <code class="docutils literal notranslate"><span class="pre">Galaxy</span> <span class="pre">Image</span></code>. Here, we test the API for ‘Andromeda’.</p>
 <ul class="simple">
 <li><p>On average, there is ~4% that a human user rejects this galaxy.</p></li>
@@ -675,14 +689,14 @@ galaxy (above picture: second panel from the right) providing an extreme example
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7fbbf606fd90&gt;
+&lt;matplotlib.image.AxesImage at 0x7f41748e8ca0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/tutorial_13_1.png" src="_images/tutorial_13_1.png" />
+<img alt="_images/tutorial_15_1.png" src="_images/tutorial_15_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -742,7 +756,7 @@ galaxy (above picture: second panel from the right) providing an extreme example
 </div>
 </div>
 <div class="section" id="Wrong-file-name">
-<h3><span class="section-number">1.6.2. </span>Wrong file name<a class="headerlink" href="#Wrong-file-name" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.3.2. </span>Wrong file name<a class="headerlink" href="#Wrong-file-name" title="Permalink to this headline"></a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
@@ -762,7 +776,7 @@ curl: (26) Failed to open/read local data from file/application
 </div>
 </div>
 <div class="section" id="Wrong-file-format">
-<h3><span class="section-number">1.6.3. </span>Wrong file format<a class="headerlink" href="#Wrong-file-format" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.3.3. </span>Wrong file format<a class="headerlink" href="#Wrong-file-format" title="Permalink to this headline"></a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
@@ -783,9 +797,9 @@ curl: (26) Failed to open/read local data from file/application
 </div>
 </div>
 <div class="section" id="Example-4:-/getPGC">
-<h2><span class="section-number">1.7. </span>Example 4: <em>/getPGC</em><a class="headerlink" href="#Example-4:-/getPGC" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">3.4. </span>Example 4: <em>/getPGC</em><a class="headerlink" href="#Example-4:-/getPGC" title="Permalink to this headline"></a></h2>
 <div class="section" id="Get-information-about-the-galaxy-providing-the-PGC-ID">
-<h3><span class="section-number">1.7.1. </span>Get information about the galaxy providing the PGC ID<a class="headerlink" href="#Get-information-about-the-galaxy-providing-the-PGC-ID" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.4.1. </span>Get information about the galaxy providing the PGC ID<a class="headerlink" href="#Get-information-about-the-galaxy-providing-the-PGC-ID" title="Permalink to this headline"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">PGC</span> <span class="pre">2557</span></code> is the code of the <code class="docutils literal notranslate"><span class="pre">Andromeda</span></code> galaxy.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
@@ -810,7 +824,7 @@ curl: (26) Failed to open/read local data from file/application
 </div>
 </div>
 <div class="section" id="Generating-a-wrong-API-call">
-<h3><span class="section-number">1.7.2. </span>Generating a wrong API call<a class="headerlink" href="#Generating-a-wrong-API-call" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.4.2. </span>Generating a wrong API call<a class="headerlink" href="#Generating-a-wrong-API-call" title="Permalink to this headline"></a></h3>
 <p>Cases when the requested PGC ID is not available, or an error occurs in the API call</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
@@ -836,9 +850,9 @@ curl: (26) Failed to open/read local data from file/application
 </div>
 </div>
 <div class="section" id="Example-5:-/getObj">
-<h2><span class="section-number">1.8. </span>Example 5: <em>/getObj</em><a class="headerlink" href="#Example-5:-/getObj" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">3.5. </span>Example 5: <em>/getObj</em><a class="headerlink" href="#Example-5:-/getObj" title="Permalink to this headline"></a></h2>
 <div class="section" id="Get-information-about-the-galaxy-providing-its-common-name">
-<h3><span class="section-number">1.8.1. </span>Get information about the galaxy providing its common name<a class="headerlink" href="#Get-information-about-the-galaxy-providing-its-common-name" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.5.1. </span>Get information about the galaxy providing its common name<a class="headerlink" href="#Get-information-about-the-galaxy-providing-its-common-name" title="Permalink to this headline"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">M31</span></code> is the alternative name of <code class="docutils literal notranslate"><span class="pre">Andromeda</span></code> in the Messier catalog.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
@@ -863,7 +877,7 @@ curl: (26) Failed to open/read local data from file/application
 </div>
 </div>
 <div class="section" id="id1">
-<h3><span class="section-number">1.8.2. </span>Generating a wrong API call<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">3.5.2. </span>Generating a wrong API call<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
 <p>Cases when the requested galaxy name is not available, or an error occurs in the API call</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
@@ -889,7 +903,7 @@ curl: (26) Failed to open/read local data from file/application
 </div>
 </div>
 <div class="section" id="Related-Information">
-<h2><span class="section-number">1.9. </span>Related Information<a class="headerlink" href="#Related-Information" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">3.6. </span>Related Information<a class="headerlink" href="#Related-Information" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>For further details on various VGG models we considered in this project <a class="reference external" href="https://github.com/ekourkchi/incNET-data/tree/master/incNET_VGGcnn_withAugmentation">click here</a>.</p></li>
 <li><p><a class="reference external" href="https://github.com/ekourkchi/inclinet_production_repo/blob/main/Inclinet_Deployment_Architecture.pdf">Visit here</a> to get the full picture of the deployment plan.</p></li>
@@ -900,7 +914,7 @@ curl: (26) Failed to open/read local data from file/application
 </ul>
 </div>
 <div class="section" id="About-the-data">
-<h2><span class="section-number">1.10. </span>About the data<a class="headerlink" href="#About-the-data" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">3.7. </span>About the data<a class="headerlink" href="#About-the-data" title="Permalink to this headline"></a></h2>
 <p>All data exposed by the <em>IncliNET</em> project belongs to</p>
 <ul class="simple">
 <li><p>Cosmicflows-4 program</p></li>
@@ -909,13 +923,13 @@ curl: (26) Failed to open/read local data from file/application
 </ul>
 </div>
 <div class="section" id="Author">
-<h2><span class="section-number">1.11. </span>Author<a class="headerlink" href="#Author" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">3.8. </span>Author<a class="headerlink" href="#Author" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>Ehsan Kourkchi - <a class="reference external" href="mailto:ekourkchi&#37;&#52;&#48;gmail&#46;com">ekourkchi<span>&#64;</span>gmail<span>&#46;</span>com</a></p></li>
 </ul>
 </div>
 <div class="section" id="Disclaimer">
-<h2><span class="section-number">1.12. </span>Disclaimer<a class="headerlink" href="#Disclaimer" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">3.9. </span>Disclaimer<a class="headerlink" href="#Disclaimer" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>All rights reserved. The material may not be used, reproduced or distributed, in whole or in part, without the prior agreement.</p></li>
 </ul>
@@ -927,7 +941,7 @@ curl: (26) Failed to open/read local data from file/application
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="IncliNET" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="modules.html" class="btn btn-neutral float-right" title="2. Python Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="4. Python Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

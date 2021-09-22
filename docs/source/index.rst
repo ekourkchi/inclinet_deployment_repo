@@ -100,12 +100,6 @@ Execution of ``server.py`` launches the application.
 Please refer to `the IncliNET code documentation <https://edd.ifa.hawaii.edu/static/html/server.html>`_ for further details. 
 For more information, read the `tutorial <https://edd.ifa.hawaii.edu/static/html/index.html>`_.
 
-
-.. image:: https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png
-   :target: https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png
-   :alt: Inclinet_Deployment_flowchart
-
-
 Bulding the Docker Package
 --------------------------
 
@@ -121,6 +115,12 @@ where ``x.x`` is the package version.
 
 
 * Docker simple `cheat sheet <https://www.docker.com/sites/default/files/d8/2019-09/docker-cheat-sheet.pdf>`_
+
+
+.. image:: https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png
+   :target: https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png
+   :alt: Inclinet_Deployment_flowchart
+
 
 API
 ---

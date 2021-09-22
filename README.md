@@ -79,8 +79,6 @@ Execution of `server.py` launches the application.
 Please refer to [the IncliNET code documentation](https://edd.ifa.hawaii.edu/static/html/server.html) for further details. 
 For more information, read the [tutorial](https://edd.ifa.hawaii.edu/static/html/index.html).
 
-![Inclinet_Deployment_flowchart](https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png)
-
 ## Bulding the Docker Package
 
 In the code repository run:
@@ -93,6 +91,8 @@ In the code repository run:
 where `x.x` is the package version.
 
 - Docker simple [cheat sheet](https://www.docker.com/sites/default/files/d8/2019-09/docker-cheat-sheet.pdf)
+
+![Inclinet_Deployment_flowchart](https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png)
 
 ## API
 
