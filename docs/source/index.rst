@@ -309,10 +309,10 @@ where ``/path/to/image/galaxy.jpg`` would be replaced by the name of the galaxy 
 Documentation
 -------------
 
+The full documentation of this application is `available here <https://edd.ifa.hawaii.edu/static/html/index.html>`_.
+
 `Sphinx <https://www.sphinx-doc.org/en/master/>`_
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The full documentation of our application is `available here <https://edd.ifa.hawaii.edu/static/html/index.html>`_.
 
 **Notes:**
 
@@ -338,7 +338,7 @@ The documentation of the **REST API** of our application is `available here <htt
 
 **Notes:** You may follow `this toturial <https://dev.to/sanjan/how-to-add-swagger-ui-to-a-plain-flask-api-project-with-an-openapi-specification-file-1jl8>`_ to easily setup the Swagger API documentation under ``Flask``.
 
-Related information
+Related Information
 -------------------
 
 
@@ -349,19 +349,18 @@ Related information
 * `Data Preprocessing <https://github.com/ekourkchi/incNET-data/blob/master/incNET_dataPrep/incNET_dataClean.ipynb>`_ in order to get reliable labels
 * On how to download data from the SDSS image service and preprocess them `click here <https://github.com/ekourkchi/SDSS_get>`_
 
-ABOUT THE DATA
+About the data
 --------------
 
 All data exposed by the *IncliNET* project belongs to 
 
-..
 
-   Cosmicflows-4 program
-   Copyright (C) Cosmicflows
-   Team - The Extragalactic Distance Database (EDD)
+* Cosmicflows-4 program
+* Copyright (C) Cosmicflows
+* Team - The Extragalactic Distance Database (EDD)
 
-
-**Please cite:**
+Please cite
+^^^^^^^^^^^
 
 ..
 
