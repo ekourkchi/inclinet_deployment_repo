@@ -10,7 +10,7 @@
 IncliNET is a Python application to determine the inclination of Spiral Galaxies
 
 - This application is hosted on EDD: [IncliNET](http://edd.ifa.hawaii.edu/inclinet/)
-- [EDD: Extragalactic Distance Database](ttp://edd.ifa.hawaii.edu)
+- [EDD: Extragalactic Distance Database](https://edd.ifa.hawaii.edu)
 
 
 ## Code Repository & Issues
@@ -83,8 +83,15 @@ $ curl https://edd.ifa.hawaii.edu/inclinet/api/pgc/2557
 ```
 
 For more information, read the [tutorial in the
-documentation](https://pycf3.readthedocs.io).
+documentation]().
 
+### Related information
+
+- For furhter details on various VGG models we considered in this project [click here](https://github.com/ekourkchi/incNET-data/tree/master/incNET_VGGcnn_withAugmentation).
+- [Visit here](https://github.com/ekourkchi/inclinet_production_repo/blob/main/Inclinet_Deployment_Architecture.pdf) to get the full picture of the deployment plan.
+- [Project proposal and motivations](https://github.com/ekourkchi/incNET-data)
+- [Data Preprocessing](https://github.com/ekourkchi/incNET-data/blob/master/incNET_dataPrep/incNET_dataClean.ipynb) in order to get reliable labels
+- On how to download data from the SDSS image service and preprocess them [click here](https://github.com/ekourkchi/SDSS_get)
 
 ### ABOUT THE DATA
 
@@ -119,7 +126,10 @@ archivePrefix = {arXiv},
 }
 ```
 
-## Authors
-
+## Author
 
 - Ehsan Kourkchi - [ekourkchi@gmail.com](ekourkchi@gmail.com)
+
+## Disclaimer <a name="Disclaimer"></a>
+
+ * All rights reserved. The material may not be used, reproduced or distributed, in whole or in part, without the prior agreement. 
