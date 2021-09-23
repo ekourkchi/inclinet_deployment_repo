@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>1. IncliNET Tutorial &mdash; IncliNET 21.09 documentation</title>
+  <title>1. The IncliNET Tutorial &mdash; IncliNET 21.09 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -40,7 +40,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. <code class="docutils literal notranslate"><span class="pre">IncliNET</span></code> Tutorial</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. The <code class="docutils literal notranslate"><span class="pre">IncliNET</span></code> Tutorial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Introduction">1.1. Introduction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Problem">1.1.1. Problem</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Objectives">1.1.2. Objectives</a></li>
@@ -49,13 +49,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#Web-Application">2. Web Application</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Online-website">2.1. Online website</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Galaxy-PGC-ID">2.1.1. Galaxy PGC ID</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Galaxy-Name">2.1.2. Galaxy Name</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Galaxy-Coordinates">2.1.3. Galaxy Coordinates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Galaxy-Image">2.1.4. Galaxy Image</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#Galaxy-PGC-ID">2.1. Galaxy PGC ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Galaxy-Name">2.2. Galaxy Name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Galaxy-Coordinates">2.3. Galaxy Coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Galaxy-Image">2.4. Galaxy Image</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#API">3. API</a><ul>
@@ -108,7 +105,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li><span class="section-number">1. </span><code class="docutils literal notranslate"><span class="pre">IncliNET</span></code> Tutorial</li>
+      <li><span class="section-number">1. </span>The <code class="docutils literal notranslate"><span class="pre">IncliNET</span></code> Tutorial</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/tutorial.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
@@ -388,18 +385,8 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">## this cell is hidden in sphinx (see the cell metadata)</span>
-<span class="kn">import</span> <span class="nn">expectexception</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="IncliNET-Tutorial">
-<h1><span class="section-number">1. </span><code class="docutils literal notranslate"><span class="pre">IncliNET</span></code> Tutorial<a class="headerlink" href="#IncliNET-Tutorial" title="Permalink to this headline"></a></h1>
+<div class="section" id="The-IncliNET-Tutorial">
+<h1><span class="section-number">1. </span>The <code class="docutils literal notranslate"><span class="pre">IncliNET</span></code> Tutorial<a class="headerlink" href="#The-IncliNET-Tutorial" title="Permalink to this headline"></a></h1>
 <div class="section" id="Introduction">
 <h2><span class="section-number">1.1. </span>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this headline"></a></h2>
 <p>An application with and online web GUI and an easy to access API for determining the inclinations of the spiral galaxies using their optical images.</p>
@@ -419,33 +406,28 @@ galaxy (scroll down to see an image of <a class="reference external" href="https
 </div>
 <div class="section" id="Web-Application">
 <h1><span class="section-number">2. </span>Web Application<a class="headerlink" href="#Web-Application" title="Permalink to this headline"></a></h1>
+<p><a class="reference external" href="https://edd.ifa.hawaii.edu/inclinet/">https://edd.ifa.hawaii.edu/inclinet/</a></p>
 <p><img alt="GUI_screenshot" src="_images/web_gui.png" /></p>
 <p>On the left side of this tool, users have different options to find and load a galaxy image. The PGC-based query relies on the information provided by the <a class="reference external" href="http://leda.univ-lyon1.fr/">HyperLEDA</a> catalog. Each image is rotated and resized based on the LEDA entries for <code class="docutils literal notranslate"><span class="pre">logd25</span></code> and position angle (<code class="docutils literal notranslate"><span class="pre">pa</span></code>), which are reasonable in most cases. Further manual alignment features are provided, however the evaluation process is independent of the orientation of the image. Clicking on the
 <code class="docutils literal notranslate"><span class="pre">Evaluate</span></code> button, the output inclinations generated by various ML models are generated and the average results are displayed on the right side. This step feeds the image to a pre-trained neural network(s) and outputs the averages of the determined inclination value. In addition, there is other networks that separately predict the rejection probability of the galaxy by human users. For practical reasons, all images are converted to square sizes and rescaled to 128x128 pixels prior to the
 evaluation process.</p>
-<div class="section" id="Online-website">
-<h2><span class="section-number">2.1. </span>Online website<a class="headerlink" href="#Online-website" title="Permalink to this headline"></a></h2>
-<p><a class="reference external" href="https://edd.ifa.hawaii.edu/inclinet/">https://edd.ifa.hawaii.edu/inclinet/</a></p>
-<ul class="simple">
-<li><p>An online website that allows users to submit the galaxy image of interest through three different methods:</p></li>
-</ul>
+<p>This online GUI allows users to submit a galaxy image through four different methods, as described below.</p>
 <div class="section" id="Galaxy-PGC-ID">
-<h3><span class="section-number">2.1.1. </span>Galaxy PGC ID<a class="headerlink" href="#Galaxy-PGC-ID" title="Permalink to this headline"></a></h3>
+<h2><span class="section-number">2.1. </span>Galaxy PGC ID<a class="headerlink" href="#Galaxy-PGC-ID" title="Permalink to this headline"></a></h2>
 <p>Entering the name of a galaxy by querying its PGC number (the ID of galaxy in the Principal Galaxy Catalog) - The PGC catalog is deployed with our model, and contains a table of galaxy coordinates and their sizes. Images are then queried from the <a class="reference external" href="http://skyserver.sdss.org/dr16/en/tools/quicklook/summary.aspx?">SDSS quick-look</a> image server.</p>
 </div>
 <div class="section" id="Galaxy-Name">
-<h3><span class="section-number">2.1.2. </span>Galaxy Name<a class="headerlink" href="#Galaxy-Name" title="Permalink to this headline"></a></h3>
+<h2><span class="section-number">2.2. </span>Galaxy Name<a class="headerlink" href="#Galaxy-Name" title="Permalink to this headline"></a></h2>
 <p>Searching a galaxy by its common name. - The entered name is queried through the <a class="reference external" href="http://ned.ipac.caltech.edu/">NASA/IPAC Extragalactic Database</a>. Then, a python routine based on the package <a class="reference external" href="https://beautiful-soup-4.readthedocs.io/en/latest/#">Beautiful Soup</a> extracts the corresponding PGC number. Once the PGC ID is available, the galaxy image is imported from the <em>SDSS quick-look</em> as explained above.</p>
 <p><img alt="Screenshot from 2021-09-08 03-09-36" src="https://user-images.githubusercontent.com/13570487/132490712-c39440bc-9b41-4a3e-bb54-1c4fb0de2c30.png" /></p>
 </div>
 <div class="section" id="Galaxy-Coordinates">
-<h3><span class="section-number">2.1.3. </span>Galaxy Coordinates<a class="headerlink" href="#Galaxy-Coordinates" title="Permalink to this headline"></a></h3>
+<h2><span class="section-number">2.3. </span>Galaxy Coordinates<a class="headerlink" href="#Galaxy-Coordinates" title="Permalink to this headline"></a></h2>
 <p>Looking at a specific location in the sky by entering the sky coordinates and the field size. In the first release we only provide access to the <code class="docutils literal notranslate"><span class="pre">SDSS</span></code> images, if they are available. <a class="reference external" href="https://www.sdss.org/dr16/">The SDSS coverage</a> is mainly limited to the Northern sky.</p>
 </div>
 <div class="section" id="Galaxy-Image">
-<h3><span class="section-number">2.1.4. </span>Galaxy Image<a class="headerlink" href="#Galaxy-Image" title="Permalink to this headline"></a></h3>
+<h2><span class="section-number">2.4. </span>Galaxy Image<a class="headerlink" href="#Galaxy-Image" title="Permalink to this headline"></a></h2>
 <p>Uploading a galaxy image from the local computer of the user. - User has the option of uploading a galaxy image for evaluation by our model(s)</p>
-</div>
 </div>
 </div>
 <div class="section" id="API">
@@ -461,7 +443,7 @@ evaluation process.</p>
 <li><p>The median of all evaluated inclinations is 75 degree (from face-on).</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -475,7 +457,7 @@ evaluation process.</p>
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -487,11 +469,11 @@ Text(0.5, 1.0, &#39;NGC7331&#39;)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/tutorial_8_1.png" src="_images/tutorial_8_1.png" />
+<img alt="_images/tutorial_7_1.png" src="_images/tutorial_7_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -505,7 +487,7 @@ Text(0.5, 1.0, &#39;NGC7331&#39;)
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 {
-  &#34;status&#34;: &#34;failed&#34;,
+  &#34;status&#34;: &#34;success&#34;,
   &#34;galaxy&#34;: {
     &#34;pgc&#34;: &#34;69327&#34;,
     &#34;ra&#34;: &#34;339.2673 deg&#34;,
@@ -514,7 +496,41 @@ Text(0.5, 1.0, &#39;NGC7331&#39;)
     &#34;pa&#34;: &#34;169.0 deg&#34;,
     &#34;objname&#34;: &#34;NGC7331&#34;
   },
-  &#34;message&#34;: &#34;Could not evaluate inclination! &#34;
+  &#34;inclinations&#34;: {
+    &#34;Group_0&#34;: {
+      &#34;model4&#34;: 75.0,
+      &#34;model41&#34;: 76.0,
+      &#34;model42&#34;: 74.0,
+      &#34;model43&#34;: 74.0
+    },
+    &#34;Group_1&#34;: {
+      &#34;model5&#34;: 76.0,
+      &#34;model51&#34;: 76.0,
+      &#34;model52&#34;: 75.0,
+      &#34;model53&#34;: 73.0
+    },
+    &#34;Group_2&#34;: {
+      &#34;model6&#34;: 75.0,
+      &#34;model61&#34;: 77.0,
+      &#34;model62&#34;: 76.0,
+      &#34;model63&#34;: 75.0
+    },
+    &#34;summary&#34;: {
+      &#34;mean&#34;: 75.16666666666667,
+      &#34;median&#34;: 75.0,
+      &#34;stdev&#34;: 1.0671873729054746
+    }
+  },
+  &#34;rejection_likelihood&#34;: {
+    &#34;model4-binary&#34;: 13.275855779647827,
+    &#34;model5-binary&#34;: 0.4835432395339012,
+    &#34;model6-binary&#34;: 2.4772919714450836,
+    &#34;summary&#34;: {
+      &#34;mean&#34;: 5.412230330208938,
+      &#34;median&#34;: 2.4772919714450836,
+      &#34;stdev&#34;: 5.619680442177983
+    }
+  }
 }
 </pre></div></div>
 </div>
@@ -523,7 +539,7 @@ Text(0.5, 1.0, &#39;NGC7331&#39;)
 <h3><span class="section-number">3.1.2. </span>Erroneous PGC ID<a class="headerlink" href="#Erroneous-PGC-ID" title="Permalink to this headline"></a></h3>
 <p>or an ID that doesn’t exist</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -552,7 +568,7 @@ Text(0.5, 1.0, &#39;NGC7331&#39;)
 <li><p>The median of all evaluated inclinations is 89 degree (from face-on).</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -566,7 +582,7 @@ Text(0.5, 1.0, &#39;NGC7331&#39;)
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -578,11 +594,11 @@ Text(0.5, 1.0, &#39;The Sombrero Galaxy (M104)&#39;)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/tutorial_13_1.png" src="_images/tutorial_13_1.png" />
+<img alt="_images/tutorial_12_1.png" src="_images/tutorial_12_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -648,7 +664,7 @@ Text(0.5, 1.0, &#39;The Sombrero Galaxy (M104)&#39;)
 <h3><span class="section-number">3.2.2. </span>Wrong galaxy name<a class="headerlink" href="#Wrong-galaxy-name" title="Permalink to this headline"></a></h3>
 <p>or a name that can not be recognized/parsed from <a class="reference external" href="https://ned.ipac.caltech.edu/">NED</a>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -676,7 +692,7 @@ Text(0.5, 1.0, &#39;The Sombrero Galaxy (M104)&#39;)
 <li><p>The median of all evaluated inclinations is 76 degree (from face-on).</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -690,7 +706,7 @@ Text(0.5, 1.0, &#39;The Sombrero Galaxy (M104)&#39;)
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -702,11 +718,11 @@ Text(0.5, 1.0, &#39;Andromeda&#39;)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/tutorial_18_1.png" src="_images/tutorial_18_1.png" />
+<img alt="_images/tutorial_17_1.png" src="_images/tutorial_17_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -764,7 +780,7 @@ Text(0.5, 1.0, &#39;Andromeda&#39;)
 <div class="section" id="Wrong-file-name">
 <h3><span class="section-number">3.3.2. </span>Wrong file name<a class="headerlink" href="#Wrong-file-name" title="Permalink to this headline"></a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -784,7 +800,7 @@ curl: (26) Failed to open/read local data from file/application
 <div class="section" id="Wrong-file-format">
 <h3><span class="section-number">3.3.3. </span>Wrong file format<a class="headerlink" href="#Wrong-file-format" title="Permalink to this headline"></a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -808,7 +824,7 @@ curl: (26) Failed to open/read local data from file/application
 <h3><span class="section-number">3.4.1. </span>Get information about the galaxy providing the PGC ID<a class="headerlink" href="#Get-information-about-the-galaxy-providing-the-PGC-ID" title="Permalink to this headline"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">PGC</span> <span class="pre">2557</span></code> is the code of the <code class="docutils literal notranslate"><span class="pre">Andromeda</span></code> galaxy.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -833,7 +849,7 @@ curl: (26) Failed to open/read local data from file/application
 <h3><span class="section-number">3.4.2. </span>Generating a wrong API call<a class="headerlink" href="#Generating-a-wrong-API-call" title="Permalink to this headline"></a></h3>
 <p>Cases when the requested PGC ID is not available, or an error occurs in the API call</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -861,7 +877,7 @@ curl: (26) Failed to open/read local data from file/application
 <h3><span class="section-number">3.5.1. </span>Get information about the galaxy providing its common name<a class="headerlink" href="#Get-information-about-the-galaxy-providing-its-common-name" title="Permalink to this headline"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">M31</span></code> is the alternative name of <code class="docutils literal notranslate"><span class="pre">Andromeda</span></code> in the Messier catalog.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -886,7 +902,7 @@ curl: (26) Failed to open/read local data from file/application
 <h3><span class="section-number">3.5.2. </span>Generating a wrong API call<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
 <p>Cases when the requested galaxy name is not available, or an error occurs in the API call</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
