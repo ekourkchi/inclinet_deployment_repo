@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>1. IncliNET Tutorial &mdash; inclinet 21.09 documentation</title>
+  <title>1. IncliNET Tutorial &mdash; IncliNET 21.09 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -21,7 +21,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="4. Python Modules" href="modules.html" />
-    <link rel="prev" title="IncliNET" href="index.html" /> 
+    <link rel="prev" title="1. Description" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -29,7 +29,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> inclinet
+            <a href="index.html" class="icon icon-home"> IncliNET
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -41,12 +41,23 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. <code class="docutils literal notranslate"><span class="pre">IncliNET</span></code> Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Introduction">1.1. Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Problem">1.2. Problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Objectives">1.3. Objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Introduction">1.1. Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Problem">1.1.1. Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Objectives">1.1.2. Objectives</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#Web-GUI">2. Web GUI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#Web-Application">2. Web Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Online-website">2.1. Online website</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#1.-Galaxy-PGC-ID">2.1.1. 1. Galaxy PGC ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#2.-Galaxy-Name">2.1.2. 2. Galaxy Name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#3.-Galaxy-Coordinates">2.1.3. 3. Galaxy Coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#4.-Galaxy-Image">2.1.4. 4. Galaxy Image</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="#API">3. API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Example-1:-/api/pgc/">3.1. Example 1: /api/pgc/</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Sending-a-request-with-the-galaxy-ID">3.1.1. Sending a request with the galaxy ID</a></li>
@@ -74,7 +85,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id1">3.5.2. Generating a wrong API call</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#Related-Information">3.6. Related Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Related-Topics">3.6. Related Topics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#About-the-data">3.7. About the data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Author">3.8. Author</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Disclaimer">3.9. Disclaimer</a></li>
@@ -89,7 +100,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">inclinet</a>
+          <a href="index.html">IncliNET</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -393,27 +404,53 @@ div.rendered_html tbody tr:hover {
 <h2><span class="section-number">1.1. </span>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this headline"></a></h2>
 <p>An application with and online web GUI and an easy to access API for determining the inclinations of the spiral galaxies using their optical images.</p>
 <p>This program is powered by several deep convolutional neural networks (CNN) implemented in <code class="docutils literal notranslate"><span class="pre">TensorFlow</span></code>. All CNNs are constructed based on the well-known <code class="docutils literal notranslate"><span class="pre">VGG</span></code> structure, where the convolutional filters are of size <code class="docutils literal notranslate"><span class="pre">3x3</span></code>.</p>
-</div>
+<p><img alt="Inclinet_Deployment_flowchart" src="https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png" /></p>
 <div class="section" id="Problem">
-<h2><span class="section-number">1.2. </span>Problem<a class="headerlink" href="#Problem" title="Permalink to this headline"></a></h2>
-<p>The inclination of spiral galaxies plays an important role in measurements of their distances using the Tully-Fisher relationship. Each galaxy has its own unique morphology, luminosity, and surface brightness profiles. In addition, galaxy images are covered by foreground stars of the Milky Way galaxy. Therefore, it is challenging to design an algorithm that automatically determines the 3D inclination of spiral galaxies. The inclinations of spiral galaxies can be coarsely derived from the
+<h3><span class="section-number">1.1.1. </span>Problem<a class="headerlink" href="#Problem" title="Permalink to this headline"></a></h3>
+<p>The inclination of spiral galaxies plays an important role in measurements of their distances using the <code class="docutils literal notranslate"><span class="pre">Tully-Fisher</span></code> relationship. Each galaxy has its own unique morphology, luminosity, and surface brightness profiles. In addition, galaxy images are covered by foreground stars of the Milky Way galaxy. Therefore, it is challenging to design an algorithm that automatically determines the 3D inclination of spiral galaxies. The inclinations of spiral galaxies can be coarsely derived from the
 ellipticity of apertures used for photometry, assuming that the image of a spiral galaxy is the projection of a disk with the shape of an oblate spheroid. For ~1/3 of spirals, the approximation of axial ratios provides inclination estimates good to better than 5 degrees, with degradation to ~5 degrees for another 1/3. However in ~1/3 of cases, ellipticity-deriven inclinations are problematic for a variety of reasons. Prominent bulges can dominate the axial ratio measurement, with the Sombrero
-galaxy (above picture: second panel from the right) providing an extreme example. Some galaxies may not be axially symmetric due to tidal effects. High surface brightness bars within much lower surface brightness disks can lead to large errors. Simply the orientation of strong spiral features with respect to the tilt axis can be confusing. The statistical derivation of inclinations for large samples has been unsatisfactory.</p>
+galaxy (scroll down to see an image of <a class="reference external" href="https://cdn.eso.org/images/screen/eso0007a.jpg">The Sombrero Galaxy</a>) providing an extreme example. Some galaxies may not be axially symmetric due to tidal effects. High surface brightness bars within much lower surface brightness disks can lead to large errors. Simply the orientation of strong spiral features with respect to the tilt axis can be confusing. The statistical derivation of inclinations for large samples has been unsatisfactory.</p>
 </div>
 <div class="section" id="Objectives">
-<h2><span class="section-number">1.3. </span>Objectives<a class="headerlink" href="#Objectives" title="Permalink to this headline"></a></h2>
+<h3><span class="section-number">1.1.2. </span>Objectives<a class="headerlink" href="#Objectives" title="Permalink to this headline"></a></h3>
 <p>The task of manual evaluation of spirals inclinations is tedious and time consuming. In the future, with the large astronomical survey telescopes coming online, this task could not be efficiently done manually for thousands of galaxies. The objective of this project is to automatically determine the inclination of spiral galaxies with the human level accuracy providing their images (ideally in both colorful and black-and-white formats).</p>
+<p><img alt="Inclinet_Deployment_flowchart" src="https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png" /></p>
 </div>
 </div>
-<div class="section" id="Web-GUI">
-<h1><span class="section-number">2. </span>Web GUI<a class="headerlink" href="#Web-GUI" title="Permalink to this headline"></a></h1>
+</div>
+<div class="section" id="Web-Application">
+<h1><span class="section-number">2. </span>Web Application<a class="headerlink" href="#Web-Application" title="Permalink to this headline"></a></h1>
 <p><img alt="GUI_screenshot" src="_images/web_gui.png" /></p>
 <p>On the left side of this tool, users have different options to find and load a galaxy image. The PGC-based query relies on the information provided by the <a class="reference external" href="http://leda.univ-lyon1.fr/">HyperLEDA</a> catalog. Each image is rotated and resized based on the LEDA entries for <code class="docutils literal notranslate"><span class="pre">logd25</span></code> and position angle (<code class="docutils literal notranslate"><span class="pre">pa</span></code>), which are reasonable in most cases. Further manual alignment features are provided, however the evaluation process is independent of the orientation of the image. Clicking on the
 <code class="docutils literal notranslate"><span class="pre">Evaluate</span></code> button, the output inclinations generated by various ML models are generated and the average results are displayed on the right side. This step feeds the image to a pre-trained neural network(s) and outputs the averages of the determined inclination value. In addition, there is other networks that separately predict the rejection probability of the galaxy by human users. For practical reasons, all images are converted to square sizes and rescaled to 128x128 pixels prior to the
 evaluation process.</p>
+<div class="section" id="Online-website">
+<h2><span class="section-number">2.1. </span>Online website<a class="headerlink" href="#Online-website" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://edd.ifa.hawaii.edu/inclinet/">https://edd.ifa.hawaii.edu/inclinet/</a></p>
+<ul class="simple">
+<li><p>An online website that allows users to submit the galaxy image of interest through three different methods:</p></li>
+</ul>
+<div class="section" id="1.-Galaxy-PGC-ID">
+<h3><span class="section-number">2.1.1. </span>1. Galaxy PGC ID<a class="headerlink" href="#1.-Galaxy-PGC-ID" title="Permalink to this headline"></a></h3>
+<p>Entering the name of a galaxy by querying its PGC number (the ID of galaxy in the Principal Galaxy Catalog) - The PGC catalog is deployed with our model, and contains a table of galaxy coordinates and their sizes. Images are then queried from the <a class="reference external" href="http://skyserver.sdss.org/dr16/en/tools/quicklook/summary.aspx?">SDSS quick-look</a> image server.</p>
+</div>
+<div class="section" id="2.-Galaxy-Name">
+<h3><span class="section-number">2.1.2. </span>2. Galaxy Name<a class="headerlink" href="#2.-Galaxy-Name" title="Permalink to this headline"></a></h3>
+<p>Searching a galaxy by its common name. - The entered name is queried through the <a class="reference external" href="http://ned.ipac.caltech.edu/">NASA/IPAC Extragalactic Database</a>. Then, a python routine based on the package <a class="reference external" href="https://beautiful-soup-4.readthedocs.io/en/latest/#">Beautiful Soup</a> extracts the corresponding PGC number. Once the PGC ID is available, the galaxy image is imported from the <em>SDSS quick-look</em> as explained above.</p>
+</div>
+<div class="section" id="3.-Galaxy-Coordinates">
+<h3><span class="section-number">2.1.3. </span>3. Galaxy Coordinates<a class="headerlink" href="#3.-Galaxy-Coordinates" title="Permalink to this headline"></a></h3>
+<p>Looking at a specific location in the sky by entering the sky coordinates and the field size. In the first release we only provide access to the <code class="docutils literal notranslate"><span class="pre">SDSS</span></code> images, if they are available. <a class="reference external" href="https://www.sdss.org/dr16/">The SDSS coverage</a> is mainly limited to the Northern sky.</p>
+</div>
+<div class="section" id="4.-Galaxy-Image">
+<h3><span class="section-number">2.1.4. </span>4. Galaxy Image<a class="headerlink" href="#4.-Galaxy-Image" title="Permalink to this headline"></a></h3>
+<p>Uploading a galaxy image from the local computer of the user. - User has the option of uploading a galaxy image for evaluation by our model(s) <img alt="Screenshot from 2021-09-08 03-09-36" src="https://user-images.githubusercontent.com/13570487/132490712-c39440bc-9b41-4a3e-bb54-1c4fb0de2c30.png" /></p>
+</div>
+</div>
 </div>
 <div class="section" id="API">
 <h1><span class="section-number">3. </span>API<a class="headerlink" href="#API" title="Permalink to this headline"></a></h1>
+<p>We provide a <code class="docutils literal notranslate"><span class="pre">REST</span> <span class="pre">API</span></code> that can be called from terminal or other applications that enable the <code class="docutils literal notranslate"><span class="pre">REST</span> <span class="pre">API</span></code> calls. The input and output data would be in JSON format.</p>
 <div class="section" id="Example-1:-/api/pgc/">
 <h2><span class="section-number">3.1. </span>Example 1: /api/pgc/<a class="headerlink" href="#Example-1:-/api/pgc/" title="Permalink to this headline"></a></h2>
 <div class="section" id="Sending-a-request-with-the-galaxy-ID">
@@ -433,6 +470,7 @@ evaluation process.</p>
 
 <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;./PGC69327_NGC7331.png&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;NGC7331&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -442,14 +480,14 @@ evaluation process.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f411e8be310&gt;
+Text(0.5, 1.0, &#39;NGC7331&#39;)
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/tutorial_5_1.png" src="_images/tutorial_5_1.png" />
+<img alt="_images/tutorial_9_1.png" src="_images/tutorial_9_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -467,7 +505,7 @@ evaluation process.</p>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 {
-  &#34;status&#34;: &#34;success&#34;,
+  &#34;status&#34;: &#34;failed&#34;,
   &#34;galaxy&#34;: {
     &#34;pgc&#34;: &#34;69327&#34;,
     &#34;ra&#34;: &#34;339.2673 deg&#34;,
@@ -476,41 +514,7 @@ evaluation process.</p>
     &#34;pa&#34;: &#34;169.0 deg&#34;,
     &#34;objname&#34;: &#34;NGC7331&#34;
   },
-  &#34;inclinations&#34;: {
-    &#34;Group_0&#34;: {
-      &#34;model4&#34;: 75.0,
-      &#34;model41&#34;: 76.0,
-      &#34;model42&#34;: 76.0,
-      &#34;model43&#34;: 73.0
-    },
-    &#34;Group_1&#34;: {
-      &#34;model5&#34;: 75.0,
-      &#34;model51&#34;: 76.0,
-      &#34;model52&#34;: 75.0,
-      &#34;model53&#34;: 74.0
-    },
-    &#34;Group_2&#34;: {
-      &#34;model6&#34;: 75.0,
-      &#34;model61&#34;: 76.0,
-      &#34;model62&#34;: 75.0,
-      &#34;model63&#34;: 74.0
-    },
-    &#34;summary&#34;: {
-      &#34;mean&#34;: 75.0,
-      &#34;median&#34;: 75.0,
-      &#34;stdev&#34;: 0.9128709291752769
-    }
-  },
-  &#34;rejection_likelihood&#34;: {
-    &#34;model4-binary&#34;: 4.824159666895866,
-    &#34;model5-binary&#34;: 1.1426504701375961,
-    &#34;model6-binary&#34;: 14.855769276618958,
-    &#34;summary&#34;: {
-      &#34;mean&#34;: 6.940859804550807,
-      &#34;median&#34;: 4.824159666895866,
-      &#34;stdev&#34;: 5.794981820778475
-    }
-  }
+  &#34;message&#34;: &#34;Could not evaluate inclination! &#34;
 }
 </pre></div></div>
 </div>
@@ -557,6 +561,7 @@ evaluation process.</p>
 
 <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;./sombrero.png&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;The Sombrero Galaxy (M104)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -566,14 +571,14 @@ evaluation process.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f4174909190&gt;
+Text(0.5, 1.0, &#39;The Sombrero Galaxy (M104)&#39;)
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/tutorial_10_1.png" src="_images/tutorial_10_1.png" />
+<img alt="_images/tutorial_14_1.png" src="_images/tutorial_14_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -603,36 +608,36 @@ evaluation process.</p>
   &#34;inclinations&#34;: {
     &#34;Group_0&#34;: {
       &#34;model4&#34;: 89.0,
-      &#34;model41&#34;: 88.0,
-      &#34;model42&#34;: 79.0,
-      &#34;model43&#34;: 86.0
+      &#34;model41&#34;: 89.0,
+      &#34;model42&#34;: 75.0,
+      &#34;model43&#34;: 85.0
     },
     &#34;Group_1&#34;: {
       &#34;model5&#34;: 87.0,
       &#34;model51&#34;: 90.0,
-      &#34;model52&#34;: 89.0,
-      &#34;model53&#34;: 89.0
+      &#34;model52&#34;: 88.0,
+      &#34;model53&#34;: 88.0
     },
     &#34;Group_2&#34;: {
       &#34;model6&#34;: 90.0,
       &#34;model61&#34;: 90.0,
-      &#34;model62&#34;: 89.0,
+      &#34;model62&#34;: 88.0,
       &#34;model63&#34;: 90.0
     },
     &#34;summary&#34;: {
-      &#34;mean&#34;: 88.0,
-      &#34;median&#34;: 89.0,
-      &#34;stdev&#34;: 2.972092416687835
+      &#34;mean&#34;: 87.41666666666667,
+      &#34;median&#34;: 88.5,
+      &#34;stdev&#34;: 4.009537241239803
     }
   },
   &#34;rejection_likelihood&#34;: {
     &#34;model4-binary&#34;: 59.36983823776245,
-    &#34;model5-binary&#34;: 15.87938666343689,
-    &#34;model6-binary&#34;: 57.33199119567871,
+    &#34;model5-binary&#34;: 14.682640135288239,
+    &#34;model6-binary&#34;: 60.917991399765015,
     &#34;summary&#34;: {
-      &#34;mean&#34;: 44.19373869895935,
-      &#34;median&#34;: 57.33199119567871,
-      &#34;stdev&#34;: 20.038547910387678
+      &#34;mean&#34;: 44.99015659093857,
+      &#34;median&#34;: 59.36983823776245,
+      &#34;stdev&#34;: 21.439968280999413
     }
   }
 }
@@ -680,6 +685,7 @@ evaluation process.</p>
 
 <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;./andromeda.jpg&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Andromeda&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -689,14 +695,14 @@ evaluation process.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f41748e8ca0&gt;
+Text(0.5, 1.0, &#39;Andromeda&#39;)
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/tutorial_15_1.png" src="_images/tutorial_15_1.png" />
+<img alt="_images/tutorial_19_1.png" src="_images/tutorial_19_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -718,37 +724,37 @@ evaluation process.</p>
   &#34;filename&#34;: &#34;andromeda.jpg&#34;,
   &#34;inclinations&#34;: {
     &#34;Group_0&#34;: {
-      &#34;model4&#34;: 74.0,
-      &#34;model41&#34;: 77.0,
-      &#34;model42&#34;: 77.0,
+      &#34;model4&#34;: 77.0,
+      &#34;model41&#34;: 79.0,
+      &#34;model42&#34;: 76.0,
       &#34;model43&#34;: 76.0
     },
     &#34;Group_1&#34;: {
       &#34;model5&#34;: 73.0,
       &#34;model51&#34;: 76.0,
       &#34;model52&#34;: 75.0,
-      &#34;model53&#34;: 73.0
+      &#34;model53&#34;: 72.0
     },
     &#34;Group_2&#34;: {
-      &#34;model6&#34;: 76.0,
-      &#34;model61&#34;: 74.0,
+      &#34;model6&#34;: 78.0,
+      &#34;model61&#34;: 76.0,
       &#34;model62&#34;: 77.0,
-      &#34;model63&#34;: 77.0
+      &#34;model63&#34;: 78.0
     },
     &#34;summary&#34;: {
-      &#34;mean&#34;: 75.41666666666667,
+      &#34;mean&#34;: 76.08333333333333,
       &#34;median&#34;: 76.0,
-      &#34;stdev&#34;: 1.4976833963009524
+      &#34;stdev&#34;: 1.9346977943739831
     }
   },
   &#34;rejection_likelihood&#34;: {
-    &#34;model4-binary&#34;: 6.419666111469269,
-    &#34;model5-binary&#34;: 4.635564610362053,
-    &#34;model6-binary&#34;: 3.5086583346128464,
+    &#34;model4-binary&#34;: 9.210722893476486,
+    &#34;model5-binary&#34;: 34.75632667541504,
+    &#34;model6-binary&#34;: 8.197003602981567,
     &#34;summary&#34;: {
-      &#34;mean&#34;: 4.854629685481389,
-      &#34;median&#34;: 4.635564610362053,
-      &#34;stdev&#34;: 1.1984667147602732
+      &#34;mean&#34;: 17.3880177239577,
+      &#34;median&#34;: 9.210722893476486,
+      &#34;stdev&#34;: 12.28821993007762
     }
   }
 }
@@ -902,8 +908,8 @@ curl: (26) Failed to open/read local data from file/application
 </div>
 </div>
 </div>
-<div class="section" id="Related-Information">
-<h2><span class="section-number">3.6. </span>Related Information<a class="headerlink" href="#Related-Information" title="Permalink to this headline"></a></h2>
+<div class="section" id="Related-Topics">
+<h2><span class="section-number">3.6. </span>Related Topics<a class="headerlink" href="#Related-Topics" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>For further details on various VGG models we considered in this project <a class="reference external" href="https://github.com/ekourkchi/incNET-data/tree/master/incNET_VGGcnn_withAugmentation">click here</a>.</p></li>
 <li><p><a class="reference external" href="https://github.com/ekourkchi/inclinet_production_repo/blob/main/Inclinet_Deployment_Architecture.pdf">Visit here</a> to get the full picture of the deployment plan.</p></li>
@@ -940,7 +946,7 @@ curl: (26) Failed to open/read local data from file/application
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="IncliNET" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="1. Description" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="modules.html" class="btn btn-neutral float-right" title="4. Python Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

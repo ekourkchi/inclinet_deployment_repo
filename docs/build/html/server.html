@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>4.1. server.py &mdash; inclinet 21.09 documentation</title>
+  <title>4.1. server.py &mdash; IncliNET 21.09 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -27,7 +27,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> inclinet
+            <a href="index.html" class="icon icon-home"> IncliNET
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -39,7 +39,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">1. <code class="docutils literal notranslate"><span class="pre">IncliNET</span></code> Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html#Web-GUI">2. Web GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html#Web-Application">2. Web Application</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html#API">3. API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">4. Python Modules</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">4.1. server.py</a></li>
@@ -55,7 +55,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">inclinet</a>
+          <a href="index.html">IncliNET</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -216,7 +216,7 @@ given the corresponsing PGC ID</p>
 <dd><p>Parsing the command line arguments</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>parsed argumetns <code class="docutils literal notranslate"><span class="pre">(opts,</span> <span class="pre">args)</span></code></p>
+<dd class="field-odd"><p>parsed arguments <code class="docutils literal notranslate"><span class="pre">(opts,</span> <span class="pre">args)</span></code></p>
 </dd>
 </dl>
 <p>opts: the</p>
@@ -230,7 +230,7 @@ given the corresponsing PGC ID</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="server.createDir">
 <span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">createDir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folderPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.createDir" title="Permalink to this definition"></a></dt>
-<dd><p>generating a directory if it doesn’t exist</p>
+<dd><p>generating a directory/folder if it doesn’t exist</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>folderPath</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – path to the desired folder</p>
@@ -268,7 +268,7 @@ If a rectangular image is provided, the output image is square in size.
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pil_img</strong> (<code class="docutils literal notranslate"><span class="pre">PIL</span></code> image opject) – input image</p></li>
+<li><p><strong>pil_img</strong> (<code class="docutils literal notranslate"><span class="pre">PIL</span></code> image object) – input image</p></li>
 <li><p><strong>background_color</strong> (tuple <code class="docutils literal notranslate"><span class="pre">(R,</span> <span class="pre">G,</span> <span class="pre">B)</span></code>) – background color of the augmented part</p></li>
 </ul>
 </dd>
@@ -276,7 +276,7 @@ If a rectangular image is provided, the output image is square in size.
 <dd class="field-even"><p>an square image</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">PIL</span></code> image opject</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">PIL</span></code> image object</p>
 </dd>
 </dl>
 </dd></dl>
@@ -284,7 +284,7 @@ If a rectangular image is provided, the output image is square in size.
 <dl class="py function">
 <dt class="sig sig-object py" id="server.file_api">
 <span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">file_api</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.file_api" title="Permalink to this definition"></a></dt>
-<dd><p><code class="docutils literal notranslate"><span class="pre">API</span></code> function, evaluating the inclination providing the galaxy image</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">API</span></code> function, evaluating the inclination by providing the galaxy image</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>summary of the results, inclinations, statistics</p>
@@ -470,7 +470,7 @@ the galaxy in <code class="docutils literal notranslate"><span class="pre">json<
 <span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">loadLeda</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.loadLeda" title="Permalink to this definition"></a></dt>
 <dd><p>Loading the HyperLeda catalog:
 - <a class="reference external" href="http://leda.univ-lyon1.fr/">http://leda.univ-lyon1.fr/</a>
-- This catalog tabulates the porper information on local galaxies</p>
+- This catalog tabulates the proper information on local galaxies</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>the Leda catalog in the Pandas dataFrame format</p>
@@ -498,7 +498,7 @@ the galaxy in <code class="docutils literal notranslate"><span class="pre">json<
 <dl class="py function">
 <dt class="sig sig-object py" id="server.modelParams">
 <span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">modelParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.modelParams" title="Permalink to this definition"></a></dt>
-<dd><p>an auxilliary function for additional book keepings
+<dd><p>an auxillary function for additional book keepings
 The conventional extracted galaxy information from the LEDA catalog need to be
 revised to be compatible with the API of the SDSS image server</p>
 <dl class="field-list simple">

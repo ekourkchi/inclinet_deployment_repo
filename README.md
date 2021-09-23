@@ -1,22 +1,22 @@
 <!-- vscode-markdown-toc -->
-* 1. [Description](#Description)
-* 2. [IncliNET Tutorial](#IncliNETTutorial)
-* 3. [Code Repository & Issues](#CodeRepositoryIssues)
-* 4. [Basic Install](#BasicInstall)
-	* 4.1. [on a local machine using [Docker](https://www.docker.com/)](#onalocalmachineusingDockerhttps:www.docker.com)
-	* 4.2. [On a server using Docker](#OnaserverusingDocker)
-	* 4.3. [directly from source codes](#directlyfromsourcecodes)
-* 5. [Bulging the Docker Package](#BulgingtheDockerPackage)
-* 6. [API](#API)
-* 7. [Documentation](#Documentation)
-	* 7.1. [[Sphinx](https://www.sphinx-doc.org/en/master/)](#Sphinxhttps:www.sphinx-doc.orgenmaster)
-	* 7.2. [Swagger](#Swagger)
-* 8. [Related Topics](#RelatedTopics)
-* 9. [Acknowledgments](#Acknowledgments)
-	* 9.1. [About the data](#Aboutthedata)
-	* 9.2. [Citation](#Citation)
-	* 9.3. [Author](#Author)
-	* 9.4. [Disclaimer](#Disclaimer)
+1. [Description](#Description)
+2. [IncliNET Tutorial](#IncliNETTutorial)
+3. [Code Repository & Issues](#CodeRepositoryIssues)
+4. [Basic Install](#BasicInstall)
+    4.1. [on a local machine using Docker](#onalocalmachineusingDocker)
+	4.2. [On a server using Docker](#OnaserverusingDocker)
+	4.3. [directly from source codes](#directlyfromsourcecodes)
+5. [Bulging the Docker Package](#BulgingtheDockerPackage)
+6. [API](#API)
+7. [Documentation](#Documentation)
+	7.1. [Sphinx](#Sphinx)
+	7.2. [Swagger](#Swagger)
+8. [Related Topics](#RelatedTopics)
+9. [Acknowledgments](#Acknowledgments)
+	9.1. [About the data](#Aboutthedata)
+	9.2. [Citation](#Citation)
+	9.3. [Author](#Author)
+	9.4. [Disclaimer](#Disclaimer)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -48,7 +48,7 @@ https://github.com/ekourkchi/inclinet_deployment_repo
 
 
 ##  4. <a name='BasicInstall'></a>Basic Install 
-###  4.1. <a name='onalocalmachineusingDockerhttps:www.docker.com'></a>on a local machine using [Docker](https://www.docker.com/)
+###  4.1. <a name='onalocalmachineusingDocker'></a>on a local machine using Docker
 
 - First, you need to [install](https://docs.docker.com/compose/install/) Docker Compose. 
 
@@ -305,7 +305,7 @@ where `/path/to/image/galaxy.jpg` would be replaced by the name of the galaxy im
 
 The full documentation of this application is [available here](https://edd.ifa.hawaii.edu/static/html/index.html).
 
-###  7.1. <a name='Sphinxhttps:www.sphinx-doc.orgenmaster'></a>[Sphinx](https://www.sphinx-doc.org/en/master/)
+###  7.1. <a name='Sphinx'></a>Sphinx
 
 
 **Notes:**
