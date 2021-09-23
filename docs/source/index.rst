@@ -4,39 +4,39 @@
    :format: html
 
 
-:raw-html-m2r:`<!-- vscode-markdown-toc -->`
-
-
-#. `Description <#Description>`_
-#. `IncliNET Tutorial <#IncliNETTutorial>`_
-#. `Code Repository & Issues <#CodeRepositoryIssues>`_
-#. `Basic Install <#BasicInstall>`_
-    4.1. `on a local machine using Docker <#onalocalmachineusingDocker>`_
-    4.2. `On a server using Docker <#OnaserverusingDocker>`_
-    4.3. `directly from source codes <#directlyfromsourcecodes>`_
-#. `Bulging the Docker Package <#BulgingtheDockerPackage>`_
-#. `API <#API>`_
-#. `Documentation <#Documentation>`_
-    7.1. `Sphinx <#Sphinx>`_
-    7.2. `Swagger <#Swagger>`_
-#. `Related Topics <#RelatedTopics>`_
-#. `Acknowledgments <#Acknowledgments>`_
-    9.1. `About the data <#Aboutthedata>`_
-    9.2. `Citation <#Citation>`_
-    9.3. `Author <#Author>`_
-    9.4. `Disclaimer <#Disclaimer>`_
-
-:raw-html-m2r:`<!-- vscode-markdown-toc-config
-    numbering=true
-    autoSave=true
-    /vscode-markdown-toc-config -->`
-:raw-html-m2r:`<!-- /vscode-markdown-toc -->`\ # IncliNET
+IncliNET
+========
 
 
 .. image:: https://user-images.githubusercontent.com/13570487/134275660-2585ec68-0744-4ad0-b02c-05ddb51bd9e4.png
    :target: https://user-images.githubusercontent.com/13570487/134275660-2585ec68-0744-4ad0-b02c-05ddb51bd9e4.png
    :alt: inclinet_logo
 
+
+
+#. `Description <#Description>`_
+#. `IncliNET Tutorial <#IncliNETTutorial>`_
+#. `Code Repository & Issues <#CodeRepositoryIssues>`_
+#. `Basic Install <#BasicInstall>`_
+
+   #. `on a local machine using Docker <#onalocalmachineusingDocker>`_
+   #. `On a server using Docker <#OnaserverusingDocker>`_
+   #. `directly from source codes <#directlyfromsourcecodes>`_
+
+#. `Bulging the Docker Package <#BulgingtheDockerPackage>`_
+#. `API <#API>`_
+#. `Documentation <#Documentation>`_
+
+   #. `Sphinx <#Sphinx>`_
+   #. `Swagger <#Swagger>`_
+
+#. `Related Topics <#RelatedTopics>`_
+#. `Acknowledgments <#Acknowledgments>`_
+
+   #. `About the data <#Aboutthedata>`_
+   #. `Citation <#Citation>`_
+   #. `Author <#Author>`_
+   #. `Disclaimer <#Disclaimer>`_
 
 1. :raw-html-m2r:`<a name='Description'></a>`\ Description
 ------------------------------------------------------------

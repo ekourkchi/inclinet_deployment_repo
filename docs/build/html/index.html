@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>1. Description &mdash; IncliNET 21.09 documentation</title>
+  <title>IncliNET &mdash; IncliNET 21.09 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -57,7 +57,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-      <li>1. <span class="raw-html-m2r"><a name='Description'></a></span>Description</li>
+      <li>IncliNET</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -91,53 +91,47 @@
     text-align: unset;
 }
 </style>
-<p><span class="raw-html-m2r"><!-- vscode-markdown-toc --></span></p>
+<div class="section" id="inclinet">
+<h1>IncliNET<a class="headerlink" href="#inclinet" title="Permalink to this headline"></a></h1>
+<a class="reference external image-reference" href="https://user-images.githubusercontent.com/13570487/134275660-2585ec68-0744-4ad0-b02c-05ddb51bd9e4.png"><img alt="inclinet_logo" src="https://user-images.githubusercontent.com/13570487/134275660-2585ec68-0744-4ad0-b02c-05ddb51bd9e4.png" /></a>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="#Description">Description</a></p></li>
 <li><p><a class="reference external" href="#IncliNETTutorial">IncliNET Tutorial</a></p></li>
 <li><p><a class="reference external" href="#CodeRepositoryIssues">Code Repository &amp; Issues</a></p></li>
-<li><dl class="simple">
-<dt><a class="reference external" href="#BasicInstall">Basic Install</a></dt><dd><p>4.1. <a class="reference external" href="#onalocalmachineusingDocker">on a local machine using Docker</a>
-4.2. <a class="reference external" href="#OnaserverusingDocker">On a server using Docker</a>
-4.3. <a class="reference external" href="#directlyfromsourcecodes">directly from source codes</a></p>
-</dd>
-</dl>
+<li><p><a class="reference external" href="#BasicInstall">Basic Install</a></p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="#onalocalmachineusingDocker">on a local machine using Docker</a></p></li>
+<li><p><a class="reference external" href="#OnaserverusingDocker">On a server using Docker</a></p></li>
+<li><p><a class="reference external" href="#directlyfromsourcecodes">directly from source codes</a></p></li>
+</ol>
 </li>
 <li><p><a class="reference external" href="#BulgingtheDockerPackage">Bulging the Docker Package</a></p></li>
 <li><p><a class="reference external" href="#API">API</a></p></li>
-<li><dl class="simple">
-<dt><a class="reference external" href="#Documentation">Documentation</a></dt><dd><p>7.1. <a class="reference external" href="#Sphinx">Sphinx</a>
-7.2. <a class="reference external" href="#Swagger">Swagger</a></p>
-</dd>
-</dl>
+<li><p><a class="reference external" href="#Documentation">Documentation</a></p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="#Sphinx">Sphinx</a></p></li>
+<li><p><a class="reference external" href="#Swagger">Swagger</a></p></li>
+</ol>
 </li>
 <li><p><a class="reference external" href="#RelatedTopics">Related Topics</a></p></li>
-<li><dl class="simple">
-<dt><a class="reference external" href="#Acknowledgments">Acknowledgments</a></dt><dd><p>9.1. <a class="reference external" href="#Aboutthedata">About the data</a>
-9.2. <a class="reference external" href="#Citation">Citation</a>
-9.3. <a class="reference external" href="#Author">Author</a>
-9.4. <a class="reference external" href="#Disclaimer">Disclaimer</a></p>
-</dd>
-</dl>
+<li><p><a class="reference external" href="#Acknowledgments">Acknowledgments</a></p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="#Aboutthedata">About the data</a></p></li>
+<li><p><a class="reference external" href="#Citation">Citation</a></p></li>
+<li><p><a class="reference external" href="#Author">Author</a></p></li>
+<li><p><a class="reference external" href="#Disclaimer">Disclaimer</a></p></li>
+</ol>
 </li>
 </ol>
-<dl class="simple">
-<dt>:raw-html-m2r:<a href="#id1"><span class="problematic" id="id2">`</span></a>&lt;!– vscode-markdown-toc-config</dt><dd><p>numbering=true
-autoSave=true
-/vscode-markdown-toc-config –&gt;`</p>
-</dd>
-</dl>
-<p><span class="raw-html-m2r"><!-- /vscode-markdown-toc --></span># IncliNET</p>
-<a class="reference external image-reference" href="https://user-images.githubusercontent.com/13570487/134275660-2585ec68-0744-4ad0-b02c-05ddb51bd9e4.png"><img alt="inclinet_logo" src="https://user-images.githubusercontent.com/13570487/134275660-2585ec68-0744-4ad0-b02c-05ddb51bd9e4.png" /></a>
 <div class="section" id="a-name-description-a-description">
-<h1>1. <span class="raw-html-m2r"><a name='Description'></a></span>Description<a class="headerlink" href="#a-name-description-a-description" title="Permalink to this headline"></a></h1>
+<h2>1. <span class="raw-html-m2r"><a name='Description'></a></span>Description<a class="headerlink" href="#a-name-description-a-description" title="Permalink to this headline"></a></h2>
 <p>IncliNET is a Python application to determine the inclination of Spiral Galaxies</p>
 <ul class="simple">
 <li><p>This application is hosted on EDD: <a class="reference external" href="http://edd.ifa.hawaii.edu/inclinet/">http://edd.ifa.hawaii.edu/inclinet/</a></p></li>
 </ul>
 </div>
 <div class="section" id="a-name-inclinettutorial-a-inclinet-tutorial">
-<h1>2. <span class="raw-html-m2r"><a name='IncliNETTutorial'></a></span>IncliNET Tutorial<a class="headerlink" href="#a-name-inclinettutorial-a-inclinet-tutorial" title="Permalink to this headline"></a></h1>
+<h2>2. <span class="raw-html-m2r"><a name='IncliNETTutorial'></a></span>IncliNET Tutorial<a class="headerlink" href="#a-name-inclinettutorial-a-inclinet-tutorial" title="Permalink to this headline"></a></h2>
 <p>An application with and online web GUI and an easy to access API for determining the inclinations of the spiral galaxies using their optical images.</p>
 <p>This program is powered by several deep convolutional neural networks (CNN) implemented in TensorFlow. All CNNs are constructed based on the well-known VGG structure, where the convolutional filters are of size 3x3.</p>
 <ul class="simple">
@@ -146,13 +140,13 @@ autoSave=true
 </ul>
 </div>
 <div class="section" id="a-name-coderepositoryissues-a-code-repository-issues">
-<h1>3. <span class="raw-html-m2r"><a name='CodeRepositoryIssues'></a></span>Code Repository &amp; Issues<a class="headerlink" href="#a-name-coderepositoryissues-a-code-repository-issues" title="Permalink to this headline"></a></h1>
+<h2>3. <span class="raw-html-m2r"><a name='CodeRepositoryIssues'></a></span>Code Repository &amp; Issues<a class="headerlink" href="#a-name-coderepositoryissues-a-code-repository-issues" title="Permalink to this headline"></a></h2>
 <p><a class="reference external" href="https://github.com/ekourkchi/inclinet_deployment_repo">https://github.com/ekourkchi/inclinet_deployment_repo</a></p>
 </div>
 <div class="section" id="a-name-basicinstall-a-basic-install">
-<h1>4. <span class="raw-html-m2r"><a name='BasicInstall'></a></span>Basic Install<a class="headerlink" href="#a-name-basicinstall-a-basic-install" title="Permalink to this headline"></a></h1>
+<h2>4. <span class="raw-html-m2r"><a name='BasicInstall'></a></span>Basic Install<a class="headerlink" href="#a-name-basicinstall-a-basic-install" title="Permalink to this headline"></a></h2>
 <div class="section" id="a-name-onalocalmachineusingdocker-a-on-a-local-machine-using-docker">
-<h2>4.1. <span class="raw-html-m2r"><a name='onalocalmachineusingDocker'></a></span>on a local machine using Docker<a class="headerlink" href="#a-name-onalocalmachineusingdocker-a-on-a-local-machine-using-docker" title="Permalink to this headline"></a></h2>
+<h3>4.1. <span class="raw-html-m2r"><a name='onalocalmachineusingDocker'></a></span>on a local machine using Docker<a class="headerlink" href="#a-name-onalocalmachineusingdocker-a-on-a-local-machine-using-docker" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>First, you need to <a class="reference external" href="https://docs.docker.com/compose/install/">install</a> Docker Compose.</p></li>
 </ul>
@@ -170,7 +164,7 @@ autoSave=true
 </ul>
 </div>
 <div class="section" id="a-name-onaserverusingdocker-a-on-a-server-using-docker">
-<h2>4.2. <span class="raw-html-m2r"><a name='OnaserverusingDocker'></a></span>On a server using Docker<a class="headerlink" href="#a-name-onaserverusingdocker-a-on-a-server-using-docker" title="Permalink to this headline"></a></h2>
+<h3>4.2. <span class="raw-html-m2r"><a name='OnaserverusingDocker'></a></span>On a server using Docker<a class="headerlink" href="#a-name-onaserverusingdocker-a-on-a-server-using-docker" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>First, you need to install Docker Compose. <a class="reference external" href="https://docs.docker.com/compose/install/">How to install</a></p></li>
 <li><p>Execute</p></li>
@@ -182,7 +176,7 @@ autoSave=true
 <p><strong>URL</strong>: Following the above example, if the server host is accessible through <code class="docutils literal notranslate"><span class="pre">www.example.com</span></code>, then our application would be launched on <code class="docutils literal notranslate"><span class="pre">www.example.com/inclinet:pppp</span></code>. Remember <code class="docutils literal notranslate"><span class="pre">http</span></code> or <code class="docutils literal notranslate"><span class="pre">https</span></code> by default use ports 80 and 443, respectively.</p>
 </div>
 <div class="section" id="a-name-directlyfromsourcecodes-a-directly-from-source-codes">
-<h2>4.3. <span class="raw-html-m2r"><a name='directlyfromsourcecodes'></a></span>directly from source codes<a class="headerlink" href="#a-name-directlyfromsourcecodes-a-directly-from-source-codes" title="Permalink to this headline"></a></h2>
+<h3>4.3. <span class="raw-html-m2r"><a name='directlyfromsourcecodes'></a></span>directly from source codes<a class="headerlink" href="#a-name-directlyfromsourcecodes-a-directly-from-source-codes" title="Permalink to this headline"></a></h3>
 <p>Just put the repository on the server or on a local machine and make sure that folder <code class="docutils literal notranslate"><span class="pre">&lt;repository&gt;/static</span></code> is linked to a folder that is exposed by the server to the outside world. Set <code class="docutils literal notranslate"><span class="pre">WEBROOT</span></code> prior to launching the application to point the application to the correct URL path.</p>
 <p>Execution of <code class="docutils literal notranslate"><span class="pre">server.py</span></code> launches the application.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python server.py -h
@@ -211,7 +205,7 @@ For more thorough details, refer to the <a class="reference external" href="http
 </div>
 </div>
 <div class="section" id="a-name-bulgingthedockerpackage-a-bulging-the-docker-package">
-<h1>5. <span class="raw-html-m2r"><a name='BulgingtheDockerPackage'></a></span>Bulging the Docker Package<a class="headerlink" href="#a-name-bulgingthedockerpackage-a-bulging-the-docker-package" title="Permalink to this headline"></a></h1>
+<h2>5. <span class="raw-html-m2r"><a name='BulgingtheDockerPackage'></a></span>Bulging the Docker Package<a class="headerlink" href="#a-name-bulgingthedockerpackage-a-bulging-the-docker-package" title="Permalink to this headline"></a></h2>
 <p>In the code repository run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker build --tag myimage:x.x .
 docker login -u &lt;username&gt;
@@ -225,7 +219,7 @@ docker push myimage:x.x .
 <a class="reference external image-reference" href="https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png"><img alt="Inclinet_Deployment_flowchart" src="https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png" /></a>
 </div>
 <div class="section" id="a-name-api-a-api">
-<h1>6. <span class="raw-html-m2r"><a name='API'></a></span>API<a class="headerlink" href="#a-name-api-a-api" title="Permalink to this headline"></a></h1>
+<h2>6. <span class="raw-html-m2r"><a name='API'></a></span>API<a class="headerlink" href="#a-name-api-a-api" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>See the <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">documentation</span></code> <a class="reference external" href="https://edd.ifa.hawaii.edu/inclinet/api/docs">here</a></p></li>
 </ul>
@@ -402,10 +396,10 @@ docker push myimage:x.x .
 </ul>
 </div>
 <div class="section" id="a-name-documentation-a-documentation">
-<h1>7. <span class="raw-html-m2r"><a name='Documentation'></a></span>Documentation<a class="headerlink" href="#a-name-documentation-a-documentation" title="Permalink to this headline"></a></h1>
+<h2>7. <span class="raw-html-m2r"><a name='Documentation'></a></span>Documentation<a class="headerlink" href="#a-name-documentation-a-documentation" title="Permalink to this headline"></a></h2>
 <p>The full documentation of this application is <a class="reference external" href="https://edd.ifa.hawaii.edu/static/html/index.html">available here</a>.</p>
 <div class="section" id="a-name-sphinx-a-sphinx">
-<h2>7.1. <span class="raw-html-m2r"><a name='Sphinx'></a></span>Sphinx<a class="headerlink" href="#a-name-sphinx-a-sphinx" title="Permalink to this headline"></a></h2>
+<h3>7.1. <span class="raw-html-m2r"><a name='Sphinx'></a></span>Sphinx<a class="headerlink" href="#a-name-sphinx-a-sphinx" title="Permalink to this headline"></a></h3>
 <p><strong>Notes:</strong></p>
 <ul class="simple">
 <li><p>A <a class="reference external" href="https://techwritingmatters.com/documenting-with-sphinx-tutorial-intro-overview">nice article</a> on the Sphinx workflow.</p></li>
@@ -419,13 +413,13 @@ docker push myimage:x.x .
 </ul>
 </div>
 <div class="section" id="a-name-swagger-a-swagger">
-<h2>7.2. <span class="raw-html-m2r"><a name='Swagger'></a></span>Swagger<a class="headerlink" href="#a-name-swagger-a-swagger" title="Permalink to this headline"></a></h2>
+<h3>7.2. <span class="raw-html-m2r"><a name='Swagger'></a></span>Swagger<a class="headerlink" href="#a-name-swagger-a-swagger" title="Permalink to this headline"></a></h3>
 <p>The documentation of the <strong>REST API</strong> of our application is <a class="reference external" href="https://edd.ifa.hawaii.edu/inclinet/api/docs">available here</a>.</p>
 <p><strong>Notes:</strong> You may follow <a class="reference external" href="https://dev.to/sanjan/how-to-add-swagger-ui-to-a-plain-flask-api-project-with-an-openapi-specification-file-1jl8">this tutorial</a> to easily setup the Swagger API documentation under <code class="docutils literal notranslate"><span class="pre">Flask</span></code>.</p>
 </div>
 </div>
 <div class="section" id="a-name-relatedtopics-a-related-topics">
-<h1>8. <span class="raw-html-m2r"><a name='RelatedTopics'></a></span>Related Topics<a class="headerlink" href="#a-name-relatedtopics-a-related-topics" title="Permalink to this headline"></a></h1>
+<h2>8. <span class="raw-html-m2r"><a name='RelatedTopics'></a></span>Related Topics<a class="headerlink" href="#a-name-relatedtopics-a-related-topics" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>For further details on various VGG models we considered in this project <a class="reference external" href="https://github.com/ekourkchi/incNET-data/tree/master/incNET_VGGcnn_withAugmentation">click here</a>.</p></li>
 <li><p><a class="reference external" href="https://github.com/ekourkchi/inclinet_production_repo/blob/main/Inclinet_Deployment_Architecture.pdf">Visit here</a> to get the full picture of the deployment plan.</p></li>
@@ -436,9 +430,9 @@ docker push myimage:x.x .
 </ul>
 </div>
 <div class="section" id="a-name-acknowledgments-a-acknowledgments">
-<h1>9. <span class="raw-html-m2r"><a name='Acknowledgments'></a></span>Acknowledgments<a class="headerlink" href="#a-name-acknowledgments-a-acknowledgments" title="Permalink to this headline"></a></h1>
+<h2>9. <span class="raw-html-m2r"><a name='Acknowledgments'></a></span>Acknowledgments<a class="headerlink" href="#a-name-acknowledgments-a-acknowledgments" title="Permalink to this headline"></a></h2>
 <div class="section" id="a-name-aboutthedata-a-about-the-data">
-<h2>9.1. <span class="raw-html-m2r"><a name='Aboutthedata'></a></span>About the data<a class="headerlink" href="#a-name-aboutthedata-a-about-the-data" title="Permalink to this headline"></a></h2>
+<h3>9.1. <span class="raw-html-m2r"><a name='Aboutthedata'></a></span>About the data<a class="headerlink" href="#a-name-aboutthedata-a-about-the-data" title="Permalink to this headline"></a></h3>
 <p>All data exposed by the <em>IncliNET</em> project belongs to</p>
 <ul class="simple">
 <li><p>Cosmicflows-4 program</p></li>
@@ -447,7 +441,7 @@ docker push myimage:x.x .
 </ul>
 </div>
 <div class="section" id="a-name-citation-a-citation">
-<h2>9.2. <span class="raw-html-m2r"><a name='Citation'></a></span>Citation<a class="headerlink" href="#a-name-citation-a-citation" title="Permalink to this headline"></a></h2>
+<h3>9.2. <span class="raw-html-m2r"><a name='Citation'></a></span>Citation<a class="headerlink" href="#a-name-citation-a-citation" title="Permalink to this headline"></a></h3>
 <p>Please cite the following paper and <a class="reference external" href="https://github.com/ekourkchi/inclinet_deployment_repo">the gitHub repository of this project</a>.</p>
 <blockquote>
 <div><p>Cosmicflows-4: The Catalog of ∼10,000 Tully-Fisher Distances</p>
@@ -474,20 +468,20 @@ docker push myimage:x.x .
 </div>
 </div>
 <div class="section" id="a-name-author-a-author">
-<h2>9.3. <span class="raw-html-m2r"><a name='Author'></a></span>Author<a class="headerlink" href="#a-name-author-a-author" title="Permalink to this headline"></a></h2>
+<h3>9.3. <span class="raw-html-m2r"><a name='Author'></a></span>Author<a class="headerlink" href="#a-name-author-a-author" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Ehsan Kourkchi - <a class="reference external" href="mailto:ekourkchi&#37;&#52;&#48;gmail&#46;com">ekourkchi<span>&#64;</span>gmail<span>&#46;</span>com</a></p></li>
 </ul>
 </div>
 <div class="section" id="a-name-disclaimer-a-disclaimer">
-<h2>9.4. <span class="raw-html-m2r"><a name='Disclaimer'></a></span>Disclaimer<a class="headerlink" href="#a-name-disclaimer-a-disclaimer" title="Permalink to this headline"></a></h2>
+<h3>9.4. <span class="raw-html-m2r"><a name='Disclaimer'></a></span>Disclaimer<a class="headerlink" href="#a-name-disclaimer-a-disclaimer" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>All rights reserved. The material may not be used, reproduced or distributed, in whole or in part, without the prior agreement.</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="contents">
-<h1>Contents:<a class="headerlink" href="#contents" title="Permalink to this headline"></a></h1>
+<h2>Contents:<a class="headerlink" href="#contents" title="Permalink to this headline"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">1. <code class="docutils literal notranslate"><span class="pre">IncliNET</span></code> Tutorial</a><ul>
@@ -500,10 +494,10 @@ docker push myimage:x.x .
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html#Web-Application">2. Web Application</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#Online-website">2.1. Online website</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#1.-Galaxy-PGC-ID">2.1.1. 1. Galaxy PGC ID</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#2.-Galaxy-Name">2.1.2. 2. Galaxy Name</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#3.-Galaxy-Coordinates">2.1.3. 3. Galaxy Coordinates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#4.-Galaxy-Image">2.1.4. 4. Galaxy Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Galaxy-PGC-ID">2.1.1. Galaxy PGC ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Galaxy-Name">2.1.2. Galaxy Name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Galaxy-Coordinates">2.1.3. Galaxy Coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#Galaxy-Image">2.1.4. Galaxy Image</a></li>
 </ul>
 </li>
 </ul>
@@ -549,6 +543,10 @@ docker push myimage:x.x .
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>

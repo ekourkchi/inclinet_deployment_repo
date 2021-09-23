@@ -21,7 +21,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="4. Python Modules" href="modules.html" />
-    <link rel="prev" title="1. Description" href="index.html" /> 
+    <link rel="prev" title="IncliNET" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -50,10 +50,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#Web-Application">2. Web Application</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Online-website">2.1. Online website</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#1.-Galaxy-PGC-ID">2.1.1. 1. Galaxy PGC ID</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#2.-Galaxy-Name">2.1.2. 2. Galaxy Name</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#3.-Galaxy-Coordinates">2.1.3. 3. Galaxy Coordinates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#4.-Galaxy-Image">2.1.4. 4. Galaxy Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Galaxy-PGC-ID">2.1.1. Galaxy PGC ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Galaxy-Name">2.1.2. Galaxy Name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Galaxy-Coordinates">2.1.3. Galaxy Coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Galaxy-Image">2.1.4. Galaxy Image</a></li>
 </ul>
 </li>
 </ul>
@@ -430,20 +430,20 @@ evaluation process.</p>
 <ul class="simple">
 <li><p>An online website that allows users to submit the galaxy image of interest through three different methods:</p></li>
 </ul>
-<div class="section" id="1.-Galaxy-PGC-ID">
-<h3><span class="section-number">2.1.1. </span>1. Galaxy PGC ID<a class="headerlink" href="#1.-Galaxy-PGC-ID" title="Permalink to this headline"></a></h3>
+<div class="section" id="Galaxy-PGC-ID">
+<h3><span class="section-number">2.1.1. </span>Galaxy PGC ID<a class="headerlink" href="#Galaxy-PGC-ID" title="Permalink to this headline"></a></h3>
 <p>Entering the name of a galaxy by querying its PGC number (the ID of galaxy in the Principal Galaxy Catalog) - The PGC catalog is deployed with our model, and contains a table of galaxy coordinates and their sizes. Images are then queried from the <a class="reference external" href="http://skyserver.sdss.org/dr16/en/tools/quicklook/summary.aspx?">SDSS quick-look</a> image server.</p>
 </div>
-<div class="section" id="2.-Galaxy-Name">
-<h3><span class="section-number">2.1.2. </span>2. Galaxy Name<a class="headerlink" href="#2.-Galaxy-Name" title="Permalink to this headline"></a></h3>
+<div class="section" id="Galaxy-Name">
+<h3><span class="section-number">2.1.2. </span>Galaxy Name<a class="headerlink" href="#Galaxy-Name" title="Permalink to this headline"></a></h3>
 <p>Searching a galaxy by its common name. - The entered name is queried through the <a class="reference external" href="http://ned.ipac.caltech.edu/">NASA/IPAC Extragalactic Database</a>. Then, a python routine based on the package <a class="reference external" href="https://beautiful-soup-4.readthedocs.io/en/latest/#">Beautiful Soup</a> extracts the corresponding PGC number. Once the PGC ID is available, the galaxy image is imported from the <em>SDSS quick-look</em> as explained above.</p>
 </div>
-<div class="section" id="3.-Galaxy-Coordinates">
-<h3><span class="section-number">2.1.3. </span>3. Galaxy Coordinates<a class="headerlink" href="#3.-Galaxy-Coordinates" title="Permalink to this headline"></a></h3>
+<div class="section" id="Galaxy-Coordinates">
+<h3><span class="section-number">2.1.3. </span>Galaxy Coordinates<a class="headerlink" href="#Galaxy-Coordinates" title="Permalink to this headline"></a></h3>
 <p>Looking at a specific location in the sky by entering the sky coordinates and the field size. In the first release we only provide access to the <code class="docutils literal notranslate"><span class="pre">SDSS</span></code> images, if they are available. <a class="reference external" href="https://www.sdss.org/dr16/">The SDSS coverage</a> is mainly limited to the Northern sky.</p>
 </div>
-<div class="section" id="4.-Galaxy-Image">
-<h3><span class="section-number">2.1.4. </span>4. Galaxy Image<a class="headerlink" href="#4.-Galaxy-Image" title="Permalink to this headline"></a></h3>
+<div class="section" id="Galaxy-Image">
+<h3><span class="section-number">2.1.4. </span>Galaxy Image<a class="headerlink" href="#Galaxy-Image" title="Permalink to this headline"></a></h3>
 <p>Uploading a galaxy image from the local computer of the user. - User has the option of uploading a galaxy image for evaluation by our model(s) <img alt="Screenshot from 2021-09-08 03-09-36" src="https://user-images.githubusercontent.com/13570487/132490712-c39440bc-9b41-4a3e-bb54-1c4fb0de2c30.png" /></p>
 </div>
 </div>
@@ -946,7 +946,7 @@ curl: (26) Failed to open/read local data from file/application
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="1. Description" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="IncliNET" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="modules.html" class="btn btn-neutral float-right" title="4. Python Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
