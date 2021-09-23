@@ -16,7 +16,7 @@ import pathlib
 
 
 CURRENT_PATH = pathlib.Path(os.path.abspath(os.path.dirname(__file__)))
-PROJECT_PATH = CURRENT_PATH.parent.parent
+PROJECT_PATH = CURRENT_PATH.parent
 sys.path.insert(0, str(PROJECT_PATH))
 
 import info
