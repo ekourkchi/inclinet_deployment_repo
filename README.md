@@ -1,4 +1,8 @@
-<!-- vscode-markdown-toc -->
+
+# IncliNET
+
+![inclinet_logo](https://user-images.githubusercontent.com/13570487/134275660-2585ec68-0744-4ad0-b02c-05ddb51bd9e4.png)
+
 1. [Description](#Description)
 2. [IncliNET Tutorial](#IncliNETTutorial)
 3. [Code Repository & Issues](#CodeRepositoryIssues)
@@ -18,13 +22,6 @@
 	3. [Author](#Author)
 	4. [Disclaimer](#Disclaimer)
 
-<!-- vscode-markdown-toc-config
-	numbering=true
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc --># IncliNET
-
-![inclinet_logo](https://user-images.githubusercontent.com/13570487/134275660-2585ec68-0744-4ad0-b02c-05ddb51bd9e4.png)
 
 ##  1. <a name='Description'></a>Description
 
