@@ -13,7 +13,7 @@ This package uses ``Flask`` to implement the API functionalities in Python.
 
 Visit the online GUI at http://edd.ifa.hawaii.edu/inclinet/
 
-For citation check:
+For documentations check:
     https://github.com/ekourkchi/inclinet_deployment_repo/
 
 """
