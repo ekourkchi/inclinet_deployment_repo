@@ -1,7 +1,6 @@
 #!/usr/bin/python
 __author__ = "Ehsan Kourkchi"
-__copyright__ = "Copyright 02-11-2020"
-__version__ = "v1.0"
+__copyright__ = "Copyright 2021"
 __status__ = "Production"
 
 import sys
@@ -35,7 +34,7 @@ def converIMAGE(img_arr, angle=0., scale=1., size=64):
     :param size: resolution of the output image in pixel, defaults to 64
     :type size: ``int``, optional
     :return: output image 
-    :rtype: ``PIL`` image opject
+    :rtype: ``PIL`` image object
     """
 
     img_arr = scipy.ndimage.rotate(img_arr, -angle)
@@ -74,7 +73,7 @@ def openImage(params):
     :rtype: tuple 
 
     ``image_array``: numpy ndarray holding the image
-    ``anlgle``: how much to rotate the image
+    ``angle``: how much to rotate the image
     ``scale``: scale of the output image   
 
     """
@@ -276,14 +275,14 @@ def model(params, myModels, saveRescaled=True, scaledImage=None):
 ###############################################################
 def model2html(params, myModels):
     """parsing the output results in html format
-    Given a set of parameters, all evalautions are carried out and returned in ``html`` format
+    Given a set of parameters, all evaluations are carried out and returned in ``html`` format
     for the use in the online ``GUI``.
 
     :param params: input parameter set
     :type params: python ``dictionary``
     :param myModels: ``TensorFlow`` models organized in a python ``dictionary``
     :type myModels: python ``dictionary``
-    :return: a ``sumamry`` of all evaluations
+    :return: a ``summary`` of all evaluations
     :rtype: ``html`` text
     """   
 
@@ -309,7 +308,7 @@ def model2html(params, myModels):
 
                         <div id="incResults">
 
-                        <p>Neural Network Evaulation ....</p>
+                        <p>Neural Network Evaluation ....</p>
 
                         
     """ 
@@ -332,7 +331,7 @@ def model2html(params, myModels):
 
 
     results += "<hr>"
-    results += '<p style="background-color:yellow;"><b>Rejetion Likelihood</b></p>'
+    results += '<p style="background-color:yellow;"><b>Rejection Likelihood</b></p>'
 
     rejs = []
     for rejmodel, rejlike in evalRej.items():

@@ -1,14 +1,38 @@
-# IncliNET
+<!-- vscode-markdown-toc -->
+* 1. [Description](#Description)
+* 2. [IncliNET Tutorial](#IncliNETTutorial)
+* 3. [Code Repository & Issues](#CodeRepositoryIssues)
+* 4. [Basic Install](#BasicInstall)
+	* 4.1. [on a local machine using [Docker](https://www.docker.com/)](#onalocalmachineusingDockerhttps:www.docker.com)
+	* 4.2. [On a server using Docker](#OnaserverusingDocker)
+	* 4.3. [directly from source codes](#directlyfromsourcecodes)
+* 5. [Bulging the Docker Package](#BulgingtheDockerPackage)
+* 6. [API](#API)
+* 7. [Documentation](#Documentation)
+	* 7.1. [[Sphinx](https://www.sphinx-doc.org/en/master/)](#Sphinxhttps:www.sphinx-doc.orgenmaster)
+	* 7.2. [Swagger](#Swagger)
+* 8. [Related Topics](#RelatedTopics)
+* 9. [Acknowledgments](#Acknowledgments)
+	* 9.1. [About the data](#Aboutthedata)
+	* 9.2. [Citation](#Citation)
+	* 9.3. [Author](#Author)
+	* 9.4. [Disclaimer](#Disclaimer)
+
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc --># IncliNET
 
 ![inclinet_logo](https://user-images.githubusercontent.com/13570487/134275660-2585ec68-0744-4ad0-b02c-05ddb51bd9e4.png)
 
-## Description
+##  1. <a name='Description'></a>Description
 
 IncliNET is a Python application to determine the inclination of Spiral Galaxies
 
 - This application is hosted on EDD: [http://edd.ifa.hawaii.edu/inclinet/](http://edd.ifa.hawaii.edu/inclinet/)
 
-## IncliNET Tutorial 
+##  2. <a name='IncliNETTutorial'></a>IncliNET Tutorial 
 
 An application with and online web GUI and an easy to access API for determining the inclinations of the spiral galaxies using their optical images.
 
@@ -18,13 +42,13 @@ This program is powered by several deep convolutional neural networks (CNN) impl
 - Full Documentation: [https://edd.ifa.hawaii.edu/static/html/index.html](https://edd.ifa.hawaii.edu/static/html/index.html)
 
 
-## Code Repository & Issues
+##  3. <a name='CodeRepositoryIssues'></a>Code Repository & Issues
 
 https://github.com/ekourkchi/inclinet_deployment_repo
 
 
-## Basic Install 
-### on a local machine using [Docker](https://www.docker.com/)
+##  4. <a name='BasicInstall'></a>Basic Install 
+###  4.1. <a name='onalocalmachineusingDockerhttps:www.docker.com'></a>on a local machine using [Docker](https://www.docker.com/)
 
 - First, you need to [install](https://docs.docker.com/compose/install/) Docker Compose. 
 
@@ -40,7 +64,7 @@ $ docker run -it --entrypoint /inclinet/serverup.sh -p 3030:3030  ekourkchi/incl
 
 - Open the Application: Once the service is running in the terminal, open a browser like *Firefox* or *Google Chrome* and enter the following url: [http://0.0.0.0:3030/](http://0.0.0.0:3030/)
 
-### On a server using Docker
+###  4.2. <a name='OnaserverusingDocker'></a>On a server using Docker
 
 - First, you need to install Docker Compose. [How to install](https://docs.docker.com/compose/install/)
 
@@ -50,12 +74,12 @@ $ docker run -it --entrypoint /inclinet/serverup.sh -p 3030:3030  ekourkchi/incl
 $ docker run -it --entrypoint /inclinet/serverup.sh --env="WEBROOT=/inclinet/" -p pppp:3030 -v /pathTO/public_html/static/:/inclinet/static ekourkchi/inclinet
 ```
 
-where `WEBROOT` is an environmental variable that points to the root of the application in the URL path. `pppp` is the port number that the service would be available to the world. `3030` is the port number of the docker container that our application uses by default. `/pathTO/public_html/static/` is the path to the `public_html` or any folder that the backend server uses to expose communicate with Internet. We basically need to mount `/pathTO/public_html/static/` to forlde `inclinet/static` whithin the container which is used internally by the application. 
+where `WEBROOT` is an environmental variable that points to the root of the application in the URL path. `pppp` is the port number that the service would be available to the world. `3030` is the port number of the docker container that our application uses by default. `/pathTO/public_html/static/` is the path to the `public_html` or any folder that the backend server uses to expose communicate with Internet. We basically need to mount `/pathTO/public_html/static/` to the folder `inclinet/static` within the container which is used internally by the application. 
 
 **URL**: Following the above example, if the server host is accessible through `www.example.com`, then our application would be launched on `www.example.com/inclinet:pppp`. Remember `http` or `https` by default use ports 80 and 443, respectively.
 
 
-### Using the codes without Docker
+###  4.3. <a name='directlyfromsourcecodes'></a>directly from source codes
 
 Just put the repository on the server or on a local machine and make sure that folder `<repository>/static` is linked to a folder that is exposed by the server to the outside world. Set `WEBROOT` prior to launching the application to point the application to the correct URL path.
 
@@ -84,10 +108,10 @@ Execution of `server.py` launches the application.
 
 ```
 
-Please refer to [the IncliNET code documentation](https://edd.ifa.hawaii.edu/static/html/server.html) for further details. 
-For more information, read the [tutorial](https://edd.ifa.hawaii.edu/static/html/index.html).
+Please consult [the IncliNET code documentation](https://edd.ifa.hawaii.edu/static/html/server.html) for further details. 
+For more thorough details, refer to the [tutorial](https://edd.ifa.hawaii.edu/static/html/index.html).
 
-## Bulding the Docker Package
+##  5. <a name='BulgingtheDockerPackage'></a>Bulging the Docker Package
 
 In the code repository run:
 
@@ -102,11 +126,11 @@ where `x.x` is the package version.
 
 ![Inclinet_Deployment_flowchart](https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png)
 
-## API
+##  6. <a name='API'></a>API
 
 - See the `API documentation` [here](https://edd.ifa.hawaii.edu/inclinet/api/docs)
 
-1. URL guery that reports all evaluated inclinations and other results in `json` format. `<PGC_id>` is the galaxy ID in the [HyperLeda](http://leda.univ-lyon1.fr/) catalog.
+1. URL query that reports all evaluated inclinations and other results in `json` format. `<PGC_id>` is the galaxy ID in the [HyperLeda](http://leda.univ-lyon1.fr/) catalog.
 
 ```bash
 $ curl http://edd.ifa.hawaii.edu/inclinet/api/pgc/<PGC_id>
@@ -277,11 +301,11 @@ where `/path/to/image/galaxy.jpg` would be replaced by the name of the galaxy im
         }
  ```
 
-## Documentation
+##  7. <a name='Documentation'></a>Documentation
 
 The full documentation of this application is [available here](https://edd.ifa.hawaii.edu/static/html/index.html).
 
-### [Sphinx](https://www.sphinx-doc.org/en/master/)
+###  7.1. <a name='Sphinxhttps:www.sphinx-doc.orgenmaster'></a>[Sphinx](https://www.sphinx-doc.org/en/master/)
 
 
 **Notes:**
@@ -289,20 +313,20 @@ The full documentation of this application is [available here](https://edd.ifa.h
 - A [nice article](https://techwritingmatters.com/documenting-with-sphinx-tutorial-intro-overview) on the Sphinx workflow.
 - A [short tutorial](https://github.com/finsberg/sphinx-tutorial) on how to easily get `Sphinx` to work.
 
-- `<code_repository>/docs`: Run `make html` here to update the Sphinx documentations. Sphinx parses all the docstrings into a set of html pages. 
+- `<code_repository>/docs`: Run `make html` here to update the Sphinx documentations. Sphinx parses all docstrings into a set of html pages. 
 
 - - `<code_repository>/docs/source/conf.py`: Running `make html` executes `conf.py`, so any errors and/or conflict should be addressed here.
 
-- `<code_repository>/docs/source`: `*.rsd` files contain lists of linkes and bookmarks that appear on the left side of html documentations. I have manually revised these index files after the first round of executing `sphinx-apidoc`.
+- `<code_repository>/docs/source`: `*.rsd` files contain lists of links and bookmarks that appear on the left side of html documentations. I have manually revised these index files after the first round of executing `sphinx-apidoc`.
 
 
-### Swagger
+###  7.2. <a name='Swagger'></a>Swagger
 
 The documentation of the **REST API** of our application is [available here](https://edd.ifa.hawaii.edu/inclinet/api/docs).
 
-**Notes:** You may follow [this toturial](https://dev.to/sanjan/how-to-add-swagger-ui-to-a-plain-flask-api-project-with-an-openapi-specification-file-1jl8) to easily setup the Swagger API documentation under ``Flask``.
+**Notes:** You may follow [this tutorial](https://dev.to/sanjan/how-to-add-swagger-ui-to-a-plain-flask-api-project-with-an-openapi-specification-file-1jl8) to easily setup the Swagger API documentation under ``Flask``.
 
-## Related Information
+##  8. <a name='RelatedTopics'></a>Related Topics
 
 - For further details on various VGG models we considered in this project [click here](https://github.com/ekourkchi/incNET-data/tree/master/incNET_VGGcnn_withAugmentation).
 - [Visit here](https://github.com/ekourkchi/inclinet_production_repo/blob/main/Inclinet_Deployment_Architecture.pdf) to get the full picture of the deployment plan.
@@ -311,7 +335,9 @@ The documentation of the **REST API** of our application is [available here](htt
 - [Data Preprocessing](https://github.com/ekourkchi/incNET-data/blob/master/incNET_dataPrep/incNET_dataClean.ipynb) in order to get reliable labels
 - On how to download data from the SDSS image service and preprocess them [click here](https://github.com/ekourkchi/SDSS_get)
 
-## About the data
+##  9. <a name='Acknowledgments'></a>Acknowledgments
+
+###  9.1. <a name='Aboutthedata'></a>About the data
 
 All data exposed by the *IncliNET* project belongs to 
 
@@ -319,7 +345,9 @@ All data exposed by the *IncliNET* project belongs to
 - Copyright (C) Cosmicflows
 - Team - The Extragalactic Distance Database (EDD)
 
-### Please cite
+###  9.2. <a name='Citation'></a>Citation
+
+Please cite the following paper and [the gitHub repository of this project](https://github.com/ekourkchi/inclinet_deployment_repo).
 
 > Cosmicflows-4: The Catalog of ∼10,000 Tully-Fisher Distances
 
@@ -345,10 +373,10 @@ archivePrefix = {arXiv},
 ```
 
 
-## Author
+###  9.3. <a name='Author'></a>Author
 
 - Ehsan Kourkchi - [ekourkchi@gmail.com](ekourkchi@gmail.com)
 
-## Disclaimer <a name="Disclaimer"></a>
+###  9.4. <a name='Disclaimer'></a>Disclaimer
 
  * All rights reserved. The material may not be used, reproduced or distributed, in whole or in part, without the prior agreement. 

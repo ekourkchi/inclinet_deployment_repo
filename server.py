@@ -39,7 +39,7 @@ import CNN_models
 from incNET import *
 
 # =============================================================================
-# Flask initializationa
+# Flask initializations
 # =============================================================================
 
 # Create the application instance
@@ -80,7 +80,7 @@ def xcmd(cmd, verbose=True):
 ##########################################################################
 
 def createDir(folderPath):
-    """generating a directory if it doesn't exist
+    """generating a directory/folder if it doesn't exist
 
     :param folderPath: path to the desired folder
     :type folderPath: ``str``
@@ -222,7 +222,7 @@ def loadModels():
 def loadLeda():
     """Loading the HyperLeda catalog: 
     - http://leda.univ-lyon1.fr/
-    - This catalog tabulates the porper information on local galaxies
+    - This catalog tabulates the proper information on local galaxies
 
     :return: the Leda catalog in the Pandas dataFrame format
     :rtype: Pandas ``dataFrame``
@@ -453,11 +453,11 @@ def expand2square(pil_img, background_color):
     **Note:** image is NOT stretched, just the smaller dimension is padded
 
     :param pil_img: input image
-    :type pil_img: ``PIL`` image opject
+    :type pil_img: ``PIL`` image object
     :param background_color: background color of the augmented part
     :type background_color: tuple ``(R, G, B)``
     :return: an square image
-    :rtype: ``PIL`` image opject
+    :rtype: ``PIL`` image object
     """
 
     width, height = pil_img.size
@@ -492,7 +492,7 @@ def addUnits(params):
 ##########################################################################
 
 def modelParams(params):
-    """an auxilliary function for additional book keepings
+    """an auxillary function for additional book keepings
     The conventional extracted galaxy information from the LEDA catalog need to be
     revised to be compatible with the API of the SDSS image server
 
@@ -702,7 +702,7 @@ def obj_api(objname):
 ##########################################################################
 @app.route('/api/file', methods=["POST"])
 def file_api():
-    """``API`` function, evaluating the inclination providing the galaxy image
+    """``API`` function, evaluating the inclination by providing the galaxy image
 
     :return: summary of the results, inclinations, statistics
     :rtype: ``json``
@@ -852,7 +852,7 @@ def arg_parser():
     """
     Parsing the command line arguments
 
-    :return: parsed argumetns ``(opts, args)``
+    :return: parsed arguments ``(opts, args)``
 
     opts: the 
 
@@ -918,7 +918,7 @@ Leda = None
 ##########################################################################
 
 #### autopep8 -i server.py
-# If we're running in sdate_strtand alone mode, run the application
+# If we're running in stand-alone mode, run the application
 if __name__ == '__main__':
 
     opts = arg_parser()
