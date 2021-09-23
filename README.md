@@ -346,7 +346,8 @@ All data exposed by the *IncliNET* project belongs to
 
 Please cite the following paper and [the gitHub repository of this project](https://github.com/ekourkchi/inclinet_deployment_repo).
 
-> Cosmicflows-4: The Catalog of ∼10,000 Tully-Fisher Distances
+- [Cosmicflows-4: The Catalog of ∼10,000 Tully-Fisher Distances](https://ui.adsabs.harvard.edu/abs/2020ApJ...902..145K/abstract)
+
 
 ```bib
 @ARTICLE{2020ApJ...902..145K,
