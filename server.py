@@ -9,7 +9,7 @@
 
 """The inclinet server side in Python
 
-This package uses ``Flask`` to implement the API functions in Python.
+This package uses ``Flask`` to implement the API functionalities in Python.
 
 Visit the online GUI at http://edd.ifa.hawaii.edu/inclinet/
 
@@ -51,7 +51,7 @@ flask_app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024  # set the maximum uplo
 
 ## This function allows to execute the OS commands
 def xcmd(cmd, verbose=True):
-    """Runs the OS commands 
+    """Runs an OS command
 
     :param cmd: terminal command
     :type cmd: ``str``
@@ -535,7 +535,7 @@ def pgc_api(pgcID):
     :return: the summary of all evaluated inclinations
     :rtype: ``json``
 
-    As seen in the following example, the output ``JSON`` contains the detailed evaluation of the available models.
+    The following example shows that the output ``JSON`` contains the detailed evaluation of the available models.
     The ``summary`` fields hold the statistical summary of the outputs of all models.
 
     ::  

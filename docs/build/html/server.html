@@ -101,7 +101,7 @@
 <div class="section" id="module-server">
 <span id="server-py"></span><h1><span class="section-number">4.1. </span>server.py<a class="headerlink" href="#module-server" title="Permalink to this headline"></a></h1>
 <p>The inclinet server side in Python</p>
-<p>This package uses <code class="docutils literal notranslate"><span class="pre">Flask</span></code> to implement the API functions in Python.</p>
+<p>This package uses <code class="docutils literal notranslate"><span class="pre">Flask</span></code> to implement the API functionalities in Python.</p>
 <p>Visit the online GUI at <a class="reference external" href="http://edd.ifa.hawaii.edu/inclinet/">http://edd.ifa.hawaii.edu/inclinet/</a></p>
 <dl class="simple">
 <dt>For citation check:</dt><dd><p><a class="reference external" href="https://github.com/ekourkchi/inclinet_deployment_repo/">https://github.com/ekourkchi/inclinet_deployment_repo/</a></p>
@@ -618,7 +618,7 @@ The <code class="docutils literal notranslate"><span class="pre">summary</span><
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">json</span></code></p>
 </dd>
 </dl>
-<p>As seen in the following example, the output <code class="docutils literal notranslate"><span class="pre">JSON</span></code> contains the detailed evaluation of the available models.
+<p>The following example shows that the output <code class="docutils literal notranslate"><span class="pre">JSON</span></code> contains the detailed evaluation of the available models.
 The <code class="docutils literal notranslate"><span class="pre">summary</span></code> fields hold the statistical summary of the outputs of all models.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl &lt;inclinet_url&gt;/api/pgc/2557&#39;
 {
@@ -674,7 +674,7 @@ The <code class="docutils literal notranslate"><span class="pre">summary</span><
 <dl class="py function">
 <dt class="sig sig-object py" id="server.xcmd">
 <span class="sig-prename descclassname"><span class="pre">server.</span></span><span class="sig-name descname"><span class="pre">xcmd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.xcmd" title="Permalink to this definition"></a></dt>
-<dd><p>Runs the OS commands</p>
+<dd><p>Runs an OS command</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">

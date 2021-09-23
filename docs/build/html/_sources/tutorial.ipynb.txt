@@ -48,13 +48,6 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "![Inclinet_Deployment_flowchart](https://user-images.githubusercontent.com/13570487/134273571-099b9f86-ffb3-450e-94a8-c3262970f51f.png)"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
     "# Web Application\n",
     "\n",
     "![GUI_screenshot](./web_gui.png)\n",
@@ -82,6 +75,9 @@
     "Searching a galaxy by its common name.\n",
     "- The entered name is queried through the [NASA/IPAC Extragalactic Database](http://ned.ipac.caltech.edu/). Then, a python routine based on the package [Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest/#) extracts the corresponding PGC number. Once the PGC ID is available, the galaxy image is imported from the *SDSS quick-look* as explained above.\n",
     "\n",
+    "![Screenshot from 2021-09-08 03-09-36](https://user-images.githubusercontent.com/13570487/132490712-c39440bc-9b41-4a3e-bb54-1c4fb0de2c30.png)\n",
+    "\n",
+    "\n",
     "### Galaxy Coordinates\n",
     "\n",
     "Looking at a specific location in the sky by entering the sky coordinates and the field size. In the first release we only provide access to the `SDSS` images, if they are available. [The SDSS coverage](https://www.sdss.org/dr16/) is mainly limited to the Northern sky.\n",
@@ -89,8 +85,7 @@
     "### Galaxy Image\n",
     "\n",
     "Uploading a galaxy image from the local computer of the user.\n",
-    "- User has the option of uploading a galaxy image for evaluation by our model(s)\n",
-    "![Screenshot from 2021-09-08 03-09-36](https://user-images.githubusercontent.com/13570487/132490712-c39440bc-9b41-4a3e-bb54-1c4fb0de2c30.png)"
+    "- User has the option of uploading a galaxy image for evaluation by our model(s)\n"
    ]
   },
   {
