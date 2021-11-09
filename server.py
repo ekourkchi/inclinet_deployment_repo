@@ -26,6 +26,7 @@ from flask import render_template
 from flask import Flask, jsonify, request
 import connexion
 from datetime import date, timedelta
+import datetime
 import json, base64
 import pandas as pd
 import sys, os, time
@@ -340,14 +341,19 @@ def getObj():
         "status": "success"
         } 
     """
-    response = {"status": "success"}   # default
+    response = {"status": "failed"}   # default
     if request.method == "POST":
-
         try:
             params = request.get_json()
+
+            with open('inclinet.log', 'a+') as f:
+                datenow = datetime.datetime.now().strftime("Date:%Y-%b-%d Time:%H:%M:%S") + ' IP:' + request.remote_addr
+                f.write(datenow + ' getObj: ' +  json.dumps(params) + '\n')
+
             objname = params['objname']
             pgc = getPGCid(objname)
             response = addGalaxyInfo(Leda, pgc, response=response, objname=objname)
+            response["status"] = "success"
         except:
             response = {"status": "error"}
 
@@ -391,6 +397,11 @@ def getPGC():
 
         try:
             params = request.get_json()
+
+            with open('inclinet.log', 'a+') as f:
+                datenow = datetime.datetime.now().strftime("Date:%Y-%b-%d Time:%H:%M:%S") + ' IP:' + request.remote_addr
+                f.write(datenow + ' getPGC: ' +  json.dumps(params) + '\n')
+
             response = addGalaxyInfo(Leda, params['pgc'], response=response)
         except:
             response = {"status": "error"}
@@ -413,6 +424,10 @@ def evaluate():
 
     if request.method == "POST":
         params = request.get_json()
+
+        with open('inclinet.log', 'a+') as f:
+                datenow = datetime.datetime.now().strftime("Date:%Y-%b-%d Time:%H:%M:%S") + ' IP:' + request.remote_addr
+                f.write(datenow + ' evaluate: ' +  json.dumps(params) + '\n')
 
         key = "fileName"
         if key in params:
@@ -596,6 +611,11 @@ def pgc_api(pgcID):
 
     try:
         params = addGalaxyInfo(Leda, pgcID)
+
+        with open('inclinet.log', 'a+') as f:
+                datenow = datetime.datetime.now().strftime("Date:%Y-%b-%d Time:%H:%M:%S") + ' IP:' + request.remote_addr
+                f.write(datenow + ' api/pgc: ' +  json.dumps(params) + '\n')
+
         response['galaxy'] = addUnits(params)
     except:
         response["message"] = "Could not find PGC"+pgcID+' in the database. '
@@ -683,6 +703,11 @@ def obj_api(objname):
     try:
         pgcID = getPGCid(objname)
         params = addGalaxyInfo(Leda, pgcID, objname=objname)
+
+        with open('inclinet.log', 'a+') as f:
+                datenow = datetime.datetime.now().strftime("Date:%Y-%b-%d Time:%H:%M:%S") + ' IP:' + request.remote_addr
+                f.write(datenow + ' api/objname: ' +  json.dumps(params) + '\n')
+
         response['galaxy'] = addUnits(params)
     except:
         response["message"] = "Could not find oject "+objname+'.'
@@ -759,6 +784,11 @@ def file_api():
     if request.method == 'POST':
 
         thisFile = request.files["file"]
+
+        with open('inclinet.log', 'a+') as f:
+                datenow = datetime.datetime.now().strftime("Date:%Y-%b-%d Time:%H:%M:%S") + ' IP:' + request.remote_addr
+                f.write(datenow + ' file: ' +  thisFile.filename + '\n')
+
         fileName = thisFile.filename
         response["filename"] = fileName
         if allowedFile(fileName):
@@ -831,6 +861,10 @@ def IM_upload():
     if request.method == 'POST':
         thisFile = request.files["fileToUpload"]
         fileName = thisFile.filename
+
+        with open('inclinet.log', 'a+') as f:
+                datenow = datetime.datetime.now().strftime("Date:%Y-%b-%d Time:%H:%M:%S") + ' IP:' + request.remote_addr
+                f.write(datenow + ' file upload: ' +  thisFile.filename + '\n')
         
         htmlPath = "/static/tempImages/uploads/"  + str(time.time()).replace('.','_') + '.' + fileName.split('.')[-1]
         imPath = './' + htmlPath
