@@ -359,4 +359,4 @@ def model2html(params, myModels):
     </div>
     """
 
-    return results, scaledImage
+    return results, scaledImage, evalINCs, evalRej

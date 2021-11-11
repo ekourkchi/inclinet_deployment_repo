@@ -79,6 +79,21 @@ def xcmd(cmd, verbose=True):
         return output
 
 ##########################################################################
+def getIP(request):
+
+    if request.headers.getlist("X-Forwarded-For"):
+        ip = request.headers.getlist("X-Forwarded-For")[0]
+    else:
+        ip = request.remote_addr
+
+    return ip
+
+def makeLog(request, message, logFile='inclinet.log'):
+
+    with open(logFile, 'a+') as f:
+        datenow = datetime.datetime.now().strftime("Date:%Y-%b-%d Time:%H:%M:%S") + ' IP:' + getIP(request)
+        f.write(datenow + ' ' + message + '\n')
+##########################################################################  
 
 def createDir(folderPath):
     """generating a directory/folder if it doesn't exist
@@ -342,20 +357,19 @@ def getObj():
         } 
     """
     response = {"status": "failed"}   # default
+
     if request.method == "POST":
         try:
             params = request.get_json()
-
-            with open('inclinet.log', 'a+') as f:
-                datenow = datetime.datetime.now().strftime("Date:%Y-%b-%d Time:%H:%M:%S") + ' IP:' + request.remote_addr
-                f.write(datenow + ' getObj: ' +  json.dumps(params) + '\n')
-
+            makeLog(request, 'getPGC/params: ' +  json.dumps(params))
             objname = params['objname']
             pgc = getPGCid(objname)
             response = addGalaxyInfo(Leda, pgc, response=response, objname=objname)
             response["status"] = "success"
         except:
             response = {"status": "error"}
+        
+    makeLog(request, 'getObj/response: ' +  json.dumps(response))
 
     return jsonify(response)
 
@@ -397,14 +411,13 @@ def getPGC():
 
         try:
             params = request.get_json()
-
-            with open('inclinet.log', 'a+') as f:
-                datenow = datetime.datetime.now().strftime("Date:%Y-%b-%d Time:%H:%M:%S") + ' IP:' + request.remote_addr
-                f.write(datenow + ' getPGC: ' +  json.dumps(params) + '\n')
-
+            makeLog(request, 'getPGC/params: ' +  json.dumps(params))
             response = addGalaxyInfo(Leda, params['pgc'], response=response)
         except:
             response = {"status": "error"}
+
+    
+    makeLog(request, 'getPGC/response: ' +  json.dumps(response))
 
     return jsonify(response)
 
@@ -424,19 +437,18 @@ def evaluate():
 
     if request.method == "POST":
         params = request.get_json()
-
-        with open('inclinet.log', 'a+') as f:
-                datenow = datetime.datetime.now().strftime("Date:%Y-%b-%d Time:%H:%M:%S") + ' IP:' + request.remote_addr
-                f.write(datenow + ' evaluate: ' +  json.dumps(params) + '\n')
-
+        makeLog(request, 'evaluate: ' +  json.dumps(params))
         key = "fileName"
         if key in params:
             params[key] = './' + params[key]
 
-        response['output'],  response['scaledImage']= model2html(params, myModels)
+        response['output'],  response['scaledImage'], response['inclinations'], response['rejection_likelihood'] = model2html(params, myModels)
     else:
         response['status'] = 'error'
     
+    response_log = deepcopy(response)
+    del response_log["output"]
+    makeLog(request, 'evaluate/html/response: ' +  json.dumps(response_log))
 
     return jsonify(response)
 
@@ -611,14 +623,11 @@ def pgc_api(pgcID):
 
     try:
         params = addGalaxyInfo(Leda, pgcID)
-
-        with open('inclinet.log', 'a+') as f:
-                datenow = datetime.datetime.now().strftime("Date:%Y-%b-%d Time:%H:%M:%S") + ' IP:' + request.remote_addr
-                f.write(datenow + ' api/pgc: ' +  json.dumps(params) + '\n')
-
+        makeLog(request, 'api/pgc: ' +  json.dumps(params))
         response['galaxy'] = addUnits(params)
     except:
         response["message"] = "Could not find PGC"+pgcID+' in the database. '
+        makeLog(request, 'api/pgc/response: ' +  json.dumps(response))
         return jsonify(response)
     
     ## evaluating inclinations
@@ -628,6 +637,8 @@ def pgc_api(pgcID):
     except:
         if not 'message' in response: response['message']=""
         response['message'] += 'Could not evaluate inclination! ' 
+
+    makeLog(request, 'api/pgc/response: ' +  json.dumps(response))
 
     return json.dumps(response, cls=NpEncoder, indent=2)+"\n"
 
@@ -698,19 +709,16 @@ def obj_api(objname):
     """
 
     response = {}
-    response["status"] = "failed"
-
+    response["status"] = "failed"   
     try:
         pgcID = getPGCid(objname)
         params = addGalaxyInfo(Leda, pgcID, objname=objname)
-
-        with open('inclinet.log', 'a+') as f:
-                datenow = datetime.datetime.now().strftime("Date:%Y-%b-%d Time:%H:%M:%S") + ' IP:' + request.remote_addr
-                f.write(datenow + ' api/objname: ' +  json.dumps(params) + '\n')
-
+        makeLog(request, 'api/objname: ' +  json.dumps(params))
         response['galaxy'] = addUnits(params)
     except:
         response["message"] = "Could not find oject "+objname+'.'
+        with open('inclinet.log', 'a+') as f:
+                f.write(datenow + ' api/objname: ' +  json.dumps(response) + '\n')
         return jsonify(response)
     
     ## evaluating inclinations
@@ -720,6 +728,8 @@ def obj_api(objname):
     except:
         if not 'message' in response: response['message']=""
         response['message'] += 'Could not evaluate inclination! '  
+    
+    makeLog(request, 'api/objname/evaluation: ' +  json.dumps(response))
 
     return json.dumps(response, cls=NpEncoder, indent=2)+"\n"
 
@@ -784,11 +794,7 @@ def file_api():
     if request.method == 'POST':
 
         thisFile = request.files["file"]
-
-        with open('inclinet.log', 'a+') as f:
-                datenow = datetime.datetime.now().strftime("Date:%Y-%b-%d Time:%H:%M:%S") + ' IP:' + request.remote_addr
-                f.write(datenow + ' file: ' +  thisFile.filename + '\n')
-
+        makeLog(request, 'file: ' +  thisFile.filename)
         fileName = thisFile.filename
         response["filename"] = fileName
         if allowedFile(fileName):
@@ -797,15 +803,18 @@ def file_api():
                 thisFile.save(imPath)
                 imSquarify(imPath)
                 response['inclinations'], response['rejection_likelihood'] = model({'fileName': imPath}, myModels)
+                
             except:
                 response["message"] = "Could not handle the image. Model(s) failed to make prediction(s)."
+                makeLog(request, 'file/response: ' +  json.dumps(response))
                 return jsonify(response)
         else:
             response["message"] = "[Note] Please upload jpg, png, jpeg, and gif giles no larger than 1 MB !"
+            makeLog(request, 'file/response: ' +  json.dumps(response))
             return jsonify(response)
 
     response["status"] = "success"
-
+    makeLog(request, 'file/response: ' +  json.dumps(response))
     return json.dumps(response, cls=NpEncoder, indent=2)+"\n"
 
 ##########################################################################
@@ -861,11 +870,7 @@ def IM_upload():
     if request.method == 'POST':
         thisFile = request.files["fileToUpload"]
         fileName = thisFile.filename
-
-        with open('inclinet.log', 'a+') as f:
-                datenow = datetime.datetime.now().strftime("Date:%Y-%b-%d Time:%H:%M:%S") + ' IP:' + request.remote_addr
-                f.write(datenow + ' file upload: ' +  thisFile.filename + '\n')
-        
+        makeLog(request, 'file upload: ' +  thisFile.filename)
         htmlPath = "/static/tempImages/uploads/"  + str(time.time()).replace('.','_') + '.' + fileName.split('.')[-1]
         imPath = './' + htmlPath
  
@@ -877,6 +882,8 @@ def IM_upload():
             imSquarify(imPath)
         else:
             response["status"] = 'error'
+
+    makeLog(request, 'file upload/response: ' + json.dumps(response))
 
     return jsonify(response)
 
@@ -924,7 +931,7 @@ def arg_parser():
 
 @app.route('/api/docs')
 def get_docs():
-    print('sending docs')
+    makeLog(request, 'api/doc/swagger')
     return render_template('swaggerui.html')
 
 ##########################################################################
@@ -936,7 +943,7 @@ def home():
     """
 
     webDict = {"webroot": WEBROOT}
-
+    makeLog(request, 'load/html')
     return render_template('index.html', webDict=webDict)
 
 ##########################################################################
