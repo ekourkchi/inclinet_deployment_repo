@@ -164,6 +164,7 @@ where ``x.x`` is the package version.
 * See the ``API documentation`` `here <https://edd.ifa.hawaii.edu/inclinet/api/docs>`_
 
 * **API key required.** The API endpoints (``/api/pgc/<PGC>``, ``/api/objname/<name>``, ``/api/file``) require a free EDD API key. Get one at `https://edd.ifa.hawaii.edu/api/account <https://edd.ifa.hawaii.edu/api/account>`_ (sign in with Google, ORCID or email) and send it in the ``X-API-Key`` header (or as ``Authorization: Bearer <key>``). The web page at `https://edd.ifa.hawaii.edu/inclinet/ <https://edd.ifa.hawaii.edu/inclinet/>`_ itself needs no key.
+* **Running IncliNET yourself needs no key.** The key is only for the hosted service at edd.ifa.hawaii.edu. If you run IncliNET from the code in this repository, on your own computer or on your own server, no EDD API key is needed.
 * Requests are subject to per-minute and per-day limits tied to the key. Over the limit the API answers HTTP ``429`` (with a ``Retry-After`` header); a missing or unknown key gives HTTP ``401``.
 * Python example:
 
