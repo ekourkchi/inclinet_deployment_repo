@@ -27,7 +27,7 @@
 
 IncliNET is a Python application to determine the inclination of Spiral Galaxies
 
-- This application is hosted on EDD: [http://edd.ifa.hawaii.edu/inclinet/](http://edd.ifa.hawaii.edu/inclinet/)
+- This application is hosted on EDD: [https://edd.ifa.hawaii.edu/inclinet/](https://edd.ifa.hawaii.edu/inclinet/)
 
 ##  2. <a name='IncliNETTutorial'></a>IncliNET Tutorial 
 
@@ -127,17 +127,33 @@ where `x.x` is the package version.
 
 - See the `API documentation` [here](https://edd.ifa.hawaii.edu/inclinet/api/docs)
 
+- **API key required.** The API endpoints (`/api/pgc/<PGC>`, `/api/objname/<name>`, `/api/file`) require a free EDD API key. Get one at [https://edd.ifa.hawaii.edu/api/account](https://edd.ifa.hawaii.edu/api/account) (sign in with Google, ORCID or email) and send it in the `X-API-Key` header (or as `Authorization: Bearer <key>`). The web page at [https://edd.ifa.hawaii.edu/inclinet/](https://edd.ifa.hawaii.edu/inclinet/) itself needs no key.
+- Requests are subject to per-minute and per-day limits tied to the key. Over the limit the API answers HTTP `429` (with a `Retry-After` header); a missing or unknown key gives HTTP `401`.
+- Python example:
+
+```python
+import requests
+
+key = "YOUR_KEY"
+r = requests.get("https://edd.ifa.hawaii.edu/inclinet/api/pgc/2557", headers={"X-API-Key": key})
+print(r.json())
+
+with open("/path/to/image.jpg", "rb") as f:
+    r = requests.post("https://edd.ifa.hawaii.edu/inclinet/api/file", headers={"X-API-Key": key}, files={"file": f})
+print(r.json())
+```
+
 1. URL query that reports all evaluated inclinations and other results in `json` format. `<PGC_id>` is the galaxy ID in the [HyperLeda](http://leda.univ-lyon1.fr/) catalog.
 
 ```bash
-$ curl http://edd.ifa.hawaii.edu/inclinet/api/pgc/<PGC_id>
+$ curl -H "X-API-Key: YOUR_KEY" https://edd.ifa.hawaii.edu/inclinet/api/pgc/<PGC_id>
 
 ```
 
  - example:
 
     ```bash
-    $ curl http://edd.ifa.hawaii.edu/inclinet/api/pgc/2557
+    $ curl -H "X-API-Key: YOUR_KEY" https://edd.ifa.hawaii.edu/inclinet/api/pgc/2557
     {
     "status": "success",
     "galaxy": {
@@ -189,14 +205,14 @@ $ curl http://edd.ifa.hawaii.edu/inclinet/api/pgc/<PGC_id>
 2. Given the `galaxy common name`, the following URL reports all evaluated inclinations and other results in `json` format. `<obj_name>` is the galaxy galaxy name. Galaxy name is looked up on [NASA/IPAC Extragalactic Database](https://ned.ipac.caltech.edu/) and the corresponding `PGC` number would be used for the purpose of our analysis.
 
 ```bash
-$ curl http://edd.ifa.hawaii.edu/inclinet/api/objname/<obj_name>
+$ curl -H "X-API-Key: YOUR_KEY" https://edd.ifa.hawaii.edu/inclinet/api/objname/<obj_name>
 
 ```
 
  - example:
 
     ```bash
-        $ curl http://edd.ifa.hawaii.edu/inclinet/api/objname/M33
+        $ curl -H "X-API-Key: YOUR_KEY" https://edd.ifa.hawaii.edu/inclinet/api/objname/M33
         {
         "status": "success",
         "galaxy": {
@@ -248,7 +264,7 @@ $ curl http://edd.ifa.hawaii.edu/inclinet/api/objname/<obj_name>
 3. Given the `galaxy image`, the following API call reports all evaluated inclinations and other results in `json` format.
 
 ```bash
-$ curl -F 'file=@/path/to/image/galaxy.jpg' http://edd.ifa.hawaii.edu/inclinet/api/file
+$ curl -H "X-API-Key: YOUR_KEY" -F 'file=@/path/to/image/galaxy.jpg' https://edd.ifa.hawaii.edu/inclinet/api/file
 ```
 
 where `/path/to/image/galaxy.jpg` would be replaced by the name of the galaxy image. The accepted suffixes are `'PNG', 'JPG', 'JPEG', 'GIF'` and uploaded files should be smaller than `1 MB`. 
@@ -256,7 +272,7 @@ where `/path/to/image/galaxy.jpg` would be replaced by the name of the galaxy im
  - example:
 
  ```bash
-        $ curl -F 'file=@/path/to/image/NGC_4579.jpg' http://edd.ifa.hawaii.edu/inclinet/api/file
+        $ curl -H "X-API-Key: YOUR_KEY" -F 'file=@/path/to/image/NGC_4579.jpg' https://edd.ifa.hawaii.edu/inclinet/api/file
         {
         "status": "success",
         "filename": "NGC_4579.jpg",
